@@ -1,0 +1,1001 @@
+detection_id,video_id,frame_number,timestamp,ear_tag_detected,bounding_box_x,bounding_box_y,bounding_box_w,bounding_box_h,color_detected,horns_present,activity_label,health_score,location_zone,confidence_score,gait_status,isolation_flag,abnormal_posture_detected,social_group_id,feeding_event_flag
+DET00001,VID001,0,2025-11-09 08:00:00,,0.23,0.19,0.28,0.34,Spotted,Both,Grazing,71,Feeding Area,0.772,Normal,False,False,12,True
+DET00002,VID001,9,2025-11-09 08:00:30,W019,0.5,0.69,0.08,0.39,Mixed,Right,Grazing,74,Feeding Area,0.98,Normal,False,False,14,True
+DET00003,VID001,12,2025-11-09 08:01:00,L007,0.39,0.11,0.33,0.15,Brown,Left,Grazing,92,Feeding Area,0.761,Normal,False,False,4,True
+DET00004,VID001,18,2025-11-09 08:01:30,G010,0.71,0.14,0.18,0.34,Mixed,Both,Walking,70,Outdoor Paddock,0.925,Normal,False,False,11,False
+DET00005,VID001,24,2025-11-09 08:02:00,Q012,0.72,0.66,0.14,0.13,Brown,Right,Grazing,76,Outdoor Paddock,0.801,Normal,False,False,3,False
+DET00006,VID001,27,2025-11-09 08:02:30,,0.63,0.46,0.28,0.26,Spotted,Right,Grazing,74,Outdoor Paddock,0.772,Normal,False,False,13,False
+DET00007,VID001,33,2025-11-09 08:03:00,T014,0.32,0.85,0.22,0.44,Reddish,Both,Walking,68,Shelter,0.962,Normal,False,False,5,False
+DET00008,VID001,38,2025-11-09 08:03:30,A003,0.81,0.74,0.15,0.29,Black,Both,Lying,59,Shelter,0.872,Limping,False,True,13,False
+DET00009,VID001,44,2025-11-09 08:04:00,E013,0.28,0.02,0.33,0.41,Reddish,Left,Standing,67,Outdoor Paddock,0.977,Normal,False,False,13,False
+DET00010,VID001,49,2025-11-09 08:04:30,G011,0.56,0.8,0.12,0.29,Spotted,Right,Resting,92,Rest Area,0.921,Normal,False,False,15,False
+DET00011,VID001,54,2025-11-09 08:05:00,M013,0.19,0.29,0.24,0.2,Black,Both,Standing,80,Feeding Area,0.805,Limping,False,True,4,True
+DET00012,VID001,58,2025-11-09 08:05:30,G015,0.61,0.75,0.24,0.2,Grey,Right,Standing,63,Shelter,0.853,Normal,False,False,11,False
+DET00013,VID001,60,2025-11-09 08:06:00,,0.62,0.68,0.11,0.18,Spotted,Right,Standing,65,Rest Area,0.861,Limping,False,False,14,False
+DET00014,VID001,69,2025-11-09 08:06:30,,0.55,0.46,0.08,0.15,Reddish,None,Standing,75,Medical Bay,0.801,Normal,False,False,7,False
+DET00015,VID001,72,2025-11-09 08:07:00,O003,0.39,0.36,0.34,0.45,Spotted,Right,Standing,69,Water Zone,0.982,Normal,False,False,1,False
+DET00016,VID001,75,2025-11-09 08:07:30,Z014,0.78,0.45,0.1,0.29,Reddish,None,Standing,62,Shelter,0.957,Normal,False,False,10,False
+DET00017,VID001,84,2025-11-09 08:08:00,,0.07,0.56,0.23,0.22,Brown,None,Walking,75,Water Zone,0.814,Normal,False,False,15,False
+DET00018,VID001,85,2025-11-09 08:08:30,,0.53,0.48,0.11,0.3,Spotted,Left,Standing,71,Feeding Area,0.961,Normal,False,False,12,True
+DET00019,VID001,94,2025-11-09 08:09:00,,0.69,0.25,0.26,0.43,Black,Left,Standing,63,Shelter,0.883,Normal,False,False,4,False
+DET00020,VID001,97,2025-11-09 08:09:30,M017,0.77,0.72,0.1,0.26,Brown,Both,Standing,84,Water Zone,0.903,Normal,False,False,7,False
+DET00021,VID001,104,2025-11-09 08:10:00,,0.06,0.75,0.32,0.3,Reddish,Left,Grazing,74,Outdoor Paddock,0.781,Normal,False,False,14,False
+DET00022,VID001,105,2025-11-09 08:10:30,K015,0.58,0.57,0.18,0.3,Reddish,Right,Resting,86,Rest Area,0.972,Normal,False,False,3,False
+DET00023,VID001,113,2025-11-09 08:11:00,,0.63,0.28,0.33,0.38,Reddish,None,Grazing,95,Feeding Area,0.842,Normal,False,False,15,True
+DET00024,VID001,117,2025-11-09 08:11:30,S012,0.19,0.02,0.13,0.23,Reddish,Both,Resting,71,Shelter,0.904,Normal,False,False,1,False
+DET00025,VID001,120,2025-11-09 08:12:00,N007,0.15,0.82,0.15,0.16,Grey,Left,Walking,75,Medical Bay,0.895,Normal,False,False,5,False
+DET00026,VID001,125,2025-11-09 08:12:30,A001,0.44,0.69,0.27,0.43,Mixed,None,Grazing,72,Outdoor Paddock,0.9,Normal,False,False,9,False
+DET00027,VID001,132,2025-11-09 08:13:00,Q014,0.34,0.25,0.11,0.26,Grey,None,Walking,74,Medical Bay,0.882,Normal,False,False,10,False
+DET00028,VID001,139,2025-11-09 08:13:30,X016,0.38,0.57,0.22,0.38,Reddish,None,Walking,74,Outdoor Paddock,0.909,Normal,False,False,4,False
+DET00029,VID001,142,2025-11-09 08:14:00,K003,0.13,0.04,0.35,0.32,Reddish,Both,Grazing,98,Feeding Area,0.922,Normal,False,False,12,False
+DET00030,VID001,145,2025-11-09 08:14:30,L004,0.15,0.81,0.22,0.14,Black,Both,Grazing,95,Outdoor Paddock,0.91,Unstable,False,False,15,False
+DET00031,VID001,153,2025-11-09 08:15:00,K016,0.76,0.36,0.32,0.27,Black,Right,Grazing,94,Feeding Area,0.952,Normal,False,False,4,True
+DET00032,VID001,155,2025-11-09 08:15:30,M000,0.23,0.27,0.23,0.17,Black,Right,Walking,87,Water Zone,0.765,Normal,False,False,4,False
+DET00033,VID001,163,2025-11-09 08:16:00,N008,0.5,0.59,0.31,0.37,Grey,Right,Standing,71,Rest Area,0.931,Limping,False,False,12,False
+DET00034,VID001,169,2025-11-09 08:16:30,T019,0.19,0.19,0.2,0.13,Brown,Right,Walking,91,Medical Bay,0.971,Unstable,False,False,10,False
+DET00035,VID001,174,2025-11-09 08:17:00,E005,0.55,0.12,0.2,0.14,Grey,Left,Standing,70,Rest Area,0.933,Normal,False,False,5,False
+DET00036,VID001,175,2025-11-09 08:17:30,M007,0.46,0.85,0.17,0.33,Reddish,Both,Walking,95,Water Zone,0.798,Normal,False,False,11,False
+DET00037,VID001,180,2025-11-09 08:18:00,L003,0.4,0.22,0.18,0.32,Mixed,Both,Walking,70,Rest Area,0.776,Normal,False,False,7,False
+DET00038,VID001,188,2025-11-09 08:18:30,K003,0.06,0.59,0.25,0.15,Reddish,Left,Lying,69,Feeding Area,0.941,Normal,True,False,11,False
+DET00039,VID001,192,2025-11-09 08:19:00,,0.55,0.01,0.19,0.28,Grey,Left,Walking,91,Medical Bay,0.92,Normal,False,False,5,False
+DET00040,VID001,199,2025-11-09 08:19:30,B011,0.66,0.4,0.3,0.32,Brown,None,Running,57,Rest Area,0.962,Unstable,False,False,7,False
+DET00041,VID001,202,2025-11-09 08:20:00,,0.72,0.15,0.14,0.38,Brown,Left,Lying,72,Rest Area,0.883,Normal,False,False,7,False
+DET00042,VID001,208,2025-11-09 08:20:30,M006,0.59,0.55,0.21,0.38,White,Left,Standing,82,Water Zone,0.823,Normal,False,False,7,False
+DET00043,VID001,214,2025-11-09 08:21:00,J019,0.39,0.26,0.14,0.36,Brown,Both,Walking,95,Shelter,0.794,Normal,False,False,13,False
+DET00044,VID001,219,2025-11-09 08:21:30,F002,0.71,0.25,0.18,0.22,Mixed,None,Grazing,71,Outdoor Paddock,0.917,Normal,False,False,14,False
+DET00045,VID001,220,2025-11-09 08:22:00,Y000,0.41,0.29,0.34,0.2,Reddish,Right,Standing,62,Medical Bay,0.868,Normal,False,False,13,False
+DET00046,VID001,229,2025-11-09 08:22:30,E007,0.84,0.1,0.29,0.32,Reddish,None,Walking,77,Medical Bay,0.968,Normal,False,False,10,False
+DET00047,VID001,234,2025-11-09 08:23:00,,0.82,0.08,0.29,0.33,Brown,Both,Standing,65,Outdoor Paddock,0.768,Normal,False,False,5,False
+DET00048,VID001,235,2025-11-09 08:23:30,K003,0.24,0.73,0.1,0.2,Brown,None,Grazing,87,Feeding Area,0.905,Limping,False,True,3,True
+DET00049,VID001,244,2025-11-09 08:24:00,D002,0.78,0.37,0.21,0.22,Grey,Left,Grazing,85,Outdoor Paddock,0.769,Normal,False,False,5,False
+DET00050,VID001,245,2025-11-09 08:24:30,,0.82,0.71,0.24,0.43,Reddish,Left,Grazing,94,Feeding Area,0.863,Normal,False,False,10,True
+DET00051,VID001,253,2025-11-09 08:25:00,Y001,0.3,0.28,0.26,0.4,Brown,Right,Walking,74,Shelter,0.977,Normal,False,False,6,False
+DET00052,VID001,257,2025-11-09 08:25:30,X013,0.66,0.74,0.3,0.12,Reddish,Right,Grazing,76,Outdoor Paddock,0.899,Normal,False,False,5,False
+DET00053,VID001,264,2025-11-09 08:26:00,,0.24,0.75,0.21,0.13,Mixed,None,Walking,74,Outdoor Paddock,0.753,Normal,False,False,2,False
+DET00054,VID001,268,2025-11-09 08:26:30,H003,0.71,0.42,0.27,0.29,Brown,Right,Running,70,Water Zone,0.86,Normal,False,False,12,False
+DET00055,VID001,271,2025-11-09 08:27:00,O002,0.66,0.73,0.17,0.38,Brown,Both,Grazing,79,Outdoor Paddock,0.958,Normal,False,False,13,False
+DET00056,VID001,279,2025-11-09 08:27:30,V015,0.27,0.16,0.27,0.31,Black,Right,Standing,83,Medical Bay,0.919,Normal,False,False,14,False
+DET00057,VID001,281,2025-11-09 08:28:00,B017,0.11,0.82,0.17,0.15,Reddish,Right,Standing,89,Medical Bay,0.754,Normal,False,False,2,False
+DET00058,VID001,288,2025-11-09 08:28:30,N011,0.29,0.59,0.26,0.4,Reddish,Right,Resting,83,Shelter,0.959,Normal,False,False,15,False
+DET00059,VID001,292,2025-11-09 08:29:00,M004,0.08,0.83,0.29,0.35,White,Right,Standing,69,Feeding Area,0.761,Normal,False,False,3,True
+DET00060,VID001,298,2025-11-09 08:29:30,O011,0.15,0.15,0.24,0.25,Mixed,None,Grazing,88,Feeding Area,0.806,Normal,False,False,15,True
+DET00061,VID001,302,2025-11-09 08:30:00,I001,0.06,0.8,0.35,0.22,Grey,Left,Grazing,79,Feeding Area,0.99,Limping,False,True,6,True
+DET00062,VID001,307,2025-11-09 08:30:30,,0.71,0.34,0.08,0.41,Reddish,Both,Lying,73,Medical Bay,0.95,Limping,False,True,13,False
+DET00063,VID001,312,2025-11-09 08:31:00,J014,0.53,0.58,0.27,0.34,Reddish,None,Walking,93,Shelter,0.905,Normal,False,False,12,False
+DET00064,VID001,316,2025-11-09 08:31:30,,0.25,0.64,0.13,0.16,Spotted,Left,Grazing,99,Outdoor Paddock,0.949,Normal,False,False,13,False
+DET00065,VID001,322,2025-11-09 08:32:00,R006,0.68,0.4,0.1,0.37,Black,Right,Resting,88,Shelter,0.772,Normal,False,False,6,False
+DET00066,VID001,327,2025-11-09 08:32:30,Q002,0.54,0.32,0.26,0.28,Spotted,Left,Lying,57,Shelter,0.765,Normal,False,False,7,False
+DET00067,VID001,330,2025-11-09 08:33:00,,0.8,0.26,0.21,0.15,Spotted,None,Grazing,81,Outdoor Paddock,0.891,Normal,False,False,14,False
+DET00068,VID001,338,2025-11-09 08:33:30,W001,0.81,0.03,0.18,0.27,Black,Left,Standing,81,Rest Area,0.881,Unstable,False,True,4,False
+DET00069,VID001,340,2025-11-09 08:34:00,Q003,0.39,0.56,0.25,0.32,White,Both,Walking,72,Water Zone,0.939,Normal,False,False,10,False
+DET00070,VID001,346,2025-11-09 08:34:30,L018,0.28,0.13,0.32,0.12,Reddish,None,Resting,80,Shelter,0.942,Normal,False,False,6,False
+DET00071,VID001,351,2025-11-09 08:35:00,A016,0.15,0.04,0.28,0.29,Mixed,Both,Grazing,94,Outdoor Paddock,0.873,Normal,False,False,1,False
+DET00072,VID001,359,2025-11-09 08:35:30,G018,0.82,0.05,0.21,0.25,Mixed,Both,Grazing,99,Outdoor Paddock,0.768,Normal,False,False,5,False
+DET00073,VID001,364,2025-11-09 08:36:00,C001,0.61,0.32,0.24,0.22,Spotted,Right,Standing,82,Feeding Area,0.955,Normal,False,False,4,True
+DET00074,VID001,366,2025-11-09 08:36:30,Q007,0.39,0.35,0.11,0.26,Mixed,Left,Grazing,74,Outdoor Paddock,0.766,Normal,False,False,12,False
+DET00075,VID001,372,2025-11-09 08:37:00,C009,0.05,0.81,0.23,0.34,Grey,Left,Lying,80,Medical Bay,0.958,Normal,False,False,6,False
+DET00076,VID001,375,2025-11-09 08:37:30,K017,0.13,0.41,0.31,0.24,Spotted,Left,Standing,68,Outdoor Paddock,0.804,Normal,False,False,10,False
+DET00077,VID001,384,2025-11-09 08:38:00,C010,0.02,0.79,0.3,0.21,Black,Left,Walking,74,Rest Area,0.834,Normal,False,False,2,False
+DET00078,VID001,386,2025-11-09 08:38:30,X015,0.03,0.63,0.14,0.26,Brown,None,Grazing,93,Outdoor Paddock,0.936,Normal,False,False,3,False
+DET00079,VID001,394,2025-11-09 08:39:00,,0.07,0.38,0.19,0.32,Grey,Left,Standing,76,Feeding Area,0.833,Normal,False,False,9,True
+DET00080,VID001,395,2025-11-09 08:39:30,E013,0.05,0.17,0.34,0.37,Reddish,Left,Grazing,73,Feeding Area,0.869,Normal,False,False,4,True
+DET00081,VID001,402,2025-11-09 08:40:00,,0.73,0.04,0.09,0.42,Reddish,Left,Grazing,88,Outdoor Paddock,0.92,Normal,False,True,6,False
+DET00082,VID001,406,2025-11-09 08:40:30,F012,0.39,0.59,0.18,0.26,White,None,Grazing,82,Feeding Area,0.845,Normal,False,False,3,False
+DET00083,VID001,410,2025-11-09 08:41:00,J018,0.77,0.3,0.28,0.39,Reddish,None,Standing,64,Rest Area,0.797,Normal,False,False,3,False
+DET00084,VID001,418,2025-11-09 08:41:30,C017,0.65,0.38,0.33,0.31,Mixed,Left,Lying,70,Rest Area,0.786,Normal,False,False,5,False
+DET00085,VID001,424,2025-11-09 08:42:00,,0.43,0.26,0.2,0.14,Reddish,Left,Standing,87,Feeding Area,0.898,Normal,False,False,13,True
+DET00086,VID001,425,2025-11-09 08:42:30,P009,0.49,0.16,0.24,0.29,White,Right,Standing,88,Rest Area,0.986,Normal,False,True,12,False
+DET00087,VID001,433,2025-11-09 08:43:00,A016,0.44,0.13,0.18,0.21,Grey,Left,Walking,66,Shelter,0.905,Normal,False,False,5,False
+DET00088,VID001,437,2025-11-09 08:43:30,H012,0.82,0.51,0.12,0.15,Mixed,None,Lying,59,Shelter,0.918,Normal,False,False,5,False
+DET00089,VID001,444,2025-11-09 08:44:00,O010,0.28,0.11,0.27,0.43,Mixed,Both,Walking,78,Outdoor Paddock,0.837,Normal,False,False,13,False
+DET00090,VID001,448,2025-11-09 08:44:30,H000,0.13,0.25,0.29,0.29,Spotted,Both,Walking,93,Outdoor Paddock,0.781,Normal,False,False,13,False
+DET00091,VID001,454,2025-11-09 08:45:00,I009,0.61,0.04,0.18,0.36,Grey,Left,Walking,90,Medical Bay,0.806,Normal,False,False,15,False
+DET00092,VID001,456,2025-11-09 08:45:30,W009,0.48,0.37,0.29,0.38,Spotted,Right,Resting,89,Rest Area,0.942,Normal,False,False,14,False
+DET00093,VID001,462,2025-11-09 08:46:00,F005,0.6,0.44,0.11,0.15,Black,Left,Grazing,86,Feeding Area,0.949,Normal,False,False,15,True
+DET00094,VID001,465,2025-11-09 08:46:30,U005,0.43,0.2,0.35,0.24,White,Left,Lying,76,Shelter,0.906,Normal,False,False,14,False
+DET00095,VID001,473,2025-11-09 08:47:00,H002,0.65,0.4,0.25,0.42,White,Left,Standing,64,Outdoor Paddock,0.976,Normal,False,False,4,False
+DET00096,VID001,477,2025-11-09 08:47:30,,0.2,0.54,0.25,0.14,Reddish,Right,Grazing,70,Feeding Area,0.922,Normal,True,False,10,True
+DET00097,VID001,480,2025-11-09 08:48:00,S009,0.06,0.45,0.22,0.45,Spotted,Both,Grazing,85,Feeding Area,0.903,Unstable,False,True,13,False
+DET00098,VID001,486,2025-11-09 08:48:30,G003,0.09,0.49,0.28,0.16,Brown,Left,Running,60,Shelter,0.862,Normal,False,False,2,False
+DET00099,VID001,493,2025-11-09 08:49:00,,0.17,0.67,0.32,0.22,Brown,Right,Resting,80,Shelter,0.811,Normal,False,False,13,False
+DET00100,VID001,495,2025-11-09 08:49:30,Q019,0.23,0.68,0.2,0.25,Grey,Right,Grazing,75,Outdoor Paddock,0.916,Normal,False,False,2,False
+DET00101,VID001,503,2025-11-09 08:50:00,,0.51,0.7,0.23,0.23,White,Left,Walking,74,Medical Bay,0.895,Normal,False,False,1,False
+DET00102,VID001,507,2025-11-09 08:50:30,W005,0.23,0.83,0.34,0.14,Mixed,Right,Grazing,95,Feeding Area,0.979,Normal,False,False,1,False
+DET00103,VID001,511,2025-11-09 08:51:00,S015,0.31,0.81,0.09,0.17,Grey,Left,Grazing,94,Feeding Area,0.888,Normal,False,False,4,True
+DET00104,VID001,515,2025-11-09 08:51:30,Z011,0.44,0.78,0.11,0.38,Mixed,Right,Standing,79,Rest Area,0.917,Unstable,False,True,2,False
+DET00105,VID001,523,2025-11-09 08:52:00,K010,0.38,0.07,0.26,0.4,Brown,Left,Walking,82,Outdoor Paddock,0.82,Normal,False,False,12,False
+DET00106,VID001,526,2025-11-09 08:52:30,A000,0.19,0.84,0.29,0.2,Grey,Both,Grazing,88,Outdoor Paddock,0.862,Unstable,False,False,2,False
+DET00107,VID001,532,2025-11-09 08:53:00,K014,0.61,0.45,0.29,0.39,White,None,Resting,83,Rest Area,0.858,Normal,False,False,13,False
+DET00108,VID001,539,2025-11-09 08:53:30,J006,0.65,0.11,0.22,0.41,Reddish,Both,Grazing,79,Feeding Area,0.789,Limping,False,False,9,True
+DET00109,VID001,540,2025-11-09 08:54:00,G010,0.81,0.23,0.25,0.32,White,None,Grazing,88,Feeding Area,0.791,Normal,False,False,15,True
+DET00110,VID001,545,2025-11-09 08:54:30,,0.81,0.66,0.15,0.19,Spotted,Right,Walking,65,Medical Bay,0.963,Normal,False,False,4,False
+DET00111,VID001,553,2025-11-09 08:55:00,D014,0.59,0.13,0.19,0.27,Brown,None,Grazing,92,Outdoor Paddock,0.926,Limping,False,True,6,False
+DET00112,VID001,559,2025-11-09 08:55:30,Q006,0.21,0.1,0.2,0.17,White,Left,Lying,77,Outdoor Paddock,0.85,Unstable,False,False,15,False
+DET00113,VID001,564,2025-11-09 08:56:00,J014,0.65,0.42,0.22,0.28,Brown,Right,Standing,90,Medical Bay,0.871,Unstable,False,True,1,False
+DET00114,VID001,567,2025-11-09 08:56:30,T003,0.72,0.57,0.16,0.12,White,Right,Standing,68,Shelter,0.838,Normal,True,False,9,False
+DET00115,VID001,571,2025-11-09 08:57:00,O015,0.06,0.43,0.29,0.21,Spotted,Both,Standing,63,Medical Bay,0.84,Unstable,False,True,3,False
+DET00116,VID001,576,2025-11-09 08:57:30,U011,0.43,0.04,0.12,0.23,Grey,Right,Standing,88,Outdoor Paddock,0.784,Limping,False,True,10,False
+DET00117,VID001,582,2025-11-09 08:58:00,Z019,0.7,0.45,0.27,0.22,Reddish,Both,Grazing,91,Feeding Area,0.985,Normal,False,False,12,True
+DET00118,VID001,589,2025-11-09 08:58:30,X010,0.56,0.83,0.24,0.2,White,Right,Standing,80,Shelter,0.899,Normal,False,False,1,False
+DET00119,VID001,594,2025-11-09 08:59:00,F012,0.16,0.37,0.19,0.26,Black,Right,Grazing,89,Outdoor Paddock,0.959,Normal,False,False,4,False
+DET00120,VID001,599,2025-11-09 08:59:30,H018,0.41,0.32,0.34,0.27,Spotted,Left,Grazing,91,Outdoor Paddock,0.896,Normal,False,False,4,False
+DET00121,VID001,602,2025-11-09 09:00:00,K001,0.18,0.6,0.17,0.24,Reddish,Left,Grazing,88,Outdoor Paddock,0.965,Normal,False,False,3,False
+DET00122,VID001,607,2025-11-09 09:00:30,,0.81,0.07,0.33,0.34,Mixed,Right,Standing,86,Outdoor Paddock,0.815,Normal,False,False,12,False
+DET00123,VID001,614,2025-11-09 09:01:00,C011,0.57,0.45,0.25,0.14,Grey,Left,Walking,68,Shelter,0.935,Normal,False,False,7,False
+DET00124,VID001,618,2025-11-09 09:01:30,K004,0.64,0.24,0.16,0.14,Reddish,Both,Walking,72,Outdoor Paddock,0.927,Limping,True,False,7,False
+DET00125,VID001,621,2025-11-09 09:02:00,B017,0.85,0.34,0.21,0.43,Reddish,Left,Lying,50,Rest Area,0.886,Limping,False,True,11,False
+DET00126,VID001,629,2025-11-09 09:02:30,T010,0.8,0.72,0.21,0.18,White,Left,Standing,74,Shelter,0.812,Normal,False,False,10,False
+DET00127,VID001,631,2025-11-09 09:03:00,R016,0.54,0.34,0.2,0.23,Grey,Both,Standing,64,Medical Bay,0.828,Normal,False,False,13,False
+DET00128,VID001,637,2025-11-09 09:03:30,P009,0.5,0.49,0.15,0.24,Black,Both,Walking,79,Rest Area,0.788,Normal,False,False,13,False
+DET00129,VID001,642,2025-11-09 09:04:00,G014,0.78,0.25,0.25,0.19,Black,Right,Standing,83,Outdoor Paddock,0.84,Normal,False,False,13,False
+DET00130,VID001,646,2025-11-09 09:04:30,I016,0.64,0.74,0.1,0.27,Mixed,Left,Standing,78,Feeding Area,0.765,Normal,False,False,3,False
+DET00131,VID001,654,2025-11-09 09:05:00,I016,0.17,0.5,0.1,0.29,Reddish,Both,Grazing,86,Outdoor Paddock,0.86,Normal,False,False,12,False
+DET00132,VID001,655,2025-11-09 09:05:30,P016,0.0,0.19,0.1,0.26,Mixed,Both,Grazing,71,Feeding Area,0.987,Normal,False,False,3,True
+DET00133,VID001,663,2025-11-09 09:06:00,T012,0.33,0.74,0.32,0.24,Mixed,None,Walking,76,Feeding Area,0.793,Normal,False,False,4,False
+DET00134,VID001,665,2025-11-09 09:06:30,P005,0.39,0.61,0.19,0.25,Black,None,Grazing,74,Outdoor Paddock,0.795,Limping,False,True,11,False
+DET00135,VID001,673,2025-11-09 09:07:00,V018,0.75,0.01,0.14,0.15,White,Right,Grazing,92,Feeding Area,0.809,Normal,False,False,13,True
+DET00136,VID001,675,2025-11-09 09:07:30,,0.84,0.2,0.33,0.31,Spotted,Left,Standing,88,Water Zone,0.987,Normal,False,False,9,False
+DET00137,VID001,684,2025-11-09 09:08:00,U013,0.15,0.58,0.23,0.14,Brown,Right,Walking,75,Shelter,0.85,Normal,False,False,8,False
+DET00138,VID001,686,2025-11-09 09:08:30,P007,0.73,0.12,0.21,0.14,Grey,Right,Grazing,74,Outdoor Paddock,0.808,Normal,False,False,14,False
+DET00139,VID001,692,2025-11-09 09:09:00,,0.62,0.16,0.15,0.34,Spotted,Both,Lying,56,Outdoor Paddock,0.924,Normal,False,False,6,False
+DET00140,VID001,697,2025-11-09 09:09:30,A015,0.18,0.16,0.28,0.37,Reddish,Right,Lying,72,Outdoor Paddock,0.919,Normal,False,False,5,False
+DET00141,VID001,703,2025-11-09 09:10:00,H004,0.31,0.22,0.22,0.28,White,Right,Walking,75,Water Zone,0.839,Normal,False,False,3,False
+DET00142,VID001,705,2025-11-09 09:10:30,V017,0.5,0.61,0.16,0.18,Black,Right,Grazing,77,Outdoor Paddock,0.882,Limping,False,False,8,False
+DET00143,VID001,713,2025-11-09 09:11:00,L010,0.68,0.14,0.27,0.28,Spotted,Both,Grazing,96,Feeding Area,0.977,Normal,False,False,14,True
+DET00144,VID001,715,2025-11-09 09:11:30,A009,0.19,0.39,0.1,0.33,Spotted,Right,Walking,65,Feeding Area,0.878,Normal,True,False,9,False
+DET00145,VID001,722,2025-11-09 09:12:00,,0.69,0.57,0.3,0.42,White,Both,Grazing,77,Feeding Area,0.899,Normal,False,False,2,True
+DET00146,VID001,728,2025-11-09 09:12:30,M009,0.84,0.19,0.26,0.4,Mixed,Both,Standing,72,Medical Bay,0.883,Normal,True,False,8,False
+DET00147,VID001,733,2025-11-09 09:13:00,Q019,0.48,0.73,0.11,0.29,White,None,Standing,87,Shelter,0.963,Normal,True,False,15,False
+DET00148,VID001,737,2025-11-09 09:13:30,C017,0.56,0.15,0.31,0.13,Black,None,Walking,87,Medical Bay,0.973,Normal,False,False,14,False
+DET00149,VID001,743,2025-11-09 09:14:00,B013,0.28,0.64,0.12,0.45,Mixed,Both,Grazing,81,Feeding Area,0.773,Normal,False,False,10,True
+DET00150,VID001,748,2025-11-09 09:14:30,Q014,0.03,0.23,0.35,0.28,Brown,Right,Grazing,91,Outdoor Paddock,0.771,Normal,False,False,2,False
+DET00151,VID001,752,2025-11-09 09:15:00,K008,0.67,0.13,0.19,0.24,White,Both,Lying,64,Rest Area,0.933,Normal,False,False,9,False
+DET00152,VID001,759,2025-11-09 09:15:30,F005,0.02,0.3,0.11,0.32,Brown,Right,Standing,73,Medical Bay,0.937,Normal,False,False,4,False
+DET00153,VID001,764,2025-11-09 09:16:00,J001,0.32,0.12,0.16,0.28,White,None,Grazing,83,Outdoor Paddock,0.866,Normal,False,False,11,False
+DET00154,VID001,768,2025-11-09 09:16:30,K000,0.39,0.12,0.08,0.25,Reddish,Right,Running,65,Medical Bay,0.83,Normal,False,False,3,False
+DET00155,VID001,772,2025-11-09 09:17:00,W010,0.59,0.41,0.13,0.25,Brown,Left,Walking,85,Medical Bay,0.982,Normal,False,False,13,False
+DET00156,VID001,778,2025-11-09 09:17:30,V014,0.48,0.5,0.23,0.34,Spotted,Both,Resting,77,Rest Area,0.855,Normal,False,False,13,False
+DET00157,VID001,783,2025-11-09 09:18:00,H002,0.54,0.21,0.26,0.36,Reddish,Right,Standing,79,Medical Bay,0.89,Normal,False,False,7,False
+DET00158,VID001,789,2025-11-09 09:18:30,,0.82,0.6,0.3,0.32,White,Both,Walking,86,Shelter,0.835,Normal,True,False,11,False
+DET00159,VID001,793,2025-11-09 09:19:00,Q019,0.82,0.37,0.08,0.21,Spotted,None,Grazing,82,Outdoor Paddock,0.935,Normal,False,False,1,False
+DET00160,VID001,798,2025-11-09 09:19:30,,0.35,0.82,0.11,0.43,Black,Left,Grazing,84,Feeding Area,0.875,Normal,False,False,8,True
+DET00161,VID001,802,2025-11-09 09:20:00,,0.6,0.02,0.17,0.16,Reddish,None,Lying,73,Water Zone,0.874,Normal,False,False,8,False
+DET00162,VID001,806,2025-11-09 09:20:30,G004,0.16,0.54,0.2,0.13,Spotted,None,Grazing,83,Outdoor Paddock,0.751,Normal,False,False,13,False
+DET00163,VID001,810,2025-11-09 09:21:00,O018,0.74,0.16,0.17,0.27,Brown,Right,Grazing,90,Outdoor Paddock,0.893,Normal,False,False,14,False
+DET00164,VID001,818,2025-11-09 09:21:30,P013,0.57,0.68,0.33,0.31,Mixed,None,Grazing,77,Outdoor Paddock,0.778,Normal,False,False,10,False
+DET00165,VID001,821,2025-11-09 09:22:00,V013,0.16,0.54,0.27,0.33,Black,None,Grazing,74,Feeding Area,0.825,Normal,False,False,1,True
+DET00166,VID001,826,2025-11-09 09:22:30,X006,0.48,0.56,0.19,0.28,Mixed,Right,Grazing,72,Feeding Area,0.941,Normal,True,False,5,False
+DET00167,VID001,833,2025-11-09 09:23:00,N011,0.65,0.47,0.11,0.16,Reddish,Left,Grazing,94,Feeding Area,0.932,Normal,False,False,12,True
+DET00168,VID001,836,2025-11-09 09:23:30,B013,0.38,0.3,0.3,0.26,White,None,Standing,83,Outdoor Paddock,0.915,Limping,False,False,10,False
+DET00169,VID001,841,2025-11-09 09:24:00,P013,0.18,0.05,0.17,0.21,Spotted,None,Grazing,92,Outdoor Paddock,0.819,Normal,False,False,11,False
+DET00170,VID001,845,2025-11-09 09:24:30,,0.64,0.35,0.1,0.21,Mixed,None,Walking,69,Water Zone,0.785,Normal,False,False,7,False
+DET00171,VID001,853,2025-11-09 09:25:00,,0.54,0.53,0.18,0.14,Reddish,Both,Grazing,93,Outdoor Paddock,0.917,Limping,False,False,10,False
+DET00172,VID001,855,2025-11-09 09:25:30,R007,0.62,0.62,0.2,0.34,Brown,Both,Walking,77,Water Zone,0.982,Normal,False,False,5,False
+DET00173,VID001,862,2025-11-09 09:26:00,G013,0.48,0.41,0.17,0.35,White,Both,Standing,85,Medical Bay,0.754,Limping,False,False,7,False
+DET00174,VID001,866,2025-11-09 09:26:30,U011,0.11,0.55,0.12,0.43,Brown,Both,Walking,73,Feeding Area,0.839,Limping,False,True,5,False
+DET00175,VID001,871,2025-11-09 09:27:00,E013,0.6,0.0,0.21,0.16,Black,Right,Standing,82,Rest Area,0.946,Unstable,False,True,2,False
+DET00176,VID001,876,2025-11-09 09:27:30,L008,0.69,0.09,0.18,0.22,Grey,None,Walking,86,Water Zone,0.766,Normal,False,False,6,False
+DET00177,VID001,881,2025-11-09 09:28:00,H015,0.78,0.52,0.2,0.19,White,None,Walking,83,Shelter,0.842,Unstable,False,True,5,False
+DET00178,VID001,885,2025-11-09 09:28:30,E015,0.51,0.52,0.29,0.35,Reddish,Left,Standing,79,Outdoor Paddock,0.795,Normal,False,False,13,False
+DET00179,VID001,891,2025-11-09 09:29:00,F015,0.2,0.54,0.1,0.41,White,Left,Lying,54,Medical Bay,0.957,Normal,False,False,13,False
+DET00180,VID001,898,2025-11-09 09:29:30,N008,0.06,0.5,0.08,0.19,White,Right,Grazing,90,Outdoor Paddock,0.852,Normal,False,False,3,False
+DET00181,VID001,902,2025-11-09 09:30:00,,0.07,0.78,0.34,0.17,Brown,Right,Grazing,94,Feeding Area,0.824,Normal,False,False,4,False
+DET00182,VID001,908,2025-11-09 09:30:30,,0.52,0.05,0.26,0.34,Black,Both,Standing,64,Shelter,0.753,Normal,False,False,14,False
+DET00183,VID001,912,2025-11-09 09:31:00,G009,0.64,0.74,0.28,0.16,White,Left,Running,63,Outdoor Paddock,0.765,Normal,False,False,8,False
+DET00184,VID001,919,2025-11-09 09:31:30,Z011,0.73,0.14,0.12,0.38,Spotted,Both,Standing,76,Feeding Area,0.761,Limping,False,False,7,True
+DET00185,VID001,921,2025-11-09 09:32:00,R018,0.03,0.68,0.27,0.34,Black,Left,Standing,89,Shelter,0.827,Normal,False,False,11,False
+DET00186,VID001,925,2025-11-09 09:32:30,P003,0.44,0.04,0.19,0.41,Reddish,Left,Walking,74,Rest Area,0.771,Normal,False,False,13,False
+DET00187,VID001,932,2025-11-09 09:33:00,M008,0.39,0.5,0.21,0.37,Black,None,Standing,89,Medical Bay,0.756,Normal,False,False,1,False
+DET00188,VID001,937,2025-11-09 09:33:30,,0.56,0.72,0.28,0.15,Spotted,None,Grazing,100,Feeding Area,0.983,Normal,False,True,4,True
+DET00189,VID001,944,2025-11-09 09:34:00,T017,0.32,0.83,0.1,0.15,Black,Right,Standing,78,Feeding Area,0.854,Unstable,False,True,6,True
+DET00190,VID001,948,2025-11-09 09:34:30,L013,0.28,0.38,0.14,0.43,Black,Both,Standing,65,Medical Bay,0.862,Normal,False,False,4,False
+DET00191,VID001,953,2025-11-09 09:35:00,N011,0.72,0.08,0.3,0.22,Mixed,Both,Standing,87,Rest Area,0.786,Normal,False,False,1,False
+DET00192,VID001,957,2025-11-09 09:35:30,I018,0.03,0.34,0.2,0.37,Black,Both,Grazing,95,Feeding Area,0.779,Normal,False,False,4,True
+DET00193,VID001,962,2025-11-09 09:36:00,W000,0.55,0.49,0.15,0.39,White,Both,Standing,80,Medical Bay,0.944,Normal,False,False,2,False
+DET00194,VID001,965,2025-11-09 09:36:30,C011,0.14,0.49,0.3,0.25,White,Right,Walking,70,Rest Area,0.802,Normal,False,False,1,False
+DET00195,VID001,974,2025-11-09 09:37:00,M011,0.55,0.42,0.32,0.28,White,Left,Grazing,83,Feeding Area,0.904,Normal,False,False,9,True
+DET00196,VID001,978,2025-11-09 09:37:30,S007,0.41,0.66,0.17,0.31,Brown,Right,Grazing,70,Outdoor Paddock,0.893,Normal,False,False,13,False
+DET00197,VID001,983,2025-11-09 09:38:00,N005,0.5,0.2,0.12,0.2,Black,Left,Grazing,95,Feeding Area,0.933,Limping,False,False,7,True
+DET00198,VID001,986,2025-11-09 09:38:30,E006,0.27,0.63,0.18,0.32,Mixed,Left,Lying,68,Water Zone,0.885,Normal,False,False,8,False
+DET00199,VID001,994,2025-11-09 09:39:00,Z002,0.03,0.05,0.24,0.13,Grey,Both,Grazing,89,Feeding Area,0.944,Normal,False,False,14,True
+DET00200,VID001,995,2025-11-09 09:39:30,,0.6,0.12,0.11,0.29,Brown,Both,Grazing,100,Outdoor Paddock,0.891,Normal,False,False,12,False
+DET00201,VID002,3,2025-11-09 09:40:00,X003,0.41,0.27,0.27,0.31,Spotted,Left,Standing,78,Water Zone,0.841,Normal,False,False,1,False
+DET00202,VID002,9,2025-11-09 09:40:30,N009,0.82,0.03,0.24,0.42,Spotted,None,Walking,68,Medical Bay,0.784,Normal,False,False,3,False
+DET00203,VID002,10,2025-11-09 09:41:00,I006,0.54,0.75,0.2,0.21,Black,Both,Grazing,95,Feeding Area,0.923,Normal,False,False,3,True
+DET00204,VID002,18,2025-11-09 09:41:30,R019,0.46,0.09,0.21,0.41,Mixed,None,Standing,62,Feeding Area,0.821,Normal,False,False,3,True
+DET00205,VID002,21,2025-11-09 09:42:00,C000,0.8,0.83,0.17,0.45,Grey,Both,Grazing,90,Feeding Area,0.896,Normal,False,False,4,True
+DET00206,VID002,29,2025-11-09 09:42:30,L007,0.46,0.56,0.16,0.15,Grey,Right,Standing,71,Feeding Area,0.853,Normal,False,False,4,False
+DET00207,VID002,31,2025-11-09 09:43:00,O018,0.83,0.4,0.11,0.38,Grey,Right,Lying,58,Feeding Area,0.904,Normal,False,False,3,False
+DET00208,VID002,38,2025-11-09 09:43:30,,0.37,0.22,0.31,0.31,Black,Both,Standing,71,Outdoor Paddock,0.849,Normal,False,False,7,False
+DET00209,VID002,44,2025-11-09 09:44:00,B008,0.58,0.8,0.23,0.2,Brown,Both,Grazing,97,Feeding Area,0.871,Limping,False,False,10,False
+DET00210,VID002,48,2025-11-09 09:44:30,I011,0.83,0.69,0.11,0.26,Mixed,Right,Standing,86,Shelter,0.785,Normal,False,False,13,False
+DET00211,VID002,50,2025-11-09 09:45:00,,0.47,0.47,0.31,0.29,Reddish,Both,Walking,84,Outdoor Paddock,0.875,Normal,False,False,10,False
+DET00212,VID002,59,2025-11-09 09:45:30,W002,0.09,0.09,0.29,0.38,Reddish,Left,Lying,58,Medical Bay,0.907,Normal,False,False,7,False
+DET00213,VID002,61,2025-11-09 09:46:00,I017,0.59,0.03,0.32,0.23,Black,Both,Walking,94,Rest Area,0.965,Normal,False,False,5,False
+DET00214,VID002,68,2025-11-09 09:46:30,J001,0.08,0.74,0.12,0.44,Grey,Left,Grazing,83,Feeding Area,0.795,Normal,False,False,13,True
+DET00215,VID002,72,2025-11-09 09:47:00,A007,0.67,0.06,0.27,0.25,Reddish,Both,Standing,88,Water Zone,0.951,Normal,False,False,12,False
+DET00216,VID002,76,2025-11-09 09:47:30,Q003,0.39,0.34,0.33,0.34,Black,Left,Grazing,84,Feeding Area,0.981,Normal,False,False,14,True
+DET00217,VID002,80,2025-11-09 09:48:00,T015,0.04,0.73,0.29,0.19,Black,None,Walking,73,Shelter,0.848,Normal,False,False,1,False
+DET00218,VID002,88,2025-11-09 09:48:30,H002,0.15,0.68,0.14,0.32,Brown,Left,Grazing,82,Outdoor Paddock,0.86,Normal,False,False,10,False
+DET00219,VID002,93,2025-11-09 09:49:00,A007,0.43,0.56,0.31,0.24,Mixed,Left,Grazing,73,Outdoor Paddock,0.765,Unstable,False,False,5,False
+DET00220,VID002,97,2025-11-09 09:49:30,A009,0.65,0.76,0.3,0.38,Spotted,Right,Walking,86,Water Zone,0.923,Normal,False,False,7,False
+DET00221,VID002,103,2025-11-09 09:50:00,B016,0.5,0.85,0.3,0.23,Mixed,None,Walking,85,Medical Bay,0.968,Normal,False,False,14,False
+DET00222,VID002,109,2025-11-09 09:50:30,E019,0.4,0.63,0.28,0.3,Black,Left,Walking,72,Rest Area,0.804,Limping,False,False,6,False
+DET00223,VID002,112,2025-11-09 09:51:00,X014,0.72,0.4,0.31,0.31,Spotted,Both,Grazing,76,Feeding Area,0.958,Normal,False,False,14,False
+DET00224,VID002,116,2025-11-09 09:51:30,D003,0.76,0.84,0.12,0.4,Black,Both,Grazing,90,Feeding Area,0.825,Normal,False,False,13,False
+DET00225,VID002,121,2025-11-09 09:52:00,N001,0.66,0.11,0.2,0.26,Grey,Right,Grazing,71,Feeding Area,0.925,Unstable,False,False,9,False
+DET00226,VID002,125,2025-11-09 09:52:30,M014,0.19,0.75,0.16,0.15,Spotted,Left,Standing,86,Feeding Area,0.822,Normal,False,False,6,True
+DET00227,VID002,131,2025-11-09 09:53:00,U003,0.42,0.64,0.12,0.42,Reddish,Right,Standing,67,Shelter,0.986,Normal,True,False,2,False
+DET00228,VID002,137,2025-11-09 09:53:30,O011,0.03,0.75,0.15,0.3,White,Both,Walking,85,Feeding Area,0.762,Normal,False,False,5,False
+DET00229,VID002,143,2025-11-09 09:54:00,K010,0.59,0.54,0.16,0.34,Mixed,Left,Walking,87,Water Zone,0.851,Limping,False,False,5,False
+DET00230,VID002,145,2025-11-09 09:54:30,Z009,0.17,0.17,0.15,0.29,Black,Left,Walking,74,Water Zone,0.759,Normal,False,False,6,False
+DET00231,VID002,151,2025-11-09 09:55:00,,0.57,0.77,0.31,0.34,Black,Both,Walking,67,Shelter,0.924,Limping,False,False,5,False
+DET00232,VID002,157,2025-11-09 09:55:30,F002,0.69,0.74,0.31,0.24,Mixed,Left,Grazing,73,Feeding Area,0.954,Limping,True,True,11,False
+DET00233,VID002,162,2025-11-09 09:56:00,W018,0.53,0.75,0.11,0.39,Black,Both,Grazing,100,Outdoor Paddock,0.815,Normal,False,False,11,False
+DET00234,VID002,166,2025-11-09 09:56:30,,0.59,0.05,0.33,0.17,Grey,Right,Running,76,Medical Bay,0.794,Normal,False,True,11,False
+DET00235,VID002,171,2025-11-09 09:57:00,Y019,0.1,0.35,0.09,0.21,Brown,Both,Walking,86,Outdoor Paddock,0.934,Normal,False,False,11,False
+DET00236,VID002,177,2025-11-09 09:57:30,J004,0.6,0.08,0.26,0.2,Brown,Right,Standing,86,Outdoor Paddock,0.964,Normal,True,False,9,False
+DET00237,VID002,183,2025-11-09 09:58:00,S010,0.14,0.64,0.17,0.23,Brown,Both,Grazing,87,Outdoor Paddock,0.847,Normal,False,False,8,False
+DET00238,VID002,185,2025-11-09 09:58:30,W017,0.27,0.83,0.28,0.13,Grey,Right,Standing,77,Feeding Area,0.948,Normal,False,False,15,True
+DET00239,VID002,191,2025-11-09 09:59:00,X007,0.81,0.31,0.09,0.19,Grey,Left,Grazing,89,Outdoor Paddock,0.922,Normal,False,False,11,False
+DET00240,VID002,196,2025-11-09 09:59:30,,0.3,0.54,0.3,0.3,Brown,Both,Standing,65,Medical Bay,0.784,Normal,False,False,10,False
+DET00241,VID002,201,2025-11-09 10:00:00,V012,0.72,0.18,0.3,0.18,Brown,Both,Walking,66,Shelter,0.951,Normal,False,False,11,False
+DET00242,VID002,209,2025-11-09 10:00:30,G017,0.82,0.0,0.28,0.3,Grey,Right,Lying,74,Water Zone,0.916,Normal,False,False,11,False
+DET00243,VID002,214,2025-11-09 10:01:00,Q009,0.43,0.33,0.34,0.42,Reddish,None,Grazing,100,Outdoor Paddock,0.983,Normal,False,False,12,False
+DET00244,VID002,219,2025-11-09 10:01:30,J018,0.47,0.27,0.28,0.3,Black,None,Standing,82,Rest Area,0.915,Limping,False,False,3,False
+DET00245,VID002,224,2025-11-09 10:02:00,G012,0.27,0.1,0.18,0.28,Spotted,Right,Walking,93,Outdoor Paddock,0.819,Normal,False,False,1,False
+DET00246,VID002,228,2025-11-09 10:02:30,,0.57,0.17,0.28,0.17,Brown,Left,Standing,61,Shelter,0.938,Normal,False,False,8,False
+DET00247,VID002,230,2025-11-09 10:03:00,I011,0.63,0.74,0.28,0.31,Black,Left,Walking,66,Medical Bay,0.843,Unstable,False,True,9,False
+DET00248,VID002,235,2025-11-09 10:03:30,,0.21,0.53,0.29,0.41,Reddish,None,Lying,72,Shelter,0.905,Normal,False,False,13,False
+DET00249,VID002,241,2025-11-09 10:04:00,J001,0.84,0.06,0.34,0.36,White,Right,Standing,68,Outdoor Paddock,0.813,Normal,False,True,8,False
+DET00250,VID002,246,2025-11-09 10:04:30,,0.79,0.51,0.29,0.33,Reddish,Left,Grazing,88,Outdoor Paddock,0.767,Normal,False,False,9,False
+DET00251,VID002,250,2025-11-09 10:05:00,I003,0.35,0.46,0.1,0.19,Black,Left,Grazing,79,Feeding Area,0.978,Normal,False,False,13,True
+DET00252,VID002,255,2025-11-09 10:05:30,,0.29,0.2,0.25,0.42,Black,Both,Walking,75,Medical Bay,0.97,Limping,False,False,5,False
+DET00253,VID002,260,2025-11-09 10:06:00,Q001,0.65,0.44,0.22,0.28,Brown,None,Grazing,72,Feeding Area,0.79,Unstable,False,True,2,True
+DET00254,VID002,266,2025-11-09 10:06:30,V014,0.71,0.17,0.3,0.41,Mixed,Right,Walking,95,Feeding Area,0.929,Normal,False,False,2,False
+DET00255,VID002,270,2025-11-09 10:07:00,,0.68,0.47,0.24,0.2,Brown,Right,Grazing,90,Outdoor Paddock,0.854,Normal,False,False,11,False
+DET00256,VID002,279,2025-11-09 10:07:30,,0.63,0.04,0.31,0.24,Spotted,Both,Grazing,91,Outdoor Paddock,0.896,Normal,False,False,14,False
+DET00257,VID002,280,2025-11-09 10:08:00,B006,0.19,0.63,0.3,0.4,Brown,None,Grazing,98,Outdoor Paddock,0.98,Normal,False,False,1,False
+DET00258,VID002,285,2025-11-09 10:08:30,U003,0.46,0.8,0.16,0.37,Mixed,Left,Standing,88,Shelter,0.954,Normal,False,False,5,False
+DET00259,VID002,291,2025-11-09 10:09:00,,0.57,0.48,0.09,0.37,Spotted,Right,Walking,67,Rest Area,0.911,Normal,False,False,6,False
+DET00260,VID002,297,2025-11-09 10:09:30,,0.56,0.09,0.25,0.42,Brown,Right,Grazing,89,Outdoor Paddock,0.916,Normal,False,False,7,False
+DET00261,VID002,301,2025-11-09 10:10:00,,0.21,0.19,0.28,0.26,Reddish,Left,Standing,83,Rest Area,0.961,Normal,False,False,9,False
+DET00262,VID002,305,2025-11-09 10:10:30,F001,0.07,0.24,0.3,0.41,Black,Left,Walking,85,Feeding Area,0.925,Limping,False,False,14,False
+DET00263,VID002,314,2025-11-09 10:11:00,N007,0.5,0.77,0.23,0.3,Spotted,Right,Walking,69,Rest Area,0.844,Limping,False,False,3,False
+DET00264,VID002,318,2025-11-09 10:11:30,E012,0.34,0.43,0.26,0.4,Reddish,None,Walking,69,Medical Bay,0.788,Normal,False,False,3,False
+DET00265,VID002,323,2025-11-09 10:12:00,C001,0.19,0.41,0.1,0.24,White,None,Grazing,95,Outdoor Paddock,0.843,Limping,False,True,11,False
+DET00266,VID002,327,2025-11-09 10:12:30,,0.82,0.54,0.15,0.36,Spotted,None,Grazing,82,Outdoor Paddock,0.891,Limping,False,True,15,False
+DET00267,VID002,331,2025-11-09 10:13:00,S001,0.69,0.29,0.29,0.41,White,None,Grazing,77,Feeding Area,0.873,Normal,False,False,10,True
+DET00268,VID002,335,2025-11-09 10:13:30,V004,0.69,0.61,0.21,0.28,Black,None,Walking,78,Feeding Area,0.808,Normal,False,False,9,False
+DET00269,VID002,340,2025-11-09 10:14:00,H010,0.05,0.22,0.13,0.44,Spotted,Both,Lying,73,Shelter,0.947,Limping,False,False,8,False
+DET00270,VID002,348,2025-11-09 10:14:30,Q010,0.35,0.12,0.24,0.37,Spotted,Left,Standing,81,Rest Area,0.971,Normal,False,False,3,False
+DET00271,VID002,350,2025-11-09 10:15:00,,0.44,0.77,0.26,0.39,Spotted,Both,Standing,88,Outdoor Paddock,0.894,Limping,False,False,2,False
+DET00272,VID002,358,2025-11-09 10:15:30,U003,0.51,0.7,0.32,0.38,Mixed,Right,Grazing,81,Feeding Area,0.917,Normal,False,False,13,True
+DET00273,VID002,364,2025-11-09 10:16:00,U009,0.65,0.59,0.11,0.16,Grey,None,Lying,52,Rest Area,0.894,Normal,False,True,12,False
+DET00274,VID002,365,2025-11-09 10:16:30,G000,0.44,0.32,0.14,0.39,Grey,Left,Standing,73,Shelter,0.89,Normal,False,False,10,False
+DET00275,VID002,372,2025-11-09 10:17:00,U006,0.64,0.35,0.29,0.28,Brown,Right,Grazing,79,Outdoor Paddock,0.936,Normal,False,False,2,False
+DET00276,VID002,376,2025-11-09 10:17:30,J016,0.81,0.09,0.22,0.38,Reddish,Both,Standing,90,Shelter,0.751,Normal,False,False,7,False
+DET00277,VID002,380,2025-11-09 10:18:00,,0.19,0.07,0.09,0.25,Grey,Left,Walking,84,Feeding Area,0.977,Normal,False,False,4,False
+DET00278,VID002,389,2025-11-09 10:18:30,B014,0.67,0.43,0.27,0.32,Mixed,Both,Grazing,90,Feeding Area,0.984,Normal,False,False,11,True
+DET00279,VID002,394,2025-11-09 10:19:00,A015,0.63,0.06,0.1,0.21,Reddish,Left,Grazing,96,Outdoor Paddock,0.804,Unstable,False,False,1,False
+DET00280,VID002,397,2025-11-09 10:19:30,Z018,0.09,0.06,0.16,0.43,Reddish,Left,Lying,76,Outdoor Paddock,0.81,Normal,False,False,4,False
+DET00281,VID002,402,2025-11-09 10:20:00,X009,0.58,0.76,0.31,0.28,Brown,Both,Grazing,95,Feeding Area,0.912,Normal,False,False,9,True
+DET00282,VID002,407,2025-11-09 10:20:30,E015,0.34,0.64,0.17,0.3,Black,Right,Grazing,76,Outdoor Paddock,0.794,Normal,False,False,12,False
+DET00283,VID002,411,2025-11-09 10:21:00,M007,0.74,0.18,0.13,0.2,Spotted,Left,Standing,63,Feeding Area,0.971,Normal,False,False,13,True
+DET00284,VID002,415,2025-11-09 10:21:30,T000,0.53,0.42,0.35,0.42,Reddish,Left,Grazing,94,Outdoor Paddock,0.845,Normal,False,False,7,False
+DET00285,VID002,423,2025-11-09 10:22:00,B013,0.43,0.33,0.27,0.18,White,Right,Grazing,70,Feeding Area,0.912,Normal,False,False,14,True
+DET00286,VID002,429,2025-11-09 10:22:30,N015,0.4,0.52,0.18,0.28,Black,Right,Walking,76,Rest Area,0.955,Normal,False,False,10,False
+DET00287,VID002,431,2025-11-09 10:23:00,K018,0.23,0.2,0.2,0.25,Black,None,Grazing,70,Feeding Area,0.851,Normal,False,False,9,True
+DET00288,VID002,438,2025-11-09 10:23:30,C015,0.73,0.04,0.11,0.17,Black,Left,Grazing,90,Feeding Area,0.858,Normal,False,False,15,True
+DET00289,VID002,442,2025-11-09 10:24:00,,0.1,0.74,0.34,0.19,Spotted,None,Resting,72,Shelter,0.828,Normal,False,False,2,False
+DET00290,VID002,448,2025-11-09 10:24:30,X014,0.54,0.12,0.13,0.39,Brown,Right,Walking,83,Medical Bay,0.954,Normal,False,False,6,False
+DET00291,VID002,452,2025-11-09 10:25:00,E019,0.55,0.23,0.2,0.4,Brown,Right,Grazing,75,Feeding Area,0.78,Normal,False,False,12,False
+DET00292,VID002,456,2025-11-09 10:25:30,E017,0.05,0.75,0.23,0.13,Grey,Both,Standing,79,Water Zone,0.77,Limping,False,True,12,False
+DET00293,VID002,462,2025-11-09 10:26:00,G009,0.11,0.71,0.09,0.34,Reddish,Left,Lying,64,Outdoor Paddock,0.974,Normal,False,False,9,False
+DET00294,VID002,466,2025-11-09 10:26:30,X007,0.54,0.54,0.23,0.29,Mixed,Left,Lying,65,Outdoor Paddock,0.805,Normal,False,False,3,False
+DET00295,VID002,472,2025-11-09 10:27:00,,0.44,0.64,0.12,0.21,Spotted,Both,Walking,80,Medical Bay,0.822,Normal,False,False,13,False
+DET00296,VID002,475,2025-11-09 10:27:30,J013,0.35,0.48,0.19,0.17,Mixed,Right,Running,62,Rest Area,0.769,Normal,False,False,10,False
+DET00297,VID002,482,2025-11-09 10:28:00,M000,0.45,0.23,0.13,0.14,Black,Left,Standing,74,Outdoor Paddock,0.859,Normal,False,False,3,False
+DET00298,VID002,485,2025-11-09 10:28:30,B002,0.16,0.09,0.15,0.36,Mixed,Both,Standing,64,Feeding Area,0.868,Normal,False,False,6,True
+DET00299,VID002,490,2025-11-09 10:29:00,R003,0.64,0.12,0.15,0.25,Spotted,Right,Standing,88,Rest Area,0.946,Normal,False,False,4,False
+DET00300,VID002,498,2025-11-09 10:29:30,W013,0.21,0.85,0.13,0.36,White,None,Grazing,91,Outdoor Paddock,0.975,Normal,False,False,9,False
+DET00301,VID002,504,2025-11-09 10:30:00,,0.41,0.25,0.18,0.14,Mixed,None,Resting,70,Shelter,0.828,Normal,False,False,13,False
+DET00302,VID002,506,2025-11-09 10:30:30,,0.04,0.67,0.21,0.32,Brown,Both,Standing,75,Feeding Area,0.915,Normal,False,False,1,False
+DET00303,VID002,511,2025-11-09 10:31:00,O010,0.09,0.41,0.17,0.3,Mixed,Left,Running,69,Shelter,0.796,Normal,False,False,15,False
+DET00304,VID002,515,2025-11-09 10:31:30,W008,0.48,0.46,0.21,0.31,Spotted,Left,Grazing,84,Outdoor Paddock,0.958,Normal,False,False,9,False
+DET00305,VID002,521,2025-11-09 10:32:00,P019,0.22,0.31,0.08,0.33,Grey,None,Lying,69,Rest Area,0.936,Normal,False,False,9,False
+DET00306,VID002,528,2025-11-09 10:32:30,I019,0.42,0.47,0.25,0.23,Mixed,Left,Standing,76,Shelter,0.766,Normal,False,False,4,False
+DET00307,VID002,530,2025-11-09 10:33:00,F001,0.03,0.55,0.18,0.28,Spotted,Left,Standing,67,Outdoor Paddock,0.922,Normal,False,False,15,False
+DET00308,VID002,535,2025-11-09 10:33:30,G014,0.05,0.47,0.33,0.26,Brown,Both,Running,63,Outdoor Paddock,0.76,Normal,False,False,9,False
+DET00309,VID002,540,2025-11-09 10:34:00,,0.2,0.33,0.13,0.34,Spotted,None,Grazing,87,Outdoor Paddock,0.929,Normal,False,False,12,False
+DET00310,VID002,548,2025-11-09 10:34:30,I010,0.67,0.47,0.22,0.34,Spotted,Right,Lying,78,Rest Area,0.882,Unstable,False,False,11,False
+DET00311,VID002,553,2025-11-09 10:35:00,Q011,0.52,0.48,0.14,0.37,Mixed,Left,Grazing,84,Outdoor Paddock,0.98,Normal,True,False,1,False
+DET00312,VID002,559,2025-11-09 10:35:30,,0.76,0.01,0.35,0.19,Brown,Both,Walking,95,Shelter,0.947,Limping,False,False,10,False
+DET00313,VID002,561,2025-11-09 10:36:00,,0.39,0.13,0.15,0.41,Black,None,Grazing,79,Feeding Area,0.887,Normal,False,False,6,True
+DET00314,VID002,566,2025-11-09 10:36:30,U000,0.59,0.49,0.33,0.32,Brown,Both,Walking,83,Medical Bay,0.769,Normal,False,False,14,False
+DET00315,VID002,573,2025-11-09 10:37:00,S008,0.1,0.65,0.28,0.4,White,Right,Standing,76,Feeding Area,0.827,Normal,False,False,3,False
+DET00316,VID002,578,2025-11-09 10:37:30,M010,0.51,0.43,0.14,0.22,Grey,None,Standing,62,Medical Bay,0.887,Normal,False,False,9,False
+DET00317,VID002,583,2025-11-09 10:38:00,G013,0.65,0.41,0.13,0.25,Spotted,None,Grazing,93,Feeding Area,0.808,Normal,False,False,10,False
+DET00318,VID002,588,2025-11-09 10:38:30,R016,0.16,0.29,0.26,0.37,Black,Left,Walking,90,Medical Bay,0.9,Normal,False,False,11,False
+DET00319,VID002,592,2025-11-09 10:39:00,L005,0.72,0.1,0.09,0.43,Black,Left,Standing,82,Feeding Area,0.823,Normal,False,False,4,True
+DET00320,VID002,599,2025-11-09 10:39:30,C001,0.41,0.62,0.12,0.35,White,Right,Grazing,91,Feeding Area,0.811,Normal,False,False,5,False
+DET00321,VID002,600,2025-11-09 10:40:00,,0.56,0.56,0.33,0.24,White,Both,Grazing,98,Outdoor Paddock,0.805,Normal,False,False,6,False
+DET00322,VID002,608,2025-11-09 10:40:30,B004,0.07,0.17,0.34,0.31,Mixed,Both,Standing,89,Outdoor Paddock,0.823,Normal,False,True,11,False
+DET00323,VID002,612,2025-11-09 10:41:00,P009,0.2,0.83,0.22,0.39,Mixed,Left,Lying,78,Feeding Area,0.977,Limping,False,True,7,False
+DET00324,VID002,616,2025-11-09 10:41:30,,0.32,0.82,0.25,0.33,Black,Right,Standing,64,Medical Bay,0.983,Limping,False,False,4,False
+DET00325,VID002,621,2025-11-09 10:42:00,J000,0.68,0.73,0.16,0.35,Spotted,None,Grazing,99,Feeding Area,0.907,Normal,False,False,9,True
+DET00326,VID002,625,2025-11-09 10:42:30,Q019,0.75,0.62,0.29,0.41,Grey,Right,Grazing,93,Outdoor Paddock,0.786,Normal,False,True,10,False
+DET00327,VID002,634,2025-11-09 10:43:00,D000,0.52,0.51,0.14,0.13,White,Right,Standing,87,Outdoor Paddock,0.863,Normal,False,False,8,False
+DET00328,VID002,636,2025-11-09 10:43:30,L011,0.03,0.65,0.08,0.21,Grey,None,Walking,71,Water Zone,0.766,Limping,False,False,8,False
+DET00329,VID002,642,2025-11-09 10:44:00,T008,0.21,0.34,0.09,0.36,Grey,Left,Grazing,100,Feeding Area,0.875,Normal,False,True,4,True
+DET00330,VID002,648,2025-11-09 10:44:30,C000,0.47,0.44,0.25,0.14,Brown,Right,Grazing,79,Outdoor Paddock,0.861,Normal,False,False,9,False
+DET00331,VID002,651,2025-11-09 10:45:00,H001,0.38,0.61,0.11,0.38,Mixed,None,Grazing,80,Outdoor Paddock,0.756,Normal,False,False,15,False
+DET00332,VID002,658,2025-11-09 10:45:30,,0.28,0.55,0.27,0.17,Mixed,Both,Standing,82,Medical Bay,0.902,Normal,False,False,9,False
+DET00333,VID002,664,2025-11-09 10:46:00,T007,0.47,0.04,0.13,0.23,Reddish,None,Standing,64,Water Zone,0.935,Normal,False,False,8,False
+DET00334,VID002,667,2025-11-09 10:46:30,G000,0.76,0.82,0.08,0.37,White,Right,Grazing,85,Feeding Area,0.896,Normal,False,False,8,True
+DET00335,VID002,670,2025-11-09 10:47:00,A006,0.21,0.47,0.25,0.3,Reddish,None,Standing,64,Feeding Area,0.907,Normal,False,False,14,True
+DET00336,VID002,677,2025-11-09 10:47:30,C010,0.09,0.84,0.12,0.21,Mixed,None,Resting,86,Shelter,0.974,Normal,False,False,7,False
+DET00337,VID002,680,2025-11-09 10:48:00,R003,0.47,0.25,0.12,0.35,Brown,Left,Grazing,86,Feeding Area,0.917,Normal,False,False,11,True
+DET00338,VID002,685,2025-11-09 10:48:30,J005,0.51,0.67,0.27,0.26,Reddish,Left,Grazing,88,Outdoor Paddock,0.973,Normal,False,False,8,False
+DET00339,VID002,693,2025-11-09 10:49:00,T004,0.52,0.6,0.34,0.12,White,Right,Walking,68,Shelter,0.954,Normal,False,False,6,False
+DET00340,VID002,697,2025-11-09 10:49:30,G012,0.18,0.54,0.27,0.2,White,Left,Grazing,87,Outdoor Paddock,0.934,Normal,False,False,10,False
+DET00341,VID002,704,2025-11-09 10:50:00,Q012,0.15,0.28,0.17,0.34,Grey,Both,Walking,80,Water Zone,0.901,Limping,False,True,13,False
+DET00342,VID002,708,2025-11-09 10:50:30,C017,0.71,0.25,0.28,0.22,Spotted,Both,Standing,81,Rest Area,0.942,Limping,False,False,5,False
+DET00343,VID002,710,2025-11-09 10:51:00,T004,0.53,0.72,0.23,0.25,Spotted,Both,Lying,74,Rest Area,0.919,Normal,True,False,8,False
+DET00344,VID002,716,2025-11-09 10:51:30,Q009,0.81,0.18,0.16,0.16,Reddish,Both,Walking,94,Feeding Area,0.857,Normal,False,False,4,False
+DET00345,VID002,722,2025-11-09 10:52:00,L010,0.74,0.26,0.17,0.37,White,None,Standing,61,Medical Bay,0.843,Limping,False,True,1,False
+DET00346,VID002,729,2025-11-09 10:52:30,R001,0.4,0.04,0.22,0.34,Brown,Both,Grazing,79,Feeding Area,0.827,Normal,False,False,8,True
+DET00347,VID002,732,2025-11-09 10:53:00,,0.23,0.01,0.25,0.29,Black,Left,Grazing,78,Feeding Area,0.976,Normal,False,False,5,True
+DET00348,VID002,737,2025-11-09 10:53:30,C011,0.11,0.4,0.26,0.15,White,Both,Grazing,75,Outdoor Paddock,0.898,Normal,False,False,11,False
+DET00349,VID002,744,2025-11-09 10:54:00,,0.78,0.65,0.23,0.15,Reddish,Right,Standing,69,Shelter,0.905,Normal,False,False,3,False
+DET00350,VID002,749,2025-11-09 10:54:30,S012,0.33,0.59,0.26,0.38,Brown,Right,Grazing,72,Outdoor Paddock,0.777,Normal,False,False,6,False
+DET00351,VID002,754,2025-11-10 08:00:00,A000,0.09,0.69,0.3,0.23,Mixed,Both,Walking,82,Medical Bay,0.846,Normal,False,False,8,False
+DET00352,VID002,758,2025-11-10 08:00:30,,0.18,0.59,0.2,0.44,Spotted,Left,Grazing,77,Feeding Area,0.909,Normal,False,False,8,False
+DET00353,VID002,764,2025-11-10 08:01:00,C008,0.08,0.38,0.16,0.25,Spotted,Both,Walking,84,Medical Bay,0.829,Normal,False,False,3,False
+DET00354,VID002,769,2025-11-10 08:01:30,G011,0.69,0.64,0.26,0.27,Brown,Right,Walking,79,Water Zone,0.799,Limping,False,False,11,False
+DET00355,VID002,772,2025-11-10 08:02:00,V019,0.37,0.84,0.17,0.15,White,Right,Running,82,Rest Area,0.765,Limping,False,True,9,False
+DET00356,VID002,777,2025-11-10 08:02:30,,0.24,0.03,0.2,0.31,Mixed,Left,Walking,77,Medical Bay,0.854,Normal,False,False,9,False
+DET00357,VID002,783,2025-11-10 08:03:00,S008,0.71,0.13,0.35,0.34,Black,Both,Standing,60,Water Zone,0.923,Normal,False,False,2,False
+DET00358,VID002,786,2025-11-10 08:03:30,V005,0.73,0.76,0.27,0.43,Spotted,None,Grazing,83,Outdoor Paddock,0.842,Normal,False,True,8,False
+DET00359,VID002,791,2025-11-10 08:04:00,N015,0.35,0.46,0.18,0.44,Spotted,Right,Walking,68,Outdoor Paddock,0.866,Normal,False,False,14,False
+DET00360,VID002,797,2025-11-10 08:04:30,E000,0.44,0.52,0.15,0.33,Mixed,Both,Walking,82,Outdoor Paddock,0.825,Normal,False,False,8,False
+DET00361,VID002,803,2025-11-10 08:05:00,Y000,0.49,0.28,0.18,0.44,Brown,Left,Standing,82,Outdoor Paddock,0.93,Normal,False,False,8,False
+DET00362,VID002,809,2025-11-10 08:05:30,C012,0.56,0.25,0.28,0.13,Grey,Both,Standing,62,Rest Area,0.81,Normal,False,False,12,False
+DET00363,VID002,810,2025-11-10 08:06:00,U011,0.5,0.13,0.2,0.39,Brown,None,Grazing,95,Feeding Area,0.832,Normal,False,False,3,True
+DET00364,VID002,818,2025-11-10 08:06:30,M003,0.56,0.62,0.13,0.31,Reddish,Left,Standing,68,Feeding Area,0.763,Normal,False,False,13,True
+DET00365,VID002,821,2025-11-10 08:07:00,K002,0.33,0.22,0.22,0.26,Brown,Right,Grazing,80,Feeding Area,0.773,Normal,False,False,10,True
+DET00366,VID002,827,2025-11-10 08:07:30,N013,0.68,0.22,0.24,0.27,Mixed,None,Walking,83,Water Zone,0.875,Normal,False,False,1,False
+DET00367,VID002,830,2025-11-10 08:08:00,A012,0.35,0.45,0.27,0.24,Mixed,Left,Grazing,71,Feeding Area,0.899,Normal,False,False,4,True
+DET00368,VID002,835,2025-11-10 08:08:30,G002,0.07,0.51,0.18,0.37,Mixed,None,Lying,72,Water Zone,0.811,Normal,False,False,15,False
+DET00369,VID002,842,2025-11-10 08:09:00,J008,0.77,0.65,0.17,0.17,White,Left,Walking,77,Medical Bay,0.83,Normal,False,False,8,False
+DET00370,VID002,845,2025-11-10 08:09:30,V010,0.17,0.33,0.25,0.16,Spotted,Right,Standing,80,Feeding Area,0.969,Normal,False,False,10,True
+DET00371,VID002,853,2025-11-10 08:10:00,,0.42,0.55,0.08,0.13,Grey,Left,Standing,70,Medical Bay,0.888,Normal,False,False,7,False
+DET00372,VID002,858,2025-11-10 08:10:30,N019,0.69,0.06,0.14,0.25,Mixed,Right,Standing,77,Rest Area,0.83,Normal,False,False,11,False
+DET00373,VID002,860,2025-11-10 08:11:00,R013,0.82,0.07,0.2,0.37,Mixed,None,Standing,61,Medical Bay,0.909,Normal,False,False,12,False
+DET00374,VID002,867,2025-11-10 08:11:30,T006,0.54,0.63,0.12,0.18,Mixed,None,Grazing,72,Outdoor Paddock,0.87,Unstable,False,False,1,False
+DET00375,VID002,870,2025-11-10 08:12:00,R005,0.67,0.04,0.11,0.39,Mixed,Right,Lying,77,Outdoor Paddock,0.786,Normal,False,True,3,False
+DET00376,VID002,878,2025-11-10 08:12:30,Y002,0.77,0.53,0.15,0.33,White,None,Walking,93,Rest Area,0.947,Normal,False,False,2,False
+DET00377,VID002,880,2025-11-10 08:13:00,,0.51,0.52,0.1,0.19,Brown,Right,Grazing,91,Feeding Area,0.827,Unstable,False,True,3,True
+DET00378,VID002,885,2025-11-10 08:13:30,M015,0.35,0.59,0.23,0.26,Spotted,Both,Standing,85,Shelter,0.897,Normal,True,False,1,False
+DET00379,VID002,890,2025-11-10 08:14:00,E011,0.6,0.5,0.16,0.35,Reddish,Right,Walking,71,Water Zone,0.904,Normal,False,False,10,False
+DET00380,VID002,895,2025-11-10 08:14:30,K014,0.42,0.81,0.25,0.38,Brown,Right,Standing,67,Water Zone,0.778,Normal,False,False,13,False
+DET00381,VID002,904,2025-11-10 08:15:00,X015,0.65,0.56,0.15,0.18,Reddish,None,Walking,95,Medical Bay,0.869,Normal,False,False,6,False
+DET00382,VID002,907,2025-11-10 08:15:30,M017,0.28,0.68,0.28,0.13,Mixed,Both,Lying,55,Water Zone,0.939,Normal,False,False,12,False
+DET00383,VID002,913,2025-11-10 08:16:00,Q013,0.36,0.64,0.32,0.2,White,Left,Standing,67,Shelter,0.849,Normal,False,False,10,False
+DET00384,VID002,918,2025-11-10 08:16:30,,0.37,0.18,0.24,0.18,Brown,None,Grazing,76,Outdoor Paddock,0.984,Normal,False,False,1,False
+DET00385,VID002,922,2025-11-10 08:17:00,,0.72,0.39,0.13,0.23,Brown,None,Walking,85,Outdoor Paddock,0.967,Normal,False,False,7,False
+DET00386,VID002,929,2025-11-10 08:17:30,L001,0.5,0.71,0.16,0.36,Mixed,None,Standing,73,Outdoor Paddock,0.803,Limping,False,False,15,False
+DET00387,VID002,930,2025-11-10 08:18:00,C005,0.03,0.4,0.29,0.13,Spotted,Right,Grazing,95,Feeding Area,0.859,Normal,False,True,12,True
+DET00388,VID002,936,2025-11-10 08:18:30,,0.25,0.55,0.1,0.28,Brown,None,Walking,92,Outdoor Paddock,0.929,Normal,False,False,14,False
+DET00389,VID002,943,2025-11-10 08:19:00,S012,0.31,0.39,0.25,0.4,White,Right,Lying,60,Outdoor Paddock,0.758,Normal,False,False,9,False
+DET00390,VID002,949,2025-11-10 08:19:30,O006,0.58,0.53,0.17,0.43,Spotted,Left,Lying,53,Medical Bay,0.838,Normal,False,False,9,False
+DET00391,VID002,950,2025-11-10 08:20:00,N012,0.17,0.83,0.14,0.16,Grey,None,Walking,89,Water Zone,0.827,Limping,False,False,1,False
+DET00392,VID002,955,2025-11-10 08:20:30,X003,0.41,0.45,0.11,0.35,Mixed,Left,Grazing,81,Feeding Area,0.795,Limping,False,True,3,True
+DET00393,VID002,960,2025-11-10 08:21:00,,0.23,0.59,0.21,0.41,Spotted,Both,Grazing,91,Feeding Area,0.864,Normal,False,True,4,False
+DET00394,VID002,966,2025-11-10 08:21:30,A012,0.55,0.35,0.17,0.33,Brown,Right,Grazing,92,Outdoor Paddock,0.86,Normal,False,False,13,False
+DET00395,VID002,972,2025-11-10 08:22:00,T000,0.83,0.65,0.09,0.24,Grey,None,Walking,70,Shelter,0.878,Normal,False,False,15,False
+DET00396,VID002,976,2025-11-10 08:22:30,F019,0.03,0.27,0.11,0.21,Black,None,Grazing,71,Outdoor Paddock,0.985,Normal,False,False,9,False
+DET00397,VID002,982,2025-11-10 08:23:00,,0.02,0.79,0.29,0.43,Brown,None,Standing,83,Outdoor Paddock,0.984,Normal,False,False,5,False
+DET00398,VID002,989,2025-11-10 08:23:30,O018,0.48,0.77,0.2,0.35,Mixed,Right,Lying,54,Shelter,0.882,Unstable,False,False,8,False
+DET00399,VID002,992,2025-11-10 08:24:00,,0.05,0.55,0.24,0.19,Reddish,Left,Standing,62,Outdoor Paddock,0.954,Normal,False,False,7,False
+DET00400,VID002,996,2025-11-10 08:24:30,E017,0.51,0.8,0.33,0.24,Black,Right,Grazing,81,Feeding Area,0.818,Normal,False,False,2,True
+DET00401,VID003,3,2025-11-10 08:25:00,V005,0.68,0.25,0.3,0.44,Grey,Right,Standing,78,Outdoor Paddock,0.771,Normal,False,False,6,False
+DET00402,VID003,5,2025-11-10 08:25:30,E004,0.64,0.08,0.19,0.42,Grey,None,Grazing,92,Feeding Area,0.798,Normal,False,False,14,True
+DET00403,VID003,14,2025-11-10 08:26:00,C012,0.63,0.19,0.29,0.17,Brown,Right,Standing,81,Rest Area,0.85,Normal,False,False,2,False
+DET00404,VID003,17,2025-11-10 08:26:30,X013,0.06,0.63,0.24,0.31,Reddish,Left,Walking,80,Shelter,0.946,Normal,False,True,5,False
+DET00405,VID003,21,2025-11-10 08:27:00,H009,0.27,0.75,0.12,0.17,Brown,Left,Grazing,99,Outdoor Paddock,0.762,Normal,False,False,4,False
+DET00406,VID003,26,2025-11-10 08:27:30,E013,0.64,0.46,0.32,0.39,Mixed,Left,Grazing,92,Outdoor Paddock,0.773,Normal,False,True,9,False
+DET00407,VID003,32,2025-11-10 08:28:00,Y016,0.35,0.78,0.12,0.19,Spotted,None,Running,80,Outdoor Paddock,0.897,Normal,False,False,9,False
+DET00408,VID003,35,2025-11-10 08:28:30,U018,0.06,0.7,0.33,0.28,Brown,Left,Standing,74,Outdoor Paddock,0.876,Unstable,False,True,12,False
+DET00409,VID003,40,2025-11-10 08:29:00,R017,0.59,0.58,0.16,0.19,White,Right,Walking,90,Feeding Area,0.769,Normal,False,True,2,False
+DET00410,VID003,45,2025-11-10 08:29:30,A005,0.5,0.4,0.33,0.13,Brown,Both,Walking,90,Feeding Area,0.971,Normal,False,False,6,False
+DET00411,VID003,50,2025-11-10 08:30:00,,0.72,0.8,0.34,0.23,Black,None,Grazing,72,Feeding Area,0.947,Normal,False,False,5,False
+DET00412,VID003,59,2025-11-10 08:30:30,,0.62,0.79,0.33,0.4,Grey,Left,Walking,70,Medical Bay,0.912,Normal,False,False,7,False
+DET00413,VID003,61,2025-11-10 08:31:00,U017,0.1,0.84,0.11,0.16,Black,Right,Walking,87,Rest Area,0.884,Normal,False,False,5,False
+DET00414,VID003,68,2025-11-10 08:31:30,P019,0.58,0.71,0.14,0.25,Reddish,Right,Standing,62,Medical Bay,0.975,Normal,True,False,11,False
+DET00415,VID003,70,2025-11-10 08:32:00,A015,0.56,0.07,0.12,0.25,Spotted,Both,Walking,93,Water Zone,0.766,Unstable,False,False,7,False
+DET00416,VID003,75,2025-11-10 08:32:30,V014,0.62,0.24,0.27,0.31,Brown,Right,Grazing,91,Outdoor Paddock,0.987,Normal,False,False,2,False
+DET00417,VID003,82,2025-11-10 08:33:00,L016,0.53,0.11,0.11,0.14,White,Right,Walking,70,Medical Bay,0.895,Normal,False,False,13,False
+DET00418,VID003,85,2025-11-10 08:33:30,A012,0.65,0.67,0.13,0.34,Grey,Left,Grazing,95,Feeding Area,0.979,Normal,False,False,7,True
+DET00419,VID003,93,2025-11-10 08:34:00,B016,0.03,0.47,0.31,0.22,Mixed,None,Grazing,74,Outdoor Paddock,0.922,Normal,False,False,11,False
+DET00420,VID003,99,2025-11-10 08:34:30,D005,0.4,0.48,0.12,0.14,Brown,Right,Grazing,82,Outdoor Paddock,0.934,Normal,False,False,3,False
+DET00421,VID003,102,2025-11-10 08:35:00,L019,0.5,0.65,0.25,0.25,Grey,Left,Resting,76,Shelter,0.764,Normal,False,False,2,False
+DET00422,VID003,105,2025-11-10 08:35:30,F017,0.29,0.02,0.17,0.27,Reddish,Right,Grazing,98,Outdoor Paddock,0.814,Normal,False,False,7,False
+DET00423,VID003,114,2025-11-10 08:36:00,D006,0.08,0.42,0.27,0.19,Grey,Left,Standing,69,Rest Area,0.983,Normal,False,False,2,False
+DET00424,VID003,119,2025-11-10 08:36:30,N011,0.04,0.85,0.19,0.19,Mixed,Both,Walking,83,Feeding Area,0.892,Normal,False,False,7,False
+DET00425,VID003,121,2025-11-10 08:37:00,D018,0.55,0.26,0.3,0.26,Spotted,Left,Standing,72,Rest Area,0.9,Normal,False,False,1,False
+DET00426,VID003,129,2025-11-10 08:37:30,D010,0.42,0.56,0.3,0.43,Brown,Right,Lying,73,Shelter,0.764,Normal,False,False,12,False
+DET00427,VID003,132,2025-11-10 08:38:00,V000,0.27,0.71,0.1,0.19,Grey,Left,Running,75,Water Zone,0.812,Normal,False,False,4,False
+DET00428,VID003,135,2025-11-10 08:38:30,Q007,0.26,0.41,0.35,0.26,White,None,Standing,64,Feeding Area,0.812,Normal,False,False,14,False
+DET00429,VID003,143,2025-11-10 08:39:00,C016,0.73,0.07,0.24,0.41,Grey,Left,Walking,93,Feeding Area,0.845,Normal,False,False,10,False
+DET00430,VID003,149,2025-11-10 08:39:30,A014,0.56,0.49,0.29,0.29,Grey,Both,Standing,63,Rest Area,0.829,Normal,False,False,4,False
+DET00431,VID003,153,2025-11-10 08:40:00,F009,0.15,0.82,0.2,0.2,Spotted,Both,Grazing,81,Feeding Area,0.826,Normal,False,False,15,True
+DET00432,VID003,156,2025-11-10 08:40:30,K012,0.31,0.26,0.25,0.42,White,Both,Walking,90,Shelter,0.808,Normal,False,False,6,False
+DET00433,VID003,160,2025-11-10 08:41:00,M002,0.73,0.33,0.33,0.25,Brown,Left,Standing,86,Water Zone,0.821,Limping,False,False,6,False
+DET00434,VID003,168,2025-11-10 08:41:30,O000,0.74,0.7,0.33,0.28,Grey,Left,Walking,93,Feeding Area,0.948,Normal,False,False,10,False
+DET00435,VID003,174,2025-11-10 08:42:00,X004,0.59,0.65,0.25,0.18,Grey,None,Standing,66,Shelter,0.823,Normal,False,False,12,False
+DET00436,VID003,176,2025-11-10 08:42:30,J002,0.35,0.8,0.2,0.41,Black,Left,Standing,78,Rest Area,0.942,Normal,False,False,15,False
+DET00437,VID003,183,2025-11-10 08:43:00,T005,0.48,0.02,0.09,0.3,Spotted,None,Lying,64,Water Zone,0.813,Limping,True,False,10,False
+DET00438,VID003,187,2025-11-10 08:43:30,,0.81,0.14,0.23,0.12,Spotted,Right,Walking,94,Medical Bay,0.949,Normal,False,False,14,False
+DET00439,VID003,192,2025-11-10 08:44:00,Z006,0.32,0.37,0.14,0.19,Reddish,Left,Walking,71,Medical Bay,0.793,Normal,True,False,4,False
+DET00440,VID003,199,2025-11-10 08:44:30,M014,0.31,0.58,0.2,0.12,Black,Left,Resting,75,Rest Area,0.921,Normal,False,False,2,False
+DET00441,VID003,204,2025-11-10 08:45:00,,0.28,0.2,0.33,0.45,Mixed,Both,Standing,76,Outdoor Paddock,0.841,Unstable,False,True,15,False
+DET00442,VID003,209,2025-11-10 08:45:30,,0.15,0.14,0.21,0.23,Grey,None,Standing,82,Outdoor Paddock,0.854,Normal,False,False,8,False
+DET00443,VID003,212,2025-11-10 08:46:00,V008,0.37,0.77,0.15,0.39,Brown,Left,Grazing,75,Outdoor Paddock,0.927,Normal,False,False,15,False
+DET00444,VID003,218,2025-11-10 08:46:30,,0.13,0.2,0.09,0.21,Mixed,Right,Grazing,98,Outdoor Paddock,0.76,Normal,False,False,8,False
+DET00445,VID003,220,2025-11-10 08:47:00,S007,0.13,0.3,0.14,0.21,Reddish,None,Walking,91,Rest Area,0.885,Normal,False,False,1,False
+DET00446,VID003,229,2025-11-10 08:47:30,J004,0.35,0.07,0.29,0.34,Brown,Both,Grazing,91,Feeding Area,0.845,Normal,False,False,3,False
+DET00447,VID003,233,2025-11-10 08:48:00,H015,0.41,0.53,0.15,0.34,Brown,Both,Walking,95,Medical Bay,0.828,Normal,False,False,10,False
+DET00448,VID003,236,2025-11-10 08:48:30,C009,0.68,0.24,0.3,0.37,Spotted,Right,Standing,68,Water Zone,0.808,Normal,False,True,4,False
+DET00449,VID003,241,2025-11-10 08:49:00,U012,0.24,0.64,0.26,0.16,Grey,Right,Walking,94,Rest Area,0.967,Normal,False,False,6,False
+DET00450,VID003,249,2025-11-10 08:49:30,W016,0.75,0.4,0.23,0.26,Reddish,Right,Running,74,Water Zone,0.854,Normal,True,False,8,False
+DET00451,VID003,251,2025-11-10 08:50:00,K010,0.13,0.42,0.25,0.29,Brown,Right,Grazing,99,Outdoor Paddock,0.822,Unstable,False,True,4,False
+DET00452,VID003,259,2025-11-10 08:50:30,D002,0.04,0.07,0.09,0.16,Grey,Right,Standing,81,Shelter,0.886,Normal,False,False,9,False
+DET00453,VID003,260,2025-11-10 08:51:00,,0.56,0.15,0.13,0.25,White,Right,Lying,59,Rest Area,0.891,Normal,False,False,5,False
+DET00454,VID003,267,2025-11-10 08:51:30,S012,0.69,0.18,0.1,0.44,Brown,Both,Grazing,70,Feeding Area,0.845,Normal,False,False,7,True
+DET00455,VID003,274,2025-11-10 08:52:00,P010,0.53,0.83,0.18,0.34,Mixed,Right,Running,57,Water Zone,0.782,Limping,False,False,4,False
+DET00456,VID003,275,2025-11-10 08:52:30,H004,0.12,0.21,0.31,0.4,Spotted,None,Standing,84,Medical Bay,0.786,Normal,False,False,12,False
+DET00457,VID003,283,2025-11-10 08:53:00,Y002,0.02,0.38,0.15,0.22,Reddish,Right,Standing,60,Feeding Area,0.901,Normal,False,False,12,True
+DET00458,VID003,289,2025-11-10 08:53:30,B017,0.41,0.41,0.24,0.32,Mixed,Right,Standing,61,Outdoor Paddock,0.755,Normal,False,False,11,False
+DET00459,VID003,293,2025-11-10 08:54:00,F019,0.42,0.8,0.17,0.35,White,None,Grazing,76,Outdoor Paddock,0.833,Normal,False,False,6,False
+DET00460,VID003,299,2025-11-10 08:54:30,K012,0.56,0.11,0.16,0.35,Grey,Left,Walking,90,Water Zone,0.899,Normal,False,False,3,False
+DET00461,VID003,301,2025-11-10 08:55:00,F000,0.42,0.67,0.33,0.28,Black,None,Grazing,70,Outdoor Paddock,0.961,Normal,False,False,15,False
+DET00462,VID003,309,2025-11-10 08:55:30,,0.05,0.37,0.25,0.16,Black,Right,Grazing,80,Outdoor Paddock,0.935,Normal,False,False,14,False
+DET00463,VID003,314,2025-11-10 08:56:00,F006,0.6,0.79,0.2,0.27,Reddish,Both,Resting,88,Rest Area,0.948,Normal,False,False,14,False
+DET00464,VID003,316,2025-11-10 08:56:30,I000,0.62,0.6,0.29,0.28,Reddish,Both,Standing,71,Rest Area,0.947,Normal,False,False,13,False
+DET00465,VID003,320,2025-11-10 08:57:00,P008,0.4,0.24,0.13,0.21,Mixed,Right,Grazing,91,Feeding Area,0.786,Normal,False,False,13,True
+DET00466,VID003,328,2025-11-10 08:57:30,W014,0.72,0.68,0.18,0.13,Black,Both,Walking,81,Feeding Area,0.77,Normal,False,False,1,False
+DET00467,VID003,333,2025-11-10 08:58:00,H016,0.78,0.13,0.24,0.44,Mixed,Left,Grazing,98,Outdoor Paddock,0.923,Normal,False,False,15,False
+DET00468,VID003,339,2025-11-10 08:58:30,H010,0.6,0.38,0.14,0.3,Reddish,Right,Walking,93,Shelter,0.847,Normal,False,True,6,False
+DET00469,VID003,343,2025-11-10 08:59:00,L017,0.75,0.44,0.23,0.19,Spotted,Left,Grazing,94,Feeding Area,0.756,Limping,False,True,14,True
+DET00470,VID003,348,2025-11-10 08:59:30,F013,0.62,0.72,0.15,0.29,White,Both,Walking,95,Feeding Area,0.858,Normal,True,False,4,False
+DET00471,VID003,354,2025-11-10 09:00:00,T015,0.8,0.57,0.31,0.2,Brown,Left,Walking,91,Shelter,0.887,Normal,False,False,2,False
+DET00472,VID003,357,2025-11-10 09:00:30,J017,0.7,0.31,0.11,0.35,Reddish,Right,Standing,61,Medical Bay,0.963,Normal,False,False,9,False
+DET00473,VID003,363,2025-11-10 09:01:00,A011,0.66,0.74,0.24,0.33,Grey,Right,Walking,78,Water Zone,0.785,Normal,False,False,12,False
+DET00474,VID003,369,2025-11-10 09:01:30,G000,0.59,0.39,0.09,0.17,Spotted,Left,Lying,53,Outdoor Paddock,0.955,Limping,False,True,9,False
+DET00475,VID003,371,2025-11-10 09:02:00,,0.26,0.32,0.16,0.13,Black,None,Walking,78,Feeding Area,0.975,Normal,False,False,12,False
+DET00476,VID003,378,2025-11-10 09:02:30,,0.47,0.06,0.09,0.28,Brown,Right,Lying,75,Medical Bay,0.864,Normal,False,False,9,False
+DET00477,VID003,383,2025-11-10 09:03:00,I003,0.38,0.74,0.17,0.38,Mixed,Right,Grazing,98,Outdoor Paddock,0.831,Normal,False,False,5,False
+DET00478,VID003,385,2025-11-10 09:03:30,K004,0.02,0.54,0.29,0.22,Mixed,Both,Walking,67,Water Zone,0.979,Normal,False,False,9,False
+DET00479,VID003,391,2025-11-10 09:04:00,Z014,0.76,0.1,0.33,0.18,White,Left,Walking,72,Shelter,0.951,Normal,False,False,6,False
+DET00480,VID003,398,2025-11-10 09:04:30,Z003,0.73,0.02,0.2,0.26,Reddish,Left,Grazing,72,Feeding Area,0.985,Normal,False,False,13,False
+DET00481,VID003,402,2025-11-10 09:05:00,I014,0.14,0.52,0.17,0.13,White,Left,Grazing,80,Feeding Area,0.849,Normal,False,False,2,False
+DET00482,VID003,406,2025-11-10 09:05:30,E000,0.2,0.43,0.22,0.43,Brown,Both,Grazing,87,Outdoor Paddock,0.766,Normal,False,False,1,False
+DET00483,VID003,412,2025-11-10 09:06:00,E000,0.57,0.21,0.23,0.38,Brown,Right,Grazing,97,Feeding Area,0.938,Normal,False,False,4,True
+DET00484,VID003,418,2025-11-10 09:06:30,C008,0.38,0.0,0.21,0.39,Brown,None,Standing,89,Medical Bay,0.816,Normal,False,False,14,False
+DET00485,VID003,421,2025-11-10 09:07:00,A002,0.24,0.14,0.22,0.14,White,Right,Walking,91,Water Zone,0.924,Unstable,False,True,9,False
+DET00486,VID003,427,2025-11-10 09:07:30,W008,0.29,0.22,0.28,0.27,Black,Left,Grazing,84,Outdoor Paddock,0.754,Normal,False,True,8,False
+DET00487,VID003,430,2025-11-10 09:08:00,I008,0.15,0.47,0.27,0.28,Grey,Both,Walking,85,Shelter,0.769,Normal,False,False,11,False
+DET00488,VID003,435,2025-11-10 09:08:30,P012,0.32,0.51,0.18,0.4,Reddish,Both,Standing,71,Water Zone,0.857,Normal,True,False,15,False
+DET00489,VID003,442,2025-11-10 09:09:00,P015,0.52,0.26,0.27,0.2,Grey,Left,Standing,75,Shelter,0.92,Normal,False,False,7,False
+DET00490,VID003,445,2025-11-10 09:09:30,D002,0.43,0.14,0.13,0.36,Mixed,None,Standing,64,Shelter,0.766,Normal,False,False,9,False
+DET00491,VID003,452,2025-11-10 09:10:00,I014,0.02,0.82,0.26,0.32,Mixed,Right,Standing,73,Shelter,0.912,Normal,False,False,14,False
+DET00492,VID003,458,2025-11-10 09:10:30,I016,0.44,0.42,0.22,0.13,Mixed,None,Standing,89,Medical Bay,0.878,Normal,False,False,15,False
+DET00493,VID003,464,2025-11-10 09:11:00,L015,0.19,0.59,0.34,0.42,Black,None,Grazing,72,Feeding Area,0.757,Normal,True,False,15,True
+DET00494,VID003,467,2025-11-10 09:11:30,Y004,0.2,0.29,0.09,0.23,Reddish,None,Lying,74,Outdoor Paddock,0.899,Normal,False,False,2,False
+DET00495,VID003,470,2025-11-10 09:12:00,T006,0.27,0.72,0.1,0.16,Reddish,Right,Standing,79,Shelter,0.854,Normal,False,False,14,False
+DET00496,VID003,478,2025-11-10 09:12:30,F012,0.64,0.2,0.24,0.34,White,Right,Grazing,95,Outdoor Paddock,0.961,Normal,False,False,13,False
+DET00497,VID003,480,2025-11-10 09:13:00,Q016,0.5,0.09,0.08,0.36,Spotted,None,Lying,54,Shelter,0.872,Normal,False,False,3,False
+DET00498,VID003,486,2025-11-10 09:13:30,,0.04,0.11,0.24,0.29,Mixed,Left,Grazing,98,Feeding Area,0.785,Normal,False,False,1,True
+DET00499,VID003,491,2025-11-10 09:14:00,,0.43,0.71,0.31,0.26,Black,None,Walking,71,Feeding Area,0.832,Normal,False,False,10,False
+DET00500,VID003,497,2025-11-10 09:14:30,C019,0.82,0.52,0.19,0.17,Grey,Both,Grazing,99,Feeding Area,0.903,Normal,False,False,8,True
+DET00501,VID003,502,2025-11-10 09:15:00,T004,0.17,0.16,0.35,0.24,White,Left,Standing,63,Water Zone,0.82,Normal,False,False,1,False
+DET00502,VID003,505,2025-11-10 09:15:30,O010,0.15,0.75,0.27,0.23,Spotted,None,Standing,60,Water Zone,0.952,Limping,True,False,7,False
+DET00503,VID003,510,2025-11-10 09:16:00,K015,0.26,0.2,0.3,0.34,Spotted,Right,Lying,52,Feeding Area,0.785,Normal,False,False,7,False
+DET00504,VID003,517,2025-11-10 09:16:30,V019,0.83,0.21,0.09,0.32,Black,Left,Walking,75,Water Zone,0.763,Normal,False,False,10,False
+DET00505,VID003,523,2025-11-10 09:17:00,E003,0.67,0.67,0.25,0.18,Grey,Left,Grazing,84,Feeding Area,0.827,Normal,False,False,8,True
+DET00506,VID003,529,2025-11-10 09:17:30,V003,0.67,0.55,0.14,0.42,Grey,None,Grazing,79,Outdoor Paddock,0.963,Normal,False,False,9,False
+DET00507,VID003,530,2025-11-10 09:18:00,,0.07,0.38,0.17,0.31,Grey,Left,Grazing,84,Outdoor Paddock,0.848,Normal,False,False,3,False
+DET00508,VID003,538,2025-11-10 09:18:30,H000,0.06,0.77,0.16,0.29,Spotted,Both,Walking,94,Water Zone,0.774,Normal,True,False,4,False
+DET00509,VID003,542,2025-11-10 09:19:00,M003,0.69,0.58,0.15,0.35,Black,Left,Standing,69,Rest Area,0.947,Normal,False,False,10,False
+DET00510,VID003,545,2025-11-10 09:19:30,A004,0.84,0.81,0.31,0.2,Mixed,None,Grazing,86,Outdoor Paddock,0.923,Normal,False,False,4,False
+DET00511,VID003,553,2025-11-10 09:20:00,J014,0.36,0.37,0.31,0.13,Black,None,Grazing,93,Feeding Area,0.87,Normal,False,False,7,True
+DET00512,VID003,558,2025-11-10 09:20:30,J007,0.46,0.28,0.09,0.38,Black,None,Resting,73,Shelter,0.985,Normal,False,False,4,False
+DET00513,VID003,563,2025-11-10 09:21:00,,0.48,0.38,0.32,0.15,White,None,Standing,82,Outdoor Paddock,0.867,Normal,False,False,5,False
+DET00514,VID003,566,2025-11-10 09:21:30,H015,0.45,0.39,0.18,0.12,Brown,Right,Grazing,73,Feeding Area,0.879,Normal,False,False,14,True
+DET00515,VID003,571,2025-11-10 09:22:00,P017,0.6,0.4,0.24,0.43,Spotted,None,Grazing,91,Outdoor Paddock,0.816,Normal,False,False,7,False
+DET00516,VID003,579,2025-11-10 09:22:30,A018,0.28,0.48,0.21,0.27,White,Both,Grazing,98,Outdoor Paddock,0.833,Normal,False,False,14,False
+DET00517,VID003,581,2025-11-10 09:23:00,J003,0.76,0.62,0.2,0.42,Black,Both,Grazing,100,Feeding Area,0.808,Limping,False,False,5,True
+DET00518,VID003,585,2025-11-10 09:23:30,K019,0.77,0.77,0.19,0.37,White,Left,Standing,63,Outdoor Paddock,0.934,Normal,False,False,9,False
+DET00519,VID003,590,2025-11-10 09:24:00,D014,0.54,0.57,0.2,0.23,Grey,None,Grazing,70,Outdoor Paddock,0.778,Limping,False,False,8,False
+DET00520,VID003,598,2025-11-10 09:24:30,,0.47,0.21,0.34,0.17,Reddish,Left,Running,60,Feeding Area,0.896,Normal,False,False,3,False
+DET00521,VID003,600,2025-11-10 09:25:00,A011,0.58,0.13,0.18,0.19,White,None,Grazing,71,Feeding Area,0.844,Normal,False,True,13,True
+DET00522,VID003,606,2025-11-10 09:25:30,T003,0.77,0.17,0.08,0.13,White,Left,Running,76,Shelter,0.765,Unstable,False,False,11,False
+DET00523,VID003,611,2025-11-10 09:26:00,C005,0.35,0.09,0.17,0.31,Black,None,Lying,62,Medical Bay,0.779,Normal,False,False,7,False
+DET00524,VID003,617,2025-11-10 09:26:30,,0.18,0.19,0.26,0.21,Spotted,Left,Standing,88,Water Zone,0.849,Normal,False,False,12,False
+DET00525,VID003,624,2025-11-10 09:27:00,V004,0.72,0.15,0.34,0.32,Mixed,Right,Walking,89,Shelter,0.782,Normal,False,False,14,False
+DET00526,VID003,628,2025-11-10 09:27:30,,0.02,0.78,0.2,0.29,Mixed,None,Grazing,92,Feeding Area,0.806,Normal,False,False,12,True
+DET00527,VID003,631,2025-11-10 09:28:00,D001,0.12,0.42,0.13,0.24,Mixed,Both,Standing,83,Outdoor Paddock,0.987,Normal,False,False,6,False
+DET00528,VID003,635,2025-11-10 09:28:30,V004,0.55,0.25,0.09,0.4,Brown,Left,Standing,77,Feeding Area,0.968,Normal,False,False,12,True
+DET00529,VID003,643,2025-11-10 09:29:00,J007,0.38,0.01,0.31,0.14,Black,Both,Walking,69,Water Zone,0.78,Normal,False,False,4,False
+DET00530,VID003,646,2025-11-10 09:29:30,V016,0.62,0.26,0.27,0.2,Black,None,Grazing,88,Outdoor Paddock,0.982,Normal,False,False,6,False
+DET00531,VID003,653,2025-11-10 09:30:00,Y002,0.38,0.43,0.28,0.37,Reddish,Right,Standing,72,Medical Bay,0.955,Normal,False,False,3,False
+DET00532,VID003,659,2025-11-10 09:30:30,N003,0.32,0.26,0.16,0.31,Grey,Both,Grazing,92,Outdoor Paddock,0.797,Limping,True,False,12,False
+DET00533,VID003,662,2025-11-10 09:31:00,V007,0.35,0.34,0.28,0.25,Brown,Both,Grazing,71,Feeding Area,0.842,Normal,False,False,5,True
+DET00534,VID003,667,2025-11-10 09:31:30,Z000,0.54,0.31,0.1,0.25,Grey,None,Standing,61,Rest Area,0.901,Normal,False,False,5,False
+DET00535,VID003,674,2025-11-10 09:32:00,I017,0.13,0.21,0.24,0.34,Black,Both,Standing,62,Shelter,0.921,Normal,False,False,2,False
+DET00536,VID003,679,2025-11-10 09:32:30,S017,0.36,0.71,0.15,0.22,Spotted,Right,Grazing,93,Outdoor Paddock,0.931,Limping,False,True,10,False
+DET00537,VID003,682,2025-11-10 09:33:00,N015,0.64,0.79,0.19,0.22,Black,Right,Standing,62,Shelter,0.85,Normal,False,False,3,False
+DET00538,VID003,687,2025-11-10 09:33:30,G017,0.17,0.15,0.34,0.27,Reddish,None,Standing,61,Shelter,0.794,Normal,False,False,7,False
+DET00539,VID003,693,2025-11-10 09:34:00,F019,0.09,0.54,0.1,0.15,White,Left,Standing,60,Outdoor Paddock,0.806,Normal,False,True,5,False
+DET00540,VID003,695,2025-11-10 09:34:30,O008,0.84,0.08,0.22,0.12,Spotted,Left,Lying,65,Rest Area,0.895,Normal,False,False,6,False
+DET00541,VID003,701,2025-11-10 09:35:00,I001,0.34,0.52,0.34,0.41,Reddish,Both,Standing,87,Shelter,0.846,Normal,False,True,2,False
+DET00542,VID003,709,2025-11-10 09:35:30,J016,0.64,0.21,0.2,0.35,Reddish,Right,Grazing,91,Feeding Area,0.751,Normal,False,False,11,True
+DET00543,VID003,710,2025-11-10 09:36:00,L013,0.28,0.38,0.24,0.25,Spotted,Both,Grazing,100,Outdoor Paddock,0.987,Limping,False,False,5,False
+DET00544,VID003,719,2025-11-10 09:36:30,H006,0.74,0.74,0.29,0.36,White,None,Grazing,72,Outdoor Paddock,0.95,Unstable,False,False,15,False
+DET00545,VID003,723,2025-11-10 09:37:00,Y013,0.56,0.2,0.14,0.37,Mixed,Both,Standing,82,Feeding Area,0.788,Limping,False,False,4,True
+DET00546,VID003,728,2025-11-10 09:37:30,I006,0.1,0.12,0.22,0.36,White,Left,Lying,79,Outdoor Paddock,0.934,Normal,False,False,12,False
+DET00547,VID003,733,2025-11-10 09:38:00,O003,0.48,0.73,0.3,0.19,White,Left,Standing,62,Rest Area,0.928,Limping,False,True,6,False
+DET00548,VID003,736,2025-11-10 09:38:30,W016,0.32,0.63,0.16,0.31,Black,Right,Resting,73,Shelter,0.941,Limping,False,False,10,False
+DET00549,VID003,741,2025-11-10 09:39:00,,0.01,0.72,0.17,0.39,Brown,None,Grazing,84,Feeding Area,0.894,Normal,False,False,12,False
+DET00550,VID003,747,2025-11-10 09:39:30,J005,0.1,0.85,0.27,0.28,Reddish,None,Grazing,92,Outdoor Paddock,0.764,Normal,False,False,14,False
+DET00551,VID003,751,2025-11-10 09:40:00,C013,0.78,0.66,0.31,0.36,Brown,None,Resting,80,Shelter,0.831,Normal,False,False,7,False
+DET00552,VID003,755,2025-11-10 09:40:30,O009,0.24,0.78,0.27,0.3,White,None,Grazing,95,Feeding Area,0.954,Normal,False,False,3,True
+DET00553,VID003,763,2025-11-10 09:41:00,H008,0.18,0.68,0.13,0.33,Brown,Both,Walking,92,Water Zone,0.84,Unstable,False,True,1,False
+DET00554,VID003,765,2025-11-10 09:41:30,Y005,0.15,0.04,0.34,0.33,Spotted,Right,Resting,83,Shelter,0.809,Normal,False,False,10,False
+DET00555,VID003,771,2025-11-10 09:42:00,T004,0.66,0.84,0.26,0.15,Grey,Right,Grazing,90,Outdoor Paddock,0.838,Normal,False,False,11,False
+DET00556,VID003,779,2025-11-10 09:42:30,E000,0.49,0.49,0.15,0.37,Reddish,None,Grazing,90,Outdoor Paddock,0.822,Normal,False,False,14,False
+DET00557,VID003,784,2025-11-10 09:43:00,P012,0.6,0.33,0.3,0.38,Spotted,Right,Standing,86,Outdoor Paddock,0.879,Normal,False,False,4,False
+DET00558,VID003,785,2025-11-10 09:43:30,E013,0.59,0.0,0.2,0.22,White,None,Grazing,90,Feeding Area,0.771,Normal,False,False,2,True
+DET00559,VID003,792,2025-11-10 09:44:00,I015,0.36,0.8,0.08,0.22,Spotted,Left,Walking,79,Water Zone,0.888,Normal,False,False,6,False
+DET00560,VID003,799,2025-11-10 09:44:30,K014,0.58,0.56,0.09,0.13,Black,Left,Lying,56,Water Zone,0.895,Unstable,False,True,10,False
+DET00561,VID003,803,2025-11-10 09:45:00,,0.22,0.32,0.32,0.25,White,Left,Walking,95,Shelter,0.784,Normal,False,False,11,False
+DET00562,VID003,806,2025-11-10 09:45:30,C017,0.56,0.7,0.24,0.26,Black,Left,Resting,76,Shelter,0.756,Normal,False,False,2,False
+DET00563,VID003,814,2025-11-10 09:46:00,Q017,0.54,0.31,0.17,0.21,Reddish,None,Grazing,73,Outdoor Paddock,0.985,Normal,False,False,2,False
+DET00564,VID003,816,2025-11-10 09:46:30,S016,0.26,0.7,0.21,0.29,Mixed,Left,Grazing,89,Feeding Area,0.965,Normal,False,False,6,True
+DET00565,VID003,824,2025-11-10 09:47:00,T003,0.72,0.41,0.11,0.12,Spotted,None,Walking,69,Medical Bay,0.886,Normal,False,False,6,False
+DET00566,VID003,826,2025-11-10 09:47:30,V008,0.6,0.16,0.35,0.38,Spotted,Left,Grazing,83,Feeding Area,0.823,Limping,False,False,6,True
+DET00567,VID003,830,2025-11-10 09:48:00,,0.2,0.08,0.24,0.15,Brown,Right,Running,55,Medical Bay,0.912,Normal,False,False,11,False
+DET00568,VID003,839,2025-11-10 09:48:30,U015,0.01,0.16,0.3,0.12,Grey,Left,Standing,83,Shelter,0.978,Normal,False,False,10,False
+DET00569,VID003,840,2025-11-10 09:49:00,X007,0.14,0.79,0.29,0.42,Black,Both,Grazing,74,Outdoor Paddock,0.979,Normal,False,False,2,False
+DET00570,VID003,847,2025-11-10 09:49:30,M015,0.71,0.72,0.31,0.22,Grey,Left,Grazing,70,Outdoor Paddock,0.802,Normal,False,False,14,False
+DET00571,VID003,850,2025-11-10 09:50:00,T013,0.53,0.42,0.18,0.32,Brown,Left,Grazing,70,Outdoor Paddock,0.964,Normal,False,False,8,False
+DET00572,VID003,856,2025-11-10 09:50:30,,0.44,0.13,0.11,0.28,Black,Left,Standing,72,Rest Area,0.822,Normal,False,False,2,False
+DET00573,VID003,863,2025-11-10 09:51:00,W009,0.14,0.3,0.2,0.24,Reddish,None,Standing,69,Feeding Area,0.782,Normal,False,True,11,False
+DET00574,VID003,868,2025-11-10 09:51:30,N012,0.1,0.42,0.21,0.34,Black,Left,Walking,89,Medical Bay,0.87,Limping,False,True,2,False
+DET00575,VID003,870,2025-11-10 09:52:00,G009,0.13,0.43,0.29,0.2,Mixed,Left,Grazing,89,Feeding Area,0.854,Normal,False,False,4,True
+DET00576,VID003,879,2025-11-10 09:52:30,O007,0.65,0.73,0.35,0.2,Reddish,Right,Standing,82,Feeding Area,0.918,Normal,False,False,10,True
+DET00577,VID003,881,2025-11-10 09:53:00,G015,0.34,0.23,0.13,0.17,White,None,Standing,61,Medical Bay,0.848,Normal,False,False,6,False
+DET00578,VID003,888,2025-11-10 09:53:30,A002,0.36,0.04,0.11,0.24,Brown,Right,Standing,88,Feeding Area,0.794,Normal,False,False,5,True
+DET00579,VID003,894,2025-11-10 09:54:00,,0.16,0.81,0.18,0.22,White,Both,Walking,89,Water Zone,0.829,Normal,False,False,9,False
+DET00580,VID003,899,2025-11-10 09:54:30,H005,0.23,0.5,0.1,0.16,Mixed,Both,Standing,90,Shelter,0.946,Normal,False,False,9,False
+DET00581,VID003,904,2025-11-10 09:55:00,L002,0.4,0.65,0.22,0.17,Black,None,Grazing,92,Outdoor Paddock,0.964,Normal,False,False,6,False
+DET00582,VID003,907,2025-11-10 09:55:30,K014,0.1,0.37,0.21,0.29,Spotted,Both,Standing,68,Shelter,0.982,Normal,False,False,12,False
+DET00583,VID003,911,2025-11-10 09:56:00,U007,0.42,0.45,0.22,0.14,Grey,Right,Grazing,82,Outdoor Paddock,0.896,Normal,True,False,10,False
+DET00584,VID003,915,2025-11-10 09:56:30,O009,0.44,0.43,0.27,0.21,Reddish,None,Grazing,78,Feeding Area,0.791,Normal,False,True,3,True
+DET00585,VID003,922,2025-11-10 09:57:00,N016,0.74,0.04,0.34,0.45,Black,Both,Standing,71,Shelter,0.895,Normal,False,False,9,False
+DET00586,VID003,927,2025-11-10 09:57:30,U018,0.76,0.25,0.35,0.33,White,Left,Standing,90,Rest Area,0.792,Unstable,False,False,13,False
+DET00587,VID003,934,2025-11-10 09:58:00,,0.63,0.32,0.26,0.41,Mixed,None,Running,62,Rest Area,0.815,Normal,False,False,3,False
+DET00588,VID003,938,2025-11-10 09:58:30,L003,0.37,0.13,0.21,0.28,Grey,None,Running,60,Water Zone,0.887,Limping,False,True,5,False
+DET00589,VID003,941,2025-11-10 09:59:00,P017,0.34,0.52,0.1,0.14,Black,Right,Lying,62,Feeding Area,0.924,Normal,False,True,2,False
+DET00590,VID003,948,2025-11-10 09:59:30,F012,0.7,0.65,0.25,0.13,Black,Both,Grazing,100,Feeding Area,0.94,Normal,False,False,14,True
+DET00591,VID003,950,2025-11-10 10:00:00,Y011,0.65,0.76,0.3,0.22,Grey,None,Standing,77,Shelter,0.814,Normal,True,True,9,False
+DET00592,VID003,957,2025-11-10 10:00:30,,0.75,0.35,0.08,0.19,Black,Right,Grazing,81,Outdoor Paddock,0.804,Limping,False,False,14,False
+DET00593,VID003,960,2025-11-10 10:01:00,F012,0.19,0.81,0.16,0.15,Brown,Both,Grazing,99,Feeding Area,0.965,Normal,False,False,10,False
+DET00594,VID003,968,2025-11-10 10:01:30,I003,0.58,0.53,0.16,0.41,Brown,Right,Walking,94,Rest Area,0.945,Normal,False,True,15,False
+DET00595,VID003,971,2025-11-10 10:02:00,H010,0.27,0.33,0.27,0.38,Grey,Both,Standing,73,Shelter,0.817,Normal,False,False,7,False
+DET00596,VID003,977,2025-11-10 10:02:30,V014,0.41,0.83,0.24,0.33,Black,None,Grazing,87,Outdoor Paddock,0.879,Normal,False,False,2,False
+DET00597,VID003,984,2025-11-10 10:03:00,A019,0.49,0.59,0.28,0.35,Black,Left,Standing,87,Feeding Area,0.837,Normal,False,False,15,True
+DET00598,VID003,986,2025-11-10 10:03:30,H007,0.71,0.47,0.33,0.26,Black,None,Standing,64,Feeding Area,0.981,Normal,False,True,7,True
+DET00599,VID003,990,2025-11-10 10:04:00,D015,0.41,0.5,0.12,0.17,Black,Both,Standing,60,Outdoor Paddock,0.949,Normal,False,False,3,False
+DET00600,VID003,999,2025-11-10 10:04:30,P006,0.4,0.61,0.2,0.33,White,Left,Standing,61,Shelter,0.758,Normal,False,True,14,False
+DET00601,VID004,3,2025-11-10 10:05:00,S016,0.39,0.6,0.15,0.31,Brown,None,Grazing,75,Outdoor Paddock,0.984,Normal,False,False,4,False
+DET00602,VID004,8,2025-11-10 10:05:30,L004,0.33,0.7,0.34,0.32,White,Right,Grazing,90,Outdoor Paddock,0.949,Normal,False,False,4,False
+DET00603,VID004,12,2025-11-10 10:06:00,,0.07,0.51,0.31,0.13,Brown,None,Grazing,72,Feeding Area,0.893,Normal,False,False,11,True
+DET00604,VID004,16,2025-11-10 10:06:30,D003,0.48,0.48,0.29,0.14,Brown,Both,Lying,50,Rest Area,0.93,Normal,False,False,7,False
+DET00605,VID004,22,2025-11-10 10:07:00,J019,0.57,0.28,0.32,0.29,Spotted,None,Standing,85,Medical Bay,0.864,Limping,True,True,11,False
+DET00606,VID004,28,2025-11-10 10:07:30,,0.53,0.81,0.14,0.19,Mixed,None,Walking,70,Outdoor Paddock,0.874,Normal,False,False,6,False
+DET00607,VID004,33,2025-11-10 10:08:00,R007,0.25,0.53,0.33,0.13,Mixed,Right,Standing,79,Outdoor Paddock,0.768,Normal,False,False,13,False
+DET00608,VID004,35,2025-11-10 10:08:30,,0.74,0.47,0.34,0.38,White,Right,Standing,70,Water Zone,0.974,Normal,False,False,2,False
+DET00609,VID004,40,2025-11-10 10:09:00,N010,0.39,0.84,0.34,0.37,Grey,None,Lying,68,Medical Bay,0.76,Limping,False,False,15,False
+DET00610,VID004,46,2025-11-10 10:09:30,A004,0.72,0.81,0.18,0.35,Spotted,Right,Grazing,98,Feeding Area,0.899,Normal,False,False,14,True
+DET00611,VID004,51,2025-11-10 10:10:00,O017,0.32,0.48,0.31,0.19,Reddish,Right,Walking,76,Medical Bay,0.862,Normal,False,False,3,False
+DET00612,VID004,55,2025-11-10 10:10:30,V004,0.34,0.37,0.19,0.14,Brown,Right,Standing,83,Medical Bay,0.777,Normal,False,False,3,False
+DET00613,VID004,61,2025-11-10 10:11:00,B012,0.84,0.66,0.1,0.39,Reddish,Right,Resting,69,Rest Area,0.801,Normal,False,False,5,False
+DET00614,VID004,66,2025-11-10 10:11:30,,0.06,0.34,0.16,0.36,Reddish,Right,Grazing,91,Outdoor Paddock,0.794,Normal,False,False,13,False
+DET00615,VID004,72,2025-11-10 10:12:00,R017,0.8,0.41,0.22,0.38,Mixed,Right,Grazing,92,Outdoor Paddock,0.948,Normal,False,False,12,False
+DET00616,VID004,79,2025-11-10 10:12:30,Q011,0.56,0.7,0.28,0.39,Mixed,Left,Standing,88,Medical Bay,0.974,Normal,False,False,11,False
+DET00617,VID004,83,2025-11-10 10:13:00,K019,0.0,0.38,0.3,0.16,Grey,Both,Standing,83,Water Zone,0.851,Normal,False,False,6,False
+DET00618,VID004,86,2025-11-10 10:13:30,X015,0.58,0.81,0.18,0.24,Brown,Left,Grazing,97,Feeding Area,0.918,Normal,False,False,6,True
+DET00619,VID004,93,2025-11-10 10:14:00,N003,0.29,0.79,0.2,0.24,Spotted,None,Grazing,82,Outdoor Paddock,0.953,Normal,False,False,10,False
+DET00620,VID004,95,2025-11-10 10:14:30,P005,0.71,0.08,0.08,0.43,White,Right,Walking,84,Outdoor Paddock,0.774,Normal,False,True,5,False
+DET00621,VID004,103,2025-11-10 10:15:00,N015,0.39,0.32,0.13,0.27,White,Left,Resting,92,Shelter,0.849,Normal,False,False,1,False
+DET00622,VID004,107,2025-11-10 10:15:30,Z019,0.24,0.75,0.15,0.4,Reddish,Right,Walking,65,Medical Bay,0.758,Normal,False,False,9,False
+DET00623,VID004,114,2025-11-10 10:16:00,I014,0.82,0.84,0.15,0.44,Black,Right,Running,80,Outdoor Paddock,0.853,Limping,False,False,7,False
+DET00624,VID004,117,2025-11-10 10:16:30,W007,0.2,0.6,0.11,0.16,Spotted,Right,Running,75,Rest Area,0.951,Normal,False,False,1,False
+DET00625,VID004,123,2025-11-10 10:17:00,,0.65,0.13,0.25,0.3,White,Right,Standing,83,Water Zone,0.986,Normal,False,False,11,False
+DET00626,VID004,126,2025-11-10 10:17:30,B008,0.71,0.62,0.3,0.24,Brown,Both,Grazing,99,Feeding Area,0.901,Normal,False,False,8,True
+DET00627,VID004,130,2025-11-10 10:18:00,,0.24,0.76,0.11,0.28,Brown,None,Grazing,85,Feeding Area,0.849,Normal,False,False,7,True
+DET00628,VID004,137,2025-11-10 10:18:30,X001,0.69,0.15,0.08,0.18,Spotted,Both,Standing,70,Rest Area,0.866,Normal,False,False,12,False
+DET00629,VID004,142,2025-11-10 10:19:00,J017,0.52,0.46,0.22,0.37,Black,Left,Standing,66,Feeding Area,0.829,Normal,False,False,5,True
+DET00630,VID004,146,2025-11-10 10:19:30,R016,0.6,0.55,0.21,0.39,Grey,Right,Lying,58,Water Zone,0.797,Normal,False,False,2,False
+DET00631,VID004,154,2025-11-10 10:20:00,E001,0.26,0.67,0.34,0.28,Grey,Right,Grazing,78,Outdoor Paddock,0.899,Normal,False,False,6,False
+DET00632,VID004,155,2025-11-10 10:20:30,T010,0.03,0.43,0.24,0.22,Reddish,Left,Grazing,73,Feeding Area,0.944,Normal,False,False,4,True
+DET00633,VID004,162,2025-11-10 10:21:00,,0.27,0.01,0.27,0.36,Black,Right,Grazing,80,Feeding Area,0.885,Normal,False,False,2,True
+DET00634,VID004,169,2025-11-10 10:21:30,P006,0.73,0.06,0.32,0.26,Reddish,Right,Grazing,80,Feeding Area,0.797,Normal,False,False,7,False
+DET00635,VID004,173,2025-11-10 10:22:00,Q014,0.5,0.2,0.09,0.13,Reddish,Both,Lying,59,Water Zone,0.952,Normal,False,False,1,False
+DET00636,VID004,177,2025-11-10 10:22:30,D011,0.4,0.71,0.19,0.22,Brown,Left,Grazing,87,Outdoor Paddock,0.869,Normal,False,False,8,False
+DET00637,VID004,180,2025-11-10 10:23:00,W000,0.53,0.02,0.09,0.12,White,Left,Lying,73,Medical Bay,0.804,Normal,False,False,14,False
+DET00638,VID004,189,2025-11-10 10:23:30,V016,0.59,0.04,0.32,0.13,White,Left,Standing,70,Shelter,0.897,Normal,False,False,3,False
+DET00639,VID004,194,2025-11-10 10:24:00,G009,0.27,0.13,0.24,0.4,Grey,Right,Walking,81,Outdoor Paddock,0.808,Normal,False,False,13,False
+DET00640,VID004,198,2025-11-10 10:24:30,N010,0.65,0.6,0.18,0.4,Black,None,Walking,67,Medical Bay,0.764,Normal,False,False,4,False
+DET00641,VID004,203,2025-11-10 10:25:00,,0.18,0.5,0.22,0.4,Reddish,Left,Walking,85,Water Zone,0.953,Normal,False,False,7,False
+DET00642,VID004,208,2025-11-10 10:25:30,A005,0.17,0.34,0.1,0.26,Mixed,Left,Resting,81,Rest Area,0.785,Limping,False,True,15,False
+DET00643,VID004,213,2025-11-10 10:26:00,B009,0.4,0.45,0.18,0.16,Spotted,Both,Grazing,76,Feeding Area,0.845,Normal,False,False,6,False
+DET00644,VID004,218,2025-11-10 10:26:30,V012,0.16,0.16,0.13,0.21,Spotted,Right,Grazing,73,Feeding Area,0.905,Unstable,False,True,1,True
+DET00645,VID004,221,2025-11-10 10:27:00,,0.09,0.19,0.25,0.36,Grey,Right,Standing,83,Shelter,0.814,Normal,False,False,5,False
+DET00646,VID004,229,2025-11-10 10:27:30,A003,0.08,0.43,0.27,0.28,Brown,None,Standing,81,Feeding Area,0.79,Normal,False,False,11,True
+DET00647,VID004,232,2025-11-10 10:28:00,,0.83,0.75,0.13,0.37,White,Left,Resting,81,Rest Area,0.867,Normal,False,False,10,False
+DET00648,VID004,237,2025-11-10 10:28:30,A017,0.43,0.64,0.29,0.15,Reddish,Left,Grazing,93,Outdoor Paddock,0.988,Normal,False,False,1,False
+DET00649,VID004,242,2025-11-10 10:29:00,R001,0.76,0.66,0.31,0.42,Spotted,Right,Standing,81,Outdoor Paddock,0.925,Normal,False,False,11,False
+DET00650,VID004,246,2025-11-10 10:29:30,B011,0.21,0.63,0.34,0.24,Mixed,Both,Standing,90,Medical Bay,0.903,Unstable,False,False,15,False
+DET00651,VID004,253,2025-11-10 10:30:00,S017,0.45,0.23,0.26,0.41,Grey,Right,Lying,58,Rest Area,0.796,Normal,False,False,2,False
+DET00652,VID004,258,2025-11-10 10:30:30,D000,0.82,0.67,0.16,0.44,Grey,None,Grazing,74,Outdoor Paddock,0.9,Normal,False,False,13,False
+DET00653,VID004,262,2025-11-10 10:31:00,,0.03,0.24,0.24,0.14,Brown,Both,Grazing,91,Feeding Area,0.762,Normal,False,False,9,True
+DET00654,VID004,269,2025-11-10 10:31:30,E008,0.61,0.12,0.28,0.26,White,Left,Standing,75,Rest Area,0.81,Normal,False,False,15,False
+DET00655,VID004,270,2025-11-10 10:32:00,V002,0.26,0.26,0.23,0.34,Brown,None,Walking,71,Rest Area,0.783,Normal,False,False,10,False
+DET00656,VID004,278,2025-11-10 10:32:30,T004,0.67,0.71,0.11,0.29,Mixed,Left,Grazing,91,Outdoor Paddock,0.862,Normal,False,False,1,False
+DET00657,VID004,284,2025-11-10 10:33:00,,0.65,0.08,0.12,0.42,Reddish,None,Grazing,81,Feeding Area,0.899,Limping,False,True,14,True
+DET00658,VID004,288,2025-11-10 10:33:30,X013,0.69,0.74,0.2,0.14,White,Left,Running,75,Feeding Area,0.83,Normal,False,False,6,False
+DET00659,VID004,290,2025-11-10 10:34:00,,0.5,0.43,0.27,0.35,Spotted,None,Grazing,100,Outdoor Paddock,0.783,Limping,False,True,11,False
+DET00660,VID004,297,2025-11-10 10:34:30,V019,0.01,0.41,0.27,0.16,White,None,Walking,68,Outdoor Paddock,0.773,Normal,False,False,8,False
+DET00661,VID004,303,2025-11-10 10:35:00,,0.1,0.34,0.35,0.39,Reddish,Left,Running,76,Medical Bay,0.956,Normal,False,False,3,False
+DET00662,VID004,306,2025-11-10 10:35:30,H013,0.2,0.43,0.27,0.19,Grey,Left,Grazing,73,Outdoor Paddock,0.838,Normal,False,False,8,False
+DET00663,VID004,313,2025-11-10 10:36:00,H011,0.02,0.39,0.23,0.12,Brown,Both,Walking,93,Shelter,0.899,Normal,False,False,8,False
+DET00664,VID004,318,2025-11-10 10:36:30,I002,0.3,0.73,0.22,0.24,Mixed,Right,Grazing,75,Feeding Area,0.834,Normal,False,False,13,False
+DET00665,VID004,322,2025-11-10 10:37:00,D009,0.78,0.55,0.18,0.28,Mixed,None,Grazing,99,Outdoor Paddock,0.781,Normal,False,False,10,False
+DET00666,VID004,328,2025-11-10 10:37:30,,0.03,0.62,0.14,0.34,Grey,Right,Grazing,77,Feeding Area,0.775,Limping,False,True,7,True
+DET00667,VID004,330,2025-11-10 10:38:00,F017,0.03,0.64,0.2,0.24,Mixed,Both,Lying,60,Feeding Area,0.918,Normal,False,False,4,False
+DET00668,VID004,336,2025-11-10 10:38:30,W008,0.58,0.19,0.28,0.26,Spotted,None,Standing,60,Shelter,0.98,Normal,True,False,1,False
+DET00669,VID004,342,2025-11-10 10:39:00,D001,0.46,0.06,0.13,0.36,Mixed,Right,Standing,66,Outdoor Paddock,0.949,Normal,False,False,14,False
+DET00670,VID004,346,2025-11-10 10:39:30,W009,0.36,0.32,0.1,0.15,Reddish,Left,Standing,75,Water Zone,0.762,Normal,True,False,5,False
+DET00671,VID004,352,2025-11-10 10:40:00,S006,0.06,0.74,0.34,0.14,Spotted,None,Lying,79,Outdoor Paddock,0.87,Normal,False,False,2,False
+DET00672,VID004,359,2025-11-10 10:40:30,U019,0.84,0.56,0.09,0.26,Black,Left,Lying,51,Water Zone,0.799,Normal,False,False,15,False
+DET00673,VID004,360,2025-11-10 10:41:00,D014,0.68,0.48,0.24,0.4,Reddish,Both,Grazing,72,Outdoor Paddock,0.894,Normal,False,False,3,False
+DET00674,VID004,367,2025-11-10 10:41:30,F006,0.03,0.43,0.26,0.26,Brown,None,Standing,61,Feeding Area,0.936,Normal,False,False,11,True
+DET00675,VID004,370,2025-11-10 10:42:00,C013,0.33,0.32,0.11,0.35,Spotted,None,Standing,63,Outdoor Paddock,0.986,Normal,False,False,1,False
+DET00676,VID004,376,2025-11-10 10:42:30,E002,0.01,0.35,0.28,0.39,Spotted,Both,Resting,63,Rest Area,0.945,Normal,False,False,1,False
+DET00677,VID004,382,2025-11-10 10:43:00,H010,0.76,0.85,0.12,0.25,Mixed,Both,Walking,67,Rest Area,0.975,Normal,False,False,15,False
+DET00678,VID004,386,2025-11-10 10:43:30,P009,0.8,0.66,0.16,0.34,Spotted,Left,Grazing,87,Feeding Area,0.763,Limping,False,False,5,False
+DET00679,VID004,391,2025-11-10 10:44:00,A013,0.2,0.63,0.14,0.24,Reddish,None,Standing,67,Shelter,0.856,Normal,False,True,14,False
+DET00680,VID004,395,2025-11-10 10:44:30,E002,0.33,0.7,0.1,0.21,Spotted,Right,Grazing,97,Outdoor Paddock,0.842,Normal,False,False,7,False
+DET00681,VID004,404,2025-11-10 10:45:00,,0.26,0.46,0.17,0.13,Spotted,Left,Lying,79,Rest Area,0.944,Normal,False,False,14,False
+DET00682,VID004,409,2025-11-10 10:45:30,V017,0.67,0.79,0.28,0.39,Spotted,Right,Resting,92,Shelter,0.956,Limping,False,False,10,False
+DET00683,VID004,414,2025-11-10 10:46:00,X003,0.32,0.63,0.33,0.16,White,Left,Walking,95,Rest Area,0.771,Normal,False,False,7,False
+DET00684,VID004,415,2025-11-10 10:46:30,S010,0.23,0.21,0.26,0.37,White,Both,Grazing,91,Outdoor Paddock,0.951,Normal,False,True,1,False
+DET00685,VID004,423,2025-11-10 10:47:00,,0.3,0.54,0.23,0.25,Spotted,Both,Grazing,89,Outdoor Paddock,0.979,Normal,False,False,5,False
+DET00686,VID004,428,2025-11-10 10:47:30,,0.54,0.12,0.25,0.14,White,Both,Standing,76,Medical Bay,0.889,Normal,False,False,12,False
+DET00687,VID004,432,2025-11-10 10:48:00,A016,0.58,0.73,0.18,0.36,Spotted,None,Grazing,72,Outdoor Paddock,0.777,Normal,False,False,14,False
+DET00688,VID004,438,2025-11-10 10:48:30,,0.36,0.24,0.09,0.32,Brown,Left,Resting,91,Shelter,0.863,Unstable,False,True,1,False
+DET00689,VID004,442,2025-11-10 10:49:00,U013,0.5,0.09,0.14,0.22,Mixed,Left,Lying,62,Outdoor Paddock,0.758,Normal,False,False,2,False
+DET00690,VID004,445,2025-11-10 10:49:30,L009,0.48,0.85,0.25,0.36,Spotted,Both,Running,71,Feeding Area,0.896,Normal,False,False,4,False
+DET00691,VID004,454,2025-11-10 10:50:00,M009,0.28,0.68,0.34,0.2,Brown,Both,Walking,79,Shelter,0.98,Normal,False,False,2,False
+DET00692,VID004,457,2025-11-10 10:50:30,E019,0.2,0.67,0.14,0.39,Black,None,Walking,78,Shelter,0.89,Normal,False,False,6,False
+DET00693,VID004,460,2025-11-10 10:51:00,,0.36,0.84,0.24,0.33,Reddish,None,Lying,78,Medical Bay,0.754,Normal,False,False,15,False
+DET00694,VID004,468,2025-11-10 10:51:30,G009,0.74,0.71,0.09,0.18,White,None,Grazing,86,Outdoor Paddock,0.967,Normal,False,False,12,False
+DET00695,VID004,472,2025-11-10 10:52:00,,0.76,0.76,0.24,0.32,Mixed,Both,Standing,89,Rest Area,0.978,Limping,False,False,7,False
+DET00696,VID004,477,2025-11-10 10:52:30,J016,0.11,0.16,0.29,0.42,Spotted,Both,Standing,60,Outdoor Paddock,0.892,Normal,False,False,3,False
+DET00697,VID004,484,2025-11-10 10:53:00,O006,0.8,0.08,0.16,0.23,Spotted,Right,Grazing,82,Outdoor Paddock,0.932,Unstable,True,False,15,False
+DET00698,VID004,486,2025-11-10 10:53:30,O004,0.49,0.52,0.11,0.21,White,Left,Grazing,84,Feeding Area,0.962,Normal,False,False,13,False
+DET00699,VID004,491,2025-11-10 10:54:00,H004,0.08,0.47,0.22,0.18,Spotted,Both,Resting,80,Rest Area,0.752,Normal,True,False,10,False
+DET00700,VID004,498,2025-11-10 10:54:30,A013,0.11,0.39,0.33,0.36,Reddish,Both,Grazing,83,Outdoor Paddock,0.813,Limping,False,False,2,False
+DET00701,VID004,502,2025-11-11 08:00:00,M002,0.67,0.62,0.17,0.29,Brown,Right,Walking,81,Shelter,0.936,Normal,False,False,7,False
+DET00702,VID004,505,2025-11-11 08:00:30,O013,0.44,0.16,0.23,0.4,Mixed,Both,Lying,70,Feeding Area,0.809,Normal,False,False,4,False
+DET00703,VID004,512,2025-11-11 08:01:00,Y016,0.69,0.62,0.16,0.19,White,None,Standing,62,Medical Bay,0.884,Normal,False,False,5,False
+DET00704,VID004,519,2025-11-11 08:01:30,D017,0.2,0.3,0.22,0.43,Brown,None,Lying,71,Medical Bay,0.868,Normal,False,False,5,False
+DET00705,VID004,520,2025-11-11 08:02:00,X006,0.75,0.64,0.16,0.44,Brown,None,Walking,68,Water Zone,0.862,Normal,False,False,12,False
+DET00706,VID004,526,2025-11-11 08:02:30,Y015,0.71,0.73,0.24,0.35,White,Left,Grazing,76,Outdoor Paddock,0.765,Normal,False,False,7,False
+DET00707,VID004,533,2025-11-11 08:03:00,N006,0.78,0.23,0.28,0.23,Reddish,Both,Grazing,83,Feeding Area,0.887,Normal,False,False,10,True
+DET00708,VID004,536,2025-11-11 08:03:30,B000,0.81,0.02,0.18,0.38,Brown,Left,Walking,82,Feeding Area,0.907,Normal,False,False,3,False
+DET00709,VID004,544,2025-11-11 08:04:00,K015,0.19,0.68,0.33,0.23,Black,None,Lying,51,Feeding Area,0.931,Normal,False,False,1,False
+DET00710,VID004,546,2025-11-11 08:04:30,B004,0.2,0.66,0.15,0.21,White,Right,Walking,69,Shelter,0.96,Limping,False,False,12,False
+DET00711,VID004,553,2025-11-11 08:05:00,,0.63,0.46,0.33,0.15,Spotted,Right,Standing,79,Rest Area,0.938,Normal,False,False,8,False
+DET00712,VID004,556,2025-11-11 08:05:30,,0.82,0.49,0.18,0.26,Black,Right,Grazing,85,Outdoor Paddock,0.968,Normal,False,True,8,False
+DET00713,VID004,563,2025-11-11 08:06:00,N001,0.46,0.09,0.14,0.44,Grey,None,Grazing,85,Feeding Area,0.904,Normal,False,False,2,True
+DET00714,VID004,566,2025-11-11 08:06:30,Z001,0.5,0.07,0.19,0.4,Spotted,None,Standing,75,Rest Area,0.849,Normal,False,True,12,False
+DET00715,VID004,574,2025-11-11 08:07:00,S012,0.0,0.59,0.28,0.38,Spotted,Right,Grazing,90,Feeding Area,0.827,Normal,False,False,12,False
+DET00716,VID004,575,2025-11-11 08:07:30,D019,0.32,0.64,0.12,0.37,Black,None,Grazing,73,Feeding Area,0.963,Normal,False,False,3,True
+DET00717,VID004,584,2025-11-11 08:08:00,A009,0.25,0.37,0.16,0.42,Mixed,Left,Grazing,89,Outdoor Paddock,0.885,Normal,False,False,13,False
+DET00718,VID004,589,2025-11-11 08:08:30,T000,0.44,0.21,0.2,0.43,Mixed,None,Standing,82,Medical Bay,0.752,Normal,False,False,1,False
+DET00719,VID004,592,2025-11-11 08:09:00,K004,0.59,0.46,0.17,0.14,Grey,None,Standing,80,Outdoor Paddock,0.962,Normal,True,False,5,False
+DET00720,VID004,598,2025-11-11 08:09:30,P013,0.31,0.65,0.33,0.31,Mixed,None,Standing,64,Feeding Area,0.925,Normal,False,False,13,True
+DET00721,VID004,603,2025-11-11 08:10:00,N010,0.73,0.51,0.34,0.36,Spotted,Right,Standing,60,Water Zone,0.987,Normal,False,False,3,False
+DET00722,VID004,608,2025-11-11 08:10:30,Q011,0.07,0.82,0.12,0.39,Grey,Right,Grazing,86,Feeding Area,0.808,Normal,False,False,6,True
+DET00723,VID004,614,2025-11-11 08:11:00,E000,0.75,0.72,0.34,0.43,Reddish,Left,Walking,91,Medical Bay,0.885,Normal,False,False,9,False
+DET00724,VID004,618,2025-11-11 08:11:30,J002,0.02,0.31,0.21,0.34,Mixed,Right,Standing,77,Water Zone,0.842,Normal,False,True,8,False
+DET00725,VID004,622,2025-11-11 08:12:00,A005,0.5,0.28,0.33,0.42,Spotted,Both,Walking,66,Shelter,0.816,Normal,True,False,5,False
+DET00726,VID004,627,2025-11-11 08:12:30,X014,0.49,0.03,0.27,0.28,Spotted,Right,Grazing,85,Feeding Area,0.759,Normal,False,False,12,False
+DET00727,VID004,631,2025-11-11 08:13:00,,0.71,0.1,0.2,0.35,Brown,Both,Lying,58,Water Zone,0.907,Normal,False,False,15,False
+DET00728,VID004,637,2025-11-11 08:13:30,I013,0.77,0.5,0.33,0.29,Mixed,Right,Grazing,91,Feeding Area,0.766,Normal,False,False,2,False
+DET00729,VID004,640,2025-11-11 08:14:00,K003,0.59,0.35,0.25,0.4,White,Left,Grazing,81,Feeding Area,0.832,Normal,False,False,8,False
+DET00730,VID004,645,2025-11-11 08:14:30,E008,0.16,0.5,0.34,0.37,Reddish,Both,Standing,71,Medical Bay,0.77,Normal,False,False,11,False
+DET00731,VID004,651,2025-11-11 08:15:00,L015,0.11,0.05,0.27,0.18,Black,Left,Grazing,96,Feeding Area,0.815,Normal,False,False,8,True
+DET00732,VID004,658,2025-11-11 08:15:30,S012,0.3,0.55,0.2,0.33,Reddish,None,Standing,86,Outdoor Paddock,0.843,Normal,False,False,6,False
+DET00733,VID004,662,2025-11-11 08:16:00,J016,0.82,0.47,0.28,0.21,Spotted,None,Grazing,84,Outdoor Paddock,0.758,Normal,False,False,3,False
+DET00734,VID004,668,2025-11-11 08:16:30,T001,0.48,0.56,0.32,0.23,White,Left,Lying,50,Water Zone,0.851,Unstable,False,True,15,False
+DET00735,VID004,672,2025-11-11 08:17:00,X018,0.46,0.64,0.2,0.32,Spotted,Right,Walking,80,Water Zone,0.811,Normal,False,False,5,False
+DET00736,VID004,675,2025-11-11 08:17:30,S018,0.2,0.79,0.33,0.16,Grey,Left,Resting,75,Rest Area,0.789,Normal,False,False,12,False
+DET00737,VID004,684,2025-11-11 08:18:00,X015,0.48,0.12,0.26,0.38,White,Both,Grazing,94,Feeding Area,0.942,Normal,False,True,3,True
+DET00738,VID004,686,2025-11-11 08:18:30,E002,0.16,0.73,0.2,0.36,Black,Left,Standing,65,Rest Area,0.774,Normal,False,False,8,False
+DET00739,VID004,693,2025-11-11 08:19:00,K003,0.21,0.78,0.18,0.23,Black,Right,Walking,93,Rest Area,0.947,Normal,False,False,2,False
+DET00740,VID004,697,2025-11-11 08:19:30,L018,0.82,0.02,0.32,0.18,Black,Left,Grazing,86,Feeding Area,0.897,Normal,False,False,3,True
+DET00741,VID004,700,2025-11-11 08:20:00,W005,0.08,0.33,0.13,0.17,Brown,Right,Walking,80,Feeding Area,0.813,Unstable,False,True,9,False
+DET00742,VID004,705,2025-11-11 08:20:30,E004,0.29,0.62,0.26,0.25,Reddish,Both,Standing,64,Outdoor Paddock,0.872,Normal,True,False,11,False
+DET00743,VID004,713,2025-11-11 08:21:00,C015,0.26,0.22,0.25,0.32,Reddish,Right,Grazing,94,Outdoor Paddock,0.921,Normal,False,False,3,False
+DET00744,VID004,718,2025-11-11 08:21:30,T012,0.74,0.07,0.08,0.43,Mixed,Left,Standing,86,Outdoor Paddock,0.925,Normal,True,False,2,False
+DET00745,VID004,723,2025-11-11 08:22:00,C011,0.76,0.58,0.15,0.23,Brown,Both,Grazing,75,Outdoor Paddock,0.836,Normal,False,False,10,False
+DET00746,VID004,725,2025-11-11 08:22:30,B017,0.45,0.34,0.13,0.3,Black,None,Walking,78,Rest Area,0.833,Normal,False,False,15,False
+DET00747,VID004,734,2025-11-11 08:23:00,C001,0.07,0.32,0.12,0.44,Mixed,Both,Grazing,93,Feeding Area,0.831,Normal,False,False,3,True
+DET00748,VID004,737,2025-11-11 08:23:30,M000,0.75,0.71,0.2,0.16,Black,Left,Resting,82,Rest Area,0.917,Normal,False,False,15,False
+DET00749,VID004,743,2025-11-11 08:24:00,J005,0.66,0.24,0.26,0.32,Black,Left,Grazing,83,Feeding Area,0.754,Normal,False,False,10,True
+DET00750,VID004,747,2025-11-11 08:24:30,,0.19,0.6,0.14,0.32,Mixed,Right,Grazing,90,Outdoor Paddock,0.88,Normal,False,False,6,False
+DET00751,VID004,752,2025-11-11 08:25:00,H015,0.39,0.63,0.14,0.35,Mixed,Right,Grazing,71,Feeding Area,0.902,Normal,False,False,9,True
+DET00752,VID004,757,2025-11-11 08:25:30,X002,0.57,0.03,0.25,0.18,Brown,Right,Grazing,94,Feeding Area,0.93,Normal,False,False,7,True
+DET00753,VID004,761,2025-11-11 08:26:00,W011,0.72,0.08,0.14,0.45,Spotted,Left,Standing,65,Shelter,0.985,Normal,False,False,15,False
+DET00754,VID004,769,2025-11-11 08:26:30,N008,0.31,0.09,0.32,0.44,Reddish,Left,Grazing,87,Outdoor Paddock,0.804,Normal,False,False,15,False
+DET00755,VID004,773,2025-11-11 08:27:00,S014,0.15,0.25,0.22,0.23,Grey,None,Walking,68,Medical Bay,0.889,Normal,False,False,1,False
+DET00756,VID004,779,2025-11-11 08:27:30,F004,0.53,0.85,0.24,0.36,White,Left,Walking,70,Outdoor Paddock,0.9,Normal,False,True,10,False
+DET00757,VID004,783,2025-11-11 08:28:00,S004,0.16,0.78,0.2,0.36,Black,None,Grazing,92,Feeding Area,0.827,Normal,False,False,8,True
+DET00758,VID004,789,2025-11-11 08:28:30,M007,0.68,0.83,0.22,0.16,Spotted,Left,Lying,79,Water Zone,0.809,Normal,False,False,11,False
+DET00759,VID004,793,2025-11-11 08:29:00,Y001,0.73,0.06,0.19,0.21,Mixed,Both,Walking,84,Shelter,0.987,Normal,False,False,1,False
+DET00760,VID004,797,2025-11-11 08:29:30,Q008,0.7,0.65,0.18,0.36,Spotted,Right,Grazing,73,Feeding Area,0.785,Normal,False,False,2,True
+DET00761,VID004,802,2025-11-11 08:30:00,R007,0.12,0.21,0.21,0.21,Brown,Both,Grazing,92,Outdoor Paddock,0.931,Normal,False,False,6,False
+DET00762,VID004,808,2025-11-11 08:30:30,D001,0.23,0.03,0.12,0.29,White,None,Lying,68,Rest Area,0.921,Normal,False,False,5,False
+DET00763,VID004,813,2025-11-11 08:31:00,I009,0.25,0.63,0.27,0.17,Brown,Right,Grazing,77,Feeding Area,0.954,Normal,False,True,6,True
+DET00764,VID004,819,2025-11-11 08:31:30,F013,0.77,0.83,0.25,0.31,Spotted,Left,Grazing,82,Outdoor Paddock,0.906,Limping,False,False,7,False
+DET00765,VID004,820,2025-11-11 08:32:00,D006,0.29,0.26,0.14,0.21,Reddish,Both,Walking,76,Medical Bay,0.86,Limping,False,False,14,False
+DET00766,VID004,829,2025-11-11 08:32:30,L019,0.17,0.56,0.19,0.15,Brown,Both,Grazing,100,Feeding Area,0.983,Normal,False,False,5,True
+DET00767,VID004,831,2025-11-11 08:33:00,H006,0.73,0.19,0.27,0.18,Spotted,Left,Grazing,72,Feeding Area,0.926,Limping,False,True,5,False
+DET00768,VID004,836,2025-11-11 08:33:30,M019,0.49,0.39,0.22,0.38,Brown,Both,Standing,63,Medical Bay,0.77,Normal,False,False,8,False
+DET00769,VID004,842,2025-11-11 08:34:00,D015,0.37,0.77,0.27,0.27,Mixed,None,Grazing,90,Outdoor Paddock,0.988,Normal,False,False,11,False
+DET00770,VID004,846,2025-11-11 08:34:30,Y014,0.44,0.81,0.16,0.41,Black,Left,Grazing,87,Outdoor Paddock,0.9,Normal,False,False,1,False
+DET00771,VID004,852,2025-11-11 08:35:00,A001,0.4,0.14,0.1,0.26,Brown,Both,Lying,64,Rest Area,0.903,Normal,False,False,13,False
+DET00772,VID004,856,2025-11-11 08:35:30,Z013,0.26,0.65,0.21,0.35,Spotted,None,Grazing,74,Outdoor Paddock,0.788,Normal,False,False,10,False
+DET00773,VID004,861,2025-11-11 08:36:00,A008,0.83,0.56,0.29,0.38,Brown,None,Lying,65,Rest Area,0.839,Normal,False,False,6,False
+DET00774,VID004,868,2025-11-11 08:36:30,C016,0.33,0.35,0.29,0.25,Grey,Left,Walking,69,Medical Bay,0.934,Normal,False,False,12,False
+DET00775,VID004,872,2025-11-11 08:37:00,T002,0.02,0.36,0.18,0.3,Mixed,None,Walking,84,Outdoor Paddock,0.856,Normal,False,False,12,False
+DET00776,VID004,878,2025-11-11 08:37:30,E007,0.4,0.83,0.09,0.34,Mixed,Right,Standing,79,Outdoor Paddock,0.84,Normal,False,False,6,False
+DET00777,VID004,883,2025-11-11 08:38:00,F013,0.4,0.75,0.1,0.44,Mixed,Right,Running,82,Water Zone,0.892,Normal,False,False,6,False
+DET00778,VID004,889,2025-11-11 08:38:30,H016,0.22,0.45,0.16,0.13,Reddish,Both,Lying,72,Shelter,0.927,Unstable,False,False,12,False
+DET00779,VID004,891,2025-11-11 08:39:00,X019,0.19,0.31,0.13,0.44,Brown,Left,Walking,94,Feeding Area,0.784,Normal,False,False,13,False
+DET00780,VID004,895,2025-11-11 08:39:30,D001,0.78,0.44,0.08,0.26,White,Left,Walking,80,Rest Area,0.888,Normal,False,False,9,False
+DET00781,VID004,900,2025-11-11 08:40:00,O017,0.44,0.72,0.23,0.27,Mixed,None,Walking,89,Shelter,0.853,Normal,False,False,12,False
+DET00782,VID004,906,2025-11-11 08:40:30,D014,0.15,0.49,0.2,0.38,Mixed,Right,Lying,62,Outdoor Paddock,0.821,Normal,False,True,6,False
+DET00783,VID004,913,2025-11-11 08:41:00,R016,0.19,0.57,0.17,0.27,Mixed,None,Walking,83,Rest Area,0.964,Normal,False,False,3,False
+DET00784,VID004,916,2025-11-11 08:41:30,F003,0.02,0.51,0.31,0.38,Spotted,Left,Resting,73,Shelter,0.973,Normal,False,False,5,False
+DET00785,VID004,921,2025-11-11 08:42:00,L002,0.66,0.02,0.32,0.43,White,Right,Standing,87,Shelter,0.955,Normal,True,False,4,False
+DET00786,VID004,926,2025-11-11 08:42:30,E004,0.69,0.08,0.13,0.42,Mixed,Both,Standing,66,Feeding Area,0.976,Normal,False,False,7,False
+DET00787,VID004,930,2025-11-11 08:43:00,S008,0.41,0.43,0.34,0.13,Grey,Right,Grazing,97,Feeding Area,0.835,Limping,False,False,14,True
+DET00788,VID004,936,2025-11-11 08:43:30,E006,0.55,0.69,0.32,0.13,Brown,Left,Standing,87,Water Zone,0.793,Normal,False,False,8,False
+DET00789,VID004,940,2025-11-11 08:44:00,,0.68,0.74,0.26,0.24,Grey,None,Grazing,75,Feeding Area,0.928,Normal,False,False,2,True
+DET00790,VID004,945,2025-11-11 08:44:30,P013,0.34,0.32,0.31,0.33,White,Both,Grazing,98,Outdoor Paddock,0.758,Limping,False,True,7,False
+DET00791,VID004,954,2025-11-11 08:45:00,I013,0.13,0.01,0.32,0.15,White,Both,Resting,77,Shelter,0.955,Normal,False,False,11,False
+DET00792,VID004,955,2025-11-11 08:45:30,Y000,0.76,0.22,0.17,0.3,Spotted,Both,Grazing,93,Feeding Area,0.78,Normal,False,False,11,False
+DET00793,VID004,960,2025-11-11 08:46:00,O009,0.75,0.09,0.14,0.18,Mixed,Left,Grazing,84,Outdoor Paddock,0.932,Normal,False,False,10,False
+DET00794,VID004,965,2025-11-11 08:46:30,O018,0.33,0.04,0.13,0.18,Black,Both,Running,62,Water Zone,0.845,Normal,False,False,4,False
+DET00795,VID004,974,2025-11-11 08:47:00,K019,0.39,0.22,0.2,0.37,Mixed,Left,Grazing,98,Feeding Area,0.811,Normal,False,False,11,False
+DET00796,VID004,977,2025-11-11 08:47:30,N009,0.05,0.31,0.25,0.44,Black,Both,Standing,74,Feeding Area,0.779,Normal,False,False,8,True
+DET00797,VID004,980,2025-11-11 08:48:00,X015,0.43,0.34,0.33,0.45,Black,None,Running,62,Feeding Area,0.798,Normal,False,False,10,False
+DET00798,VID004,989,2025-11-11 08:48:30,O019,0.45,0.46,0.27,0.45,Black,Left,Standing,81,Water Zone,0.902,Limping,False,False,12,False
+DET00799,VID004,991,2025-11-11 08:49:00,W018,0.52,0.73,0.16,0.44,Grey,Left,Grazing,86,Outdoor Paddock,0.964,Normal,False,False,1,False
+DET00800,VID004,995,2025-11-11 08:49:30,C009,0.57,0.18,0.28,0.32,White,Both,Walking,69,Water Zone,0.865,Normal,False,False,4,False
+DET00801,VID005,3,2025-11-11 08:50:00,H001,0.36,0.5,0.15,0.24,Black,Left,Standing,72,Feeding Area,0.924,Normal,False,False,3,True
+DET00802,VID005,7,2025-11-11 08:50:30,,0.1,0.26,0.11,0.33,Grey,None,Walking,74,Feeding Area,0.88,Normal,False,False,13,False
+DET00803,VID005,12,2025-11-11 08:51:00,W012,0.84,0.32,0.32,0.16,Grey,Right,Grazing,98,Outdoor Paddock,0.932,Normal,False,False,10,False
+DET00804,VID005,19,2025-11-11 08:51:30,M007,0.74,0.57,0.31,0.44,Grey,Both,Walking,92,Rest Area,0.952,Normal,False,False,6,False
+DET00805,VID005,23,2025-11-11 08:52:00,M017,0.84,0.07,0.11,0.39,Black,Right,Standing,73,Shelter,0.814,Unstable,False,False,10,False
+DET00806,VID005,29,2025-11-11 08:52:30,A011,0.74,0.57,0.09,0.16,Reddish,Both,Grazing,73,Feeding Area,0.837,Normal,False,False,7,True
+DET00807,VID005,30,2025-11-11 08:53:00,O007,0.37,0.39,0.31,0.13,Grey,Right,Walking,65,Water Zone,0.886,Normal,False,False,15,False
+DET00808,VID005,38,2025-11-11 08:53:30,L006,0.39,0.76,0.18,0.35,Brown,None,Grazing,95,Feeding Area,0.828,Normal,False,False,3,True
+DET00809,VID005,44,2025-11-11 08:54:00,L018,0.34,0.3,0.3,0.4,Reddish,Both,Grazing,89,Feeding Area,0.826,Normal,False,False,7,True
+DET00810,VID005,48,2025-11-11 08:54:30,M014,0.33,0.22,0.27,0.24,Reddish,Right,Lying,74,Water Zone,0.98,Normal,False,False,15,False
+DET00811,VID005,54,2025-11-11 08:55:00,C013,0.25,0.48,0.13,0.32,White,None,Standing,82,Outdoor Paddock,0.97,Normal,False,False,6,False
+DET00812,VID005,59,2025-11-11 08:55:30,G016,0.78,0.09,0.34,0.39,Reddish,Left,Walking,67,Rest Area,0.99,Normal,True,False,11,False
+DET00813,VID005,62,2025-11-11 08:56:00,,0.19,0.59,0.14,0.41,Grey,None,Standing,69,Water Zone,0.982,Limping,False,False,9,False
+DET00814,VID005,69,2025-11-11 08:56:30,J016,0.35,0.72,0.24,0.33,Grey,Left,Walking,76,Rest Area,0.854,Normal,False,False,9,False
+DET00815,VID005,72,2025-11-11 08:57:00,,0.59,0.27,0.3,0.35,Reddish,None,Standing,89,Outdoor Paddock,0.92,Normal,False,False,4,False
+DET00816,VID005,77,2025-11-11 08:57:30,H000,0.83,0.7,0.14,0.21,Reddish,Both,Grazing,84,Outdoor Paddock,0.892,Normal,False,True,8,False
+DET00817,VID005,84,2025-11-11 08:58:00,T017,0.3,0.74,0.12,0.35,White,Left,Grazing,100,Feeding Area,0.921,Normal,False,False,7,True
+DET00818,VID005,88,2025-11-11 08:58:30,J013,0.57,0.28,0.23,0.41,Grey,None,Walking,86,Outdoor Paddock,0.825,Normal,False,False,6,False
+DET00819,VID005,94,2025-11-11 08:59:00,,0.83,0.52,0.22,0.36,Mixed,None,Standing,79,Water Zone,0.951,Normal,False,False,6,False
+DET00820,VID005,95,2025-11-11 08:59:30,,0.34,0.6,0.27,0.39,Grey,Right,Standing,70,Water Zone,0.773,Normal,False,False,8,False
+DET00821,VID005,100,2025-11-11 09:00:00,U011,0.17,0.3,0.25,0.15,Grey,Both,Grazing,70,Feeding Area,0.986,Normal,False,False,9,False
+DET00822,VID005,107,2025-11-11 09:00:30,B008,0.68,0.48,0.18,0.14,Black,None,Walking,80,Water Zone,0.878,Unstable,False,False,3,False
+DET00823,VID005,114,2025-11-11 09:01:00,J001,0.76,0.6,0.32,0.18,Black,Right,Standing,61,Outdoor Paddock,0.963,Normal,False,False,15,False
+DET00824,VID005,117,2025-11-11 09:01:30,,0.58,0.5,0.13,0.15,Black,None,Resting,92,Shelter,0.975,Limping,False,True,8,False
+DET00825,VID005,120,2025-11-11 09:02:00,D007,0.29,0.31,0.14,0.39,Black,Right,Standing,61,Medical Bay,0.945,Limping,False,False,2,False
+DET00826,VID005,129,2025-11-11 09:02:30,,0.56,0.78,0.23,0.35,Spotted,Right,Walking,85,Water Zone,0.818,Normal,False,False,11,False
+DET00827,VID005,133,2025-11-11 09:03:00,T006,0.07,0.02,0.11,0.31,Spotted,Right,Grazing,95,Outdoor Paddock,0.935,Normal,False,True,2,False
+DET00828,VID005,137,2025-11-11 09:03:30,M005,0.77,0.46,0.25,0.36,Spotted,Both,Standing,69,Medical Bay,0.795,Unstable,False,False,14,False
+DET00829,VID005,143,2025-11-11 09:04:00,A016,0.72,0.43,0.26,0.13,Black,Both,Grazing,75,Feeding Area,0.921,Normal,False,False,11,True
+DET00830,VID005,145,2025-11-11 09:04:30,K010,0.77,0.1,0.16,0.42,Mixed,Left,Resting,75,Rest Area,0.839,Normal,True,False,4,False
+DET00831,VID005,154,2025-11-11 09:05:00,T003,0.78,0.58,0.27,0.42,Brown,None,Lying,70,Shelter,0.969,Normal,True,False,7,False
+DET00832,VID005,157,2025-11-11 09:05:30,J014,0.69,0.41,0.24,0.33,Grey,Both,Walking,79,Water Zone,0.909,Normal,False,False,15,False
+DET00833,VID005,163,2025-11-11 09:06:00,,0.46,0.14,0.28,0.44,Mixed,Right,Grazing,79,Outdoor Paddock,0.955,Normal,False,False,15,False
+DET00834,VID005,166,2025-11-11 09:06:30,C008,0.72,0.17,0.22,0.13,Grey,Both,Standing,61,Medical Bay,0.794,Normal,False,False,10,False
+DET00835,VID005,172,2025-11-11 09:07:00,H006,0.38,0.65,0.26,0.29,Black,None,Walking,66,Outdoor Paddock,0.753,Normal,False,False,3,False
+DET00836,VID005,177,2025-11-11 09:07:30,U003,0.55,0.33,0.12,0.22,White,None,Standing,66,Rest Area,0.908,Normal,False,False,4,False
+DET00837,VID005,184,2025-11-11 09:08:00,C010,0.14,0.47,0.17,0.16,White,Right,Grazing,70,Feeding Area,0.924,Normal,True,False,11,True
+DET00838,VID005,188,2025-11-11 09:08:30,,0.05,0.33,0.23,0.4,Reddish,Both,Grazing,72,Feeding Area,0.906,Limping,False,False,5,True
+DET00839,VID005,193,2025-11-11 09:09:00,M006,0.2,0.42,0.15,0.44,Mixed,Right,Grazing,98,Feeding Area,0.859,Limping,False,True,12,False
+DET00840,VID005,198,2025-11-11 09:09:30,T003,0.14,0.63,0.2,0.22,White,Right,Grazing,98,Feeding Area,0.987,Normal,False,False,7,True
+DET00841,VID005,203,2025-11-11 09:10:00,X003,0.38,0.33,0.18,0.23,Grey,None,Walking,71,Water Zone,0.802,Normal,False,False,11,False
+DET00842,VID005,209,2025-11-11 09:10:30,X014,0.47,0.65,0.19,0.33,Black,Right,Standing,63,Outdoor Paddock,0.907,Normal,False,False,10,False
+DET00843,VID005,213,2025-11-11 09:11:00,,0.18,0.47,0.12,0.25,Spotted,Right,Standing,74,Feeding Area,0.917,Normal,False,False,12,True
+DET00844,VID005,216,2025-11-11 09:11:30,D008,0.66,0.17,0.19,0.27,Reddish,None,Walking,80,Rest Area,0.896,Normal,False,False,1,False
+DET00845,VID005,220,2025-11-11 09:12:00,E007,0.02,0.78,0.31,0.23,White,Left,Lying,61,Water Zone,0.928,Unstable,False,True,10,False
+DET00846,VID005,227,2025-11-11 09:12:30,Q008,0.38,0.29,0.13,0.22,Reddish,None,Lying,54,Water Zone,0.85,Normal,False,False,9,False
+DET00847,VID005,233,2025-11-11 09:13:00,O007,0.59,0.77,0.34,0.34,Black,Right,Standing,61,Water Zone,0.961,Normal,False,False,10,False
+DET00848,VID005,237,2025-11-11 09:13:30,D018,0.49,0.38,0.09,0.28,Mixed,Left,Lying,52,Rest Area,0.767,Limping,False,True,3,False
+DET00849,VID005,240,2025-11-11 09:14:00,O009,0.82,0.17,0.25,0.22,Reddish,Both,Grazing,95,Outdoor Paddock,0.754,Limping,False,True,14,False
+DET00850,VID005,247,2025-11-11 09:14:30,O006,0.83,0.77,0.09,0.23,Black,Both,Walking,87,Rest Area,0.813,Unstable,False,True,13,False
+DET00851,VID005,253,2025-11-11 09:15:00,R000,0.47,0.11,0.34,0.33,Mixed,Both,Grazing,76,Outdoor Paddock,0.841,Normal,False,False,6,False
+DET00852,VID005,257,2025-11-11 09:15:30,R014,0.84,0.36,0.27,0.16,Brown,Left,Grazing,85,Outdoor Paddock,0.814,Limping,False,True,11,False
+DET00853,VID005,262,2025-11-11 09:16:00,T017,0.1,0.69,0.3,0.16,White,None,Grazing,74,Feeding Area,0.937,Limping,True,True,13,True
+DET00854,VID005,269,2025-11-11 09:16:30,,0.5,0.82,0.34,0.33,Brown,Both,Walking,66,Shelter,0.783,Limping,False,True,12,False
+DET00855,VID005,270,2025-11-11 09:17:00,,0.67,0.2,0.09,0.15,Brown,None,Grazing,76,Outdoor Paddock,0.895,Normal,False,False,14,False
+DET00856,VID005,275,2025-11-11 09:17:30,Z019,0.01,0.15,0.13,0.17,Spotted,None,Walking,87,Feeding Area,0.795,Normal,False,False,7,False
+DET00857,VID005,284,2025-11-11 09:18:00,V002,0.43,0.24,0.2,0.39,Mixed,None,Grazing,90,Outdoor Paddock,0.818,Normal,False,False,15,False
+DET00858,VID005,285,2025-11-11 09:18:30,P017,0.37,0.57,0.32,0.27,Mixed,Both,Grazing,94,Outdoor Paddock,0.918,Normal,False,False,12,False
+DET00859,VID005,292,2025-11-11 09:19:00,M000,0.69,0.31,0.16,0.28,Spotted,None,Standing,65,Feeding Area,0.916,Normal,False,False,13,True
+DET00860,VID005,298,2025-11-11 09:19:30,U000,0.39,0.13,0.28,0.25,White,None,Walking,77,Shelter,0.786,Normal,False,False,15,False
+DET00861,VID005,301,2025-11-11 09:20:00,W008,0.16,0.08,0.19,0.17,Brown,None,Standing,72,Water Zone,0.823,Unstable,False,True,8,False
+DET00862,VID005,309,2025-11-11 09:20:30,W003,0.37,0.72,0.21,0.34,Brown,Both,Standing,70,Shelter,0.864,Normal,False,False,13,False
+DET00863,VID005,311,2025-11-11 09:21:00,A013,0.81,0.54,0.17,0.22,Spotted,Right,Walking,84,Water Zone,0.877,Normal,False,False,3,False
+DET00864,VID005,317,2025-11-11 09:21:30,Y004,0.05,0.38,0.19,0.19,Brown,None,Lying,78,Rest Area,0.902,Limping,False,True,6,False
+DET00865,VID005,324,2025-11-11 09:22:00,J015,0.17,0.11,0.17,0.33,Black,None,Running,62,Medical Bay,0.885,Limping,False,False,7,False
+DET00866,VID005,326,2025-11-11 09:22:30,E003,0.45,0.39,0.32,0.43,Mixed,Left,Standing,72,Water Zone,0.94,Normal,False,False,1,False
+DET00867,VID005,333,2025-11-11 09:23:00,G008,0.0,0.3,0.25,0.31,Reddish,Left,Resting,78,Shelter,0.895,Normal,False,False,15,False
+DET00868,VID005,339,2025-11-11 09:23:30,P002,0.62,0.63,0.13,0.38,Brown,None,Walking,78,Shelter,0.946,Normal,False,False,1,False
+DET00869,VID005,340,2025-11-11 09:24:00,N000,0.36,0.31,0.29,0.45,Grey,Right,Grazing,89,Outdoor Paddock,0.932,Normal,False,False,12,False
+DET00870,VID005,349,2025-11-11 09:24:30,I006,0.5,0.27,0.08,0.14,Brown,Right,Grazing,80,Outdoor Paddock,0.882,Normal,False,False,6,False
+DET00871,VID005,354,2025-11-11 09:25:00,B015,0.55,0.28,0.28,0.13,Spotted,Both,Walking,87,Water Zone,0.869,Limping,False,True,3,False
+DET00872,VID005,356,2025-11-11 09:25:30,,0.31,0.3,0.1,0.23,White,Right,Grazing,71,Outdoor Paddock,0.904,Normal,False,False,14,False
+DET00873,VID005,361,2025-11-11 09:26:00,F018,0.65,0.74,0.14,0.14,Mixed,Both,Standing,86,Shelter,0.804,Normal,False,False,3,False
+DET00874,VID005,366,2025-11-11 09:26:30,Q010,0.33,0.54,0.19,0.29,Brown,Right,Standing,82,Shelter,0.85,Normal,False,True,4,False
+DET00875,VID005,374,2025-11-11 09:27:00,R017,0.6,0.49,0.18,0.42,Black,Right,Standing,77,Feeding Area,0.97,Normal,False,False,9,True
+DET00876,VID005,376,2025-11-11 09:27:30,N002,0.28,0.28,0.15,0.16,Brown,Right,Standing,79,Shelter,0.911,Normal,False,False,7,False
+DET00877,VID005,380,2025-11-11 09:28:00,S015,0.17,0.65,0.28,0.22,Mixed,None,Lying,76,Rest Area,0.837,Normal,False,False,15,False
+DET00878,VID005,387,2025-11-11 09:28:30,B004,0.26,0.18,0.13,0.23,Grey,Right,Walking,79,Medical Bay,0.894,Normal,False,False,5,False
+DET00879,VID005,391,2025-11-11 09:29:00,,0.09,0.0,0.09,0.14,White,Left,Lying,59,Medical Bay,0.842,Normal,False,False,4,False
+DET00880,VID005,396,2025-11-11 09:29:30,L019,0.74,0.06,0.19,0.13,Reddish,Both,Lying,59,Water Zone,0.813,Normal,False,False,4,False
+DET00881,VID005,400,2025-11-11 09:30:00,M002,0.81,0.67,0.32,0.43,Black,Both,Standing,83,Water Zone,0.859,Limping,False,True,1,False
+DET00882,VID005,409,2025-11-11 09:30:30,L008,0.59,0.18,0.19,0.24,White,Right,Grazing,84,Outdoor Paddock,0.792,Normal,False,False,13,False
+DET00883,VID005,412,2025-11-11 09:31:00,K016,0.41,0.68,0.09,0.21,Reddish,None,Standing,74,Feeding Area,0.989,Normal,False,False,9,True
+DET00884,VID005,418,2025-11-11 09:31:30,K012,0.72,0.04,0.18,0.32,Grey,Right,Grazing,81,Outdoor Paddock,0.924,Normal,False,False,7,False
+DET00885,VID005,421,2025-11-11 09:32:00,T001,0.4,0.3,0.16,0.39,Reddish,Right,Walking,78,Rest Area,0.981,Normal,False,False,15,False
+DET00886,VID005,427,2025-11-11 09:32:30,X001,0.64,0.73,0.12,0.13,Spotted,None,Grazing,87,Feeding Area,0.954,Normal,False,False,14,True
+DET00887,VID005,430,2025-11-11 09:33:00,T001,0.1,0.43,0.09,0.15,White,Left,Lying,71,Water Zone,0.928,Normal,False,False,6,False
+DET00888,VID005,437,2025-11-11 09:33:30,U004,0.44,0.7,0.14,0.24,Grey,Both,Standing,80,Medical Bay,0.787,Normal,False,False,15,False
+DET00889,VID005,444,2025-11-11 09:34:00,Z007,0.12,0.06,0.34,0.2,Grey,Left,Running,72,Shelter,0.773,Normal,True,True,2,False
+DET00890,VID005,446,2025-11-11 09:34:30,N014,0.58,0.06,0.2,0.16,Brown,Right,Standing,79,Rest Area,0.832,Normal,False,False,15,False
+DET00891,VID005,453,2025-11-11 09:35:00,E007,0.04,0.42,0.09,0.23,White,Left,Walking,92,Medical Bay,0.931,Normal,False,False,15,False
+DET00892,VID005,457,2025-11-11 09:35:30,J001,0.42,0.02,0.09,0.28,White,Right,Grazing,72,Feeding Area,0.809,Normal,False,False,7,True
+DET00893,VID005,461,2025-11-11 09:36:00,Y000,0.03,0.26,0.29,0.4,Black,Right,Standing,81,Water Zone,0.892,Normal,True,False,2,False
+DET00894,VID005,469,2025-11-11 09:36:30,O001,0.59,0.33,0.33,0.34,White,Left,Grazing,92,Outdoor Paddock,0.792,Normal,False,True,10,False
+DET00895,VID005,472,2025-11-11 09:37:00,J003,0.13,0.71,0.13,0.28,White,Right,Walking,90,Shelter,0.967,Normal,True,False,6,False
+DET00896,VID005,479,2025-11-11 09:37:30,L014,0.61,0.69,0.34,0.16,Black,None,Standing,90,Outdoor Paddock,0.885,Normal,False,False,1,False
+DET00897,VID005,484,2025-11-11 09:38:00,S017,0.54,0.09,0.21,0.21,Spotted,Right,Standing,62,Rest Area,0.961,Normal,False,False,4,False
+DET00898,VID005,486,2025-11-11 09:38:30,,0.14,0.48,0.26,0.27,Spotted,Left,Grazing,85,Feeding Area,0.983,Normal,False,False,1,True
+DET00899,VID005,491,2025-11-11 09:39:00,M004,0.6,0.01,0.1,0.38,White,Left,Grazing,70,Outdoor Paddock,0.961,Normal,False,False,13,False
+DET00900,VID005,496,2025-11-11 09:39:30,Y006,0.41,0.18,0.13,0.3,Mixed,Both,Standing,64,Outdoor Paddock,0.785,Normal,False,False,2,False
+DET00901,VID005,504,2025-11-11 09:40:00,G001,0.64,0.71,0.18,0.19,Brown,Right,Standing,73,Feeding Area,0.959,Normal,True,False,15,True
+DET00902,VID005,508,2025-11-11 09:40:30,S007,0.19,0.77,0.21,0.43,Spotted,Right,Walking,89,Shelter,0.788,Normal,False,False,7,False
+DET00903,VID005,514,2025-11-11 09:41:00,,0.06,0.07,0.32,0.17,Mixed,Both,Grazing,82,Outdoor Paddock,0.861,Normal,False,False,9,False
+DET00904,VID005,519,2025-11-11 09:41:30,P015,0.73,0.4,0.21,0.37,Reddish,None,Grazing,72,Outdoor Paddock,0.984,Normal,False,False,11,False
+DET00905,VID005,522,2025-11-11 09:42:00,S015,0.25,0.44,0.16,0.42,Black,None,Grazing,79,Feeding Area,0.948,Normal,False,False,7,True
+DET00906,VID005,526,2025-11-11 09:42:30,T011,0.67,0.68,0.27,0.18,Mixed,Left,Walking,82,Rest Area,0.799,Normal,False,False,12,False
+DET00907,VID005,532,2025-11-11 09:43:00,K010,0.51,0.54,0.17,0.41,Reddish,Right,Grazing,82,Outdoor Paddock,0.922,Limping,False,True,5,False
+DET00908,VID005,539,2025-11-11 09:43:30,,0.11,0.32,0.23,0.25,White,None,Running,63,Medical Bay,0.859,Unstable,False,True,10,False
+DET00909,VID005,543,2025-11-11 09:44:00,C012,0.83,0.53,0.21,0.16,Grey,Right,Grazing,74,Feeding Area,0.779,Normal,False,True,2,True
+DET00910,VID005,549,2025-11-11 09:44:30,G010,0.67,0.79,0.27,0.19,Mixed,Both,Standing,70,Outdoor Paddock,0.923,Normal,False,False,10,False
+DET00911,VID005,554,2025-11-11 09:45:00,V010,0.47,0.71,0.12,0.3,Brown,None,Standing,90,Medical Bay,0.799,Normal,False,False,12,False
+DET00912,VID005,559,2025-11-11 09:45:30,N016,0.69,0.11,0.15,0.25,Black,Right,Walking,93,Water Zone,0.97,Normal,True,False,7,False
+DET00913,VID005,564,2025-11-11 09:46:00,R009,0.33,0.18,0.11,0.15,Mixed,Right,Grazing,93,Outdoor Paddock,0.954,Normal,True,False,4,False
+DET00914,VID005,568,2025-11-11 09:46:30,S016,0.45,0.27,0.21,0.32,Reddish,Right,Walking,76,Water Zone,0.919,Normal,False,False,13,False
+DET00915,VID005,573,2025-11-11 09:47:00,Q001,0.3,0.23,0.27,0.42,Grey,Right,Resting,84,Rest Area,0.905,Normal,False,True,10,False
+DET00916,VID005,577,2025-11-11 09:47:30,B000,0.42,0.62,0.33,0.15,Brown,Left,Standing,71,Rest Area,0.865,Normal,False,False,10,False
+DET00917,VID005,584,2025-11-11 09:48:00,R006,0.03,0.32,0.09,0.2,Mixed,None,Standing,82,Outdoor Paddock,0.762,Normal,False,False,5,False
+DET00918,VID005,586,2025-11-11 09:48:30,O005,0.74,0.16,0.19,0.17,White,None,Lying,69,Feeding Area,0.887,Normal,False,False,12,False
+DET00919,VID005,591,2025-11-11 09:49:00,Y001,0.8,0.76,0.14,0.39,Black,Both,Standing,63,Rest Area,0.946,Normal,False,False,13,False
+DET00920,VID005,597,2025-11-11 09:49:30,H016,0.45,0.16,0.29,0.23,Black,Left,Grazing,70,Feeding Area,0.845,Normal,False,False,4,True
+DET00921,VID005,602,2025-11-11 09:50:00,O005,0.39,0.39,0.27,0.36,Black,Both,Standing,72,Water Zone,0.75,Normal,False,False,7,False
+DET00922,VID005,609,2025-11-11 09:50:30,U013,0.76,0.4,0.25,0.29,Reddish,Right,Walking,81,Medical Bay,0.79,Limping,False,True,2,False
+DET00923,VID005,614,2025-11-11 09:51:00,R002,0.25,0.51,0.19,0.24,Brown,Both,Grazing,76,Feeding Area,0.802,Normal,False,False,10,True
+DET00924,VID005,616,2025-11-11 09:51:30,P009,0.34,0.12,0.32,0.42,Brown,Right,Grazing,92,Outdoor Paddock,0.839,Normal,False,False,4,False
+DET00925,VID005,621,2025-11-11 09:52:00,V004,0.09,0.32,0.17,0.42,Mixed,Right,Standing,69,Rest Area,0.947,Normal,True,False,14,False
+DET00926,VID005,628,2025-11-11 09:52:30,,0.28,0.26,0.22,0.12,White,None,Walking,82,Rest Area,0.764,Normal,False,False,8,False
+DET00927,VID005,633,2025-11-11 09:53:00,F007,0.39,0.53,0.16,0.14,Spotted,Both,Lying,74,Medical Bay,0.854,Normal,False,False,12,False
+DET00928,VID005,639,2025-11-11 09:53:30,X011,0.13,0.7,0.17,0.36,Mixed,Left,Standing,84,Water Zone,0.772,Normal,False,True,5,False
+DET00929,VID005,640,2025-11-11 09:54:00,J019,0.36,0.16,0.3,0.41,Grey,Left,Resting,69,Rest Area,0.988,Normal,True,False,13,False
+DET00930,VID005,645,2025-11-11 09:54:30,U017,0.83,0.79,0.21,0.15,Grey,Left,Walking,76,Medical Bay,0.979,Normal,False,False,14,False
+DET00931,VID005,652,2025-11-11 09:55:00,Q014,0.45,0.57,0.31,0.31,Mixed,Left,Running,79,Water Zone,0.804,Normal,False,False,9,False
+DET00932,VID005,657,2025-11-11 09:55:30,L001,0.84,0.04,0.24,0.38,Brown,Both,Running,72,Water Zone,0.953,Normal,False,False,3,False
+DET00933,VID005,660,2025-11-11 09:56:00,Z017,0.31,0.63,0.19,0.23,White,None,Standing,75,Shelter,0.766,Normal,False,False,14,False
+DET00934,VID005,668,2025-11-11 09:56:30,Y004,0.83,0.28,0.18,0.22,Grey,Right,Lying,62,Outdoor Paddock,0.801,Normal,False,False,13,False
+DET00935,VID005,671,2025-11-11 09:57:00,E012,0.28,0.32,0.1,0.15,Reddish,Both,Standing,73,Medical Bay,0.965,Limping,False,False,3,False
+DET00936,VID005,675,2025-11-11 09:57:30,,0.15,0.11,0.35,0.24,Mixed,Left,Walking,67,Feeding Area,0.79,Normal,False,False,2,False
+DET00937,VID005,680,2025-11-11 09:58:00,Q001,0.78,0.67,0.32,0.39,Grey,Both,Grazing,79,Feeding Area,0.95,Normal,False,False,5,False
+DET00938,VID005,689,2025-11-11 09:58:30,,0.52,0.59,0.09,0.4,Mixed,None,Walking,90,Medical Bay,0.836,Normal,False,False,7,False
+DET00939,VID005,693,2025-11-11 09:59:00,M000,0.68,0.72,0.26,0.19,Grey,None,Walking,66,Feeding Area,0.764,Limping,False,False,3,False
+DET00940,VID005,696,2025-11-11 09:59:30,O009,0.65,0.58,0.24,0.36,Grey,Right,Standing,80,Shelter,0.976,Normal,False,False,4,False
+DET00941,VID005,703,2025-11-11 10:00:00,S012,0.13,0.16,0.1,0.13,Reddish,Left,Grazing,96,Outdoor Paddock,0.861,Unstable,False,False,8,False
+DET00942,VID005,706,2025-11-11 10:00:30,M003,0.82,0.36,0.16,0.42,Spotted,None,Standing,85,Water Zone,0.979,Normal,False,False,3,False
+DET00943,VID005,710,2025-11-11 10:01:00,M005,0.44,0.42,0.16,0.19,Black,Right,Standing,60,Shelter,0.837,Normal,False,False,2,False
+DET00944,VID005,718,2025-11-11 10:01:30,X012,0.43,0.18,0.17,0.34,Mixed,Left,Grazing,98,Feeding Area,0.854,Limping,False,False,12,True
+DET00945,VID005,722,2025-11-11 10:02:00,M013,0.39,0.24,0.08,0.31,Reddish,Both,Grazing,98,Outdoor Paddock,0.973,Limping,False,True,6,False
+DET00946,VID005,729,2025-11-11 10:02:30,N011,0.26,0.55,0.09,0.2,Spotted,Left,Grazing,70,Feeding Area,0.76,Unstable,False,True,7,False
+DET00947,VID005,730,2025-11-11 10:03:00,O000,0.45,0.76,0.33,0.13,Reddish,Left,Walking,86,Feeding Area,0.869,Normal,False,False,13,False
+DET00948,VID005,735,2025-11-11 10:03:30,V007,0.84,0.48,0.17,0.3,Black,Both,Walking,67,Rest Area,0.905,Limping,True,True,12,False
+DET00949,VID005,742,2025-11-11 10:04:00,O019,0.57,0.35,0.32,0.19,Black,Left,Standing,89,Rest Area,0.824,Normal,False,False,3,False
+DET00950,VID005,745,2025-11-11 10:04:30,A003,0.81,0.06,0.29,0.37,Brown,None,Standing,74,Rest Area,0.779,Normal,False,False,2,False
+DET00951,VID005,753,2025-11-11 10:05:00,O004,0.67,0.3,0.1,0.18,Reddish,None,Grazing,78,Feeding Area,0.969,Normal,False,False,2,False
+DET00952,VID005,757,2025-11-11 10:05:30,P014,0.59,0.17,0.35,0.37,Brown,Both,Grazing,82,Outdoor Paddock,0.775,Normal,False,False,4,False
+DET00953,VID005,764,2025-11-11 10:06:00,N012,0.5,0.59,0.34,0.37,Reddish,Right,Grazing,84,Outdoor Paddock,0.827,Normal,False,True,4,False
+DET00954,VID005,765,2025-11-11 10:06:30,A017,0.84,0.79,0.26,0.26,Reddish,Both,Resting,90,Shelter,0.77,Normal,False,False,2,False
+DET00955,VID005,774,2025-11-11 10:07:00,,0.42,0.85,0.28,0.23,Spotted,Both,Walking,85,Rest Area,0.809,Normal,False,True,2,False
+DET00956,VID005,775,2025-11-11 10:07:30,I000,0.82,0.12,0.15,0.25,Black,Left,Grazing,83,Feeding Area,0.984,Normal,False,False,7,False
+DET00957,VID005,782,2025-11-11 10:08:00,K008,0.08,0.12,0.22,0.32,White,Left,Standing,68,Rest Area,0.826,Normal,False,False,2,False
+DET00958,VID005,786,2025-11-11 10:08:30,,0.26,0.65,0.28,0.42,White,Left,Lying,71,Rest Area,0.774,Normal,False,False,15,False
+DET00959,VID005,793,2025-11-11 10:09:00,,0.28,0.63,0.12,0.15,Spotted,Both,Standing,75,Feeding Area,0.863,Normal,False,False,10,True
+DET00960,VID005,796,2025-11-11 10:09:30,,0.14,0.55,0.23,0.41,Mixed,Both,Grazing,93,Feeding Area,0.791,Unstable,False,False,7,False
+DET00961,VID005,804,2025-11-11 10:10:00,D010,0.68,0.66,0.13,0.3,White,Right,Standing,81,Medical Bay,0.796,Normal,False,False,10,False
+DET00962,VID005,808,2025-11-11 10:10:30,O014,0.23,0.52,0.32,0.35,Brown,Right,Standing,63,Medical Bay,0.892,Normal,False,False,14,False
+DET00963,VID005,814,2025-11-11 10:11:00,,0.57,0.11,0.09,0.45,Mixed,Both,Walking,86,Medical Bay,0.782,Normal,False,False,11,False
+DET00964,VID005,816,2025-11-11 10:11:30,Q009,0.59,0.35,0.17,0.27,Black,Both,Lying,60,Medical Bay,0.841,Normal,False,False,14,False
+DET00965,VID005,821,2025-11-11 10:12:00,S001,0.16,0.57,0.34,0.2,Grey,Left,Grazing,78,Feeding Area,0.854,Normal,False,False,12,True
+DET00966,VID005,827,2025-11-11 10:12:30,F013,0.75,0.12,0.16,0.26,White,Right,Walking,81,Feeding Area,0.891,Normal,False,False,12,False
+DET00967,VID005,832,2025-11-11 10:13:00,X006,0.33,0.14,0.14,0.42,White,None,Walking,77,Water Zone,0.987,Normal,False,False,5,False
+DET00968,VID005,837,2025-11-11 10:13:30,J006,0.08,0.73,0.22,0.22,Grey,Both,Standing,90,Feeding Area,0.808,Normal,False,False,11,True
+DET00969,VID005,844,2025-11-11 10:14:00,V006,0.45,0.16,0.21,0.29,Black,Both,Grazing,92,Outdoor Paddock,0.886,Normal,False,False,5,False
+DET00970,VID005,848,2025-11-11 10:14:30,P003,0.23,0.17,0.19,0.4,Spotted,Left,Standing,75,Outdoor Paddock,0.797,Normal,True,False,8,False
+DET00971,VID005,851,2025-11-11 10:15:00,Z004,0.19,0.81,0.08,0.15,Spotted,None,Standing,87,Feeding Area,0.799,Normal,False,False,11,True
+DET00972,VID005,859,2025-11-11 10:15:30,G018,0.19,0.18,0.18,0.13,White,Right,Standing,68,Shelter,0.891,Normal,False,False,4,False
+DET00973,VID005,864,2025-11-11 10:16:00,,0.68,0.67,0.22,0.33,Reddish,None,Standing,82,Rest Area,0.88,Normal,False,True,14,False
+DET00974,VID005,868,2025-11-11 10:16:30,L001,0.68,0.75,0.11,0.29,Black,Left,Standing,82,Rest Area,0.974,Normal,False,False,12,False
+DET00975,VID005,870,2025-11-11 10:17:00,D005,0.02,0.23,0.13,0.17,Mixed,Both,Walking,71,Water Zone,0.797,Normal,False,False,10,False
+DET00976,VID005,876,2025-11-11 10:17:30,,0.62,0.62,0.18,0.37,Reddish,Left,Running,68,Water Zone,0.915,Normal,False,False,3,False
+DET00977,VID005,882,2025-11-11 10:18:00,,0.15,0.72,0.19,0.15,Black,None,Standing,73,Feeding Area,0.854,Normal,False,False,12,True
+DET00978,VID005,889,2025-11-11 10:18:30,V014,0.5,0.82,0.24,0.23,Grey,None,Running,74,Outdoor Paddock,0.909,Normal,False,False,14,False
+DET00979,VID005,893,2025-11-11 10:19:00,N006,0.52,0.79,0.3,0.4,Black,Right,Grazing,94,Outdoor Paddock,0.973,Limping,False,False,15,False
+DET00980,VID005,895,2025-11-11 10:19:30,J017,0.45,0.73,0.23,0.25,Mixed,None,Standing,65,Outdoor Paddock,0.96,Normal,False,False,14,False
+DET00981,VID005,904,2025-11-11 10:20:00,D015,0.21,0.47,0.17,0.3,Brown,Left,Grazing,74,Feeding Area,0.761,Normal,False,False,13,True
+DET00982,VID005,905,2025-11-11 10:20:30,F019,0.38,0.36,0.25,0.15,Reddish,Left,Grazing,91,Outdoor Paddock,0.988,Normal,True,True,1,False
+DET00983,VID005,910,2025-11-11 10:21:00,L000,0.03,0.27,0.28,0.39,Spotted,Both,Standing,66,Medical Bay,0.979,Normal,False,False,6,False
+DET00984,VID005,915,2025-11-11 10:21:30,M006,0.82,0.02,0.12,0.24,Grey,Both,Walking,81,Shelter,0.82,Normal,False,False,3,False
+DET00985,VID005,924,2025-11-11 10:22:00,B012,0.41,0.42,0.33,0.15,Black,Left,Grazing,95,Feeding Area,0.825,Normal,False,False,1,True
+DET00986,VID005,925,2025-11-11 10:22:30,T007,0.21,0.29,0.17,0.24,Spotted,Left,Grazing,82,Outdoor Paddock,0.885,Normal,False,False,4,False
+DET00987,VID005,932,2025-11-11 10:23:00,C010,0.31,0.7,0.29,0.24,White,Both,Walking,66,Medical Bay,0.8,Normal,False,False,10,False
+DET00988,VID005,937,2025-11-11 10:23:30,A017,0.66,0.66,0.34,0.4,Spotted,None,Standing,61,Rest Area,0.942,Limping,False,True,9,False
+DET00989,VID005,940,2025-11-11 10:24:00,U017,0.45,0.0,0.25,0.21,Reddish,None,Grazing,85,Outdoor Paddock,0.961,Normal,False,False,4,False
+DET00990,VID005,949,2025-11-11 10:24:30,U009,0.23,0.13,0.1,0.35,Spotted,Left,Walking,81,Outdoor Paddock,0.905,Normal,False,False,1,False
+DET00991,VID005,951,2025-11-11 10:25:00,M014,0.61,0.31,0.28,0.29,Black,Both,Grazing,94,Outdoor Paddock,0.77,Limping,False,True,11,False
+DET00992,VID005,958,2025-11-11 10:25:30,W008,0.64,0.64,0.31,0.13,Grey,None,Walking,76,Rest Area,0.88,Normal,False,False,12,False
+DET00993,VID005,960,2025-11-11 10:26:00,Y001,0.32,0.35,0.16,0.22,Spotted,Both,Walking,88,Feeding Area,0.838,Normal,False,False,5,False
+DET00994,VID005,967,2025-11-11 10:26:30,G017,0.4,0.71,0.1,0.35,White,Left,Walking,66,Rest Area,0.807,Limping,False,False,6,False
+DET00995,VID005,971,2025-11-11 10:27:00,N003,0.5,0.75,0.11,0.36,Reddish,None,Running,57,Feeding Area,0.921,Normal,False,False,2,False
+DET00996,VID005,979,2025-11-11 10:27:30,,0.83,0.2,0.1,0.34,Grey,None,Standing,80,Rest Area,0.99,Normal,False,True,2,False
+DET00997,VID005,980,2025-11-11 10:28:00,F006,0.65,0.42,0.34,0.45,White,Right,Resting,90,Shelter,0.937,Normal,False,True,15,False
+DET00998,VID005,986,2025-11-11 10:28:30,B007,0.85,0.02,0.11,0.38,White,None,Running,71,Feeding Area,0.809,Normal,False,False,5,False
+DET00999,VID005,992,2025-11-11 10:29:00,E010,0.1,0.62,0.19,0.12,Spotted,None,Grazing,89,Outdoor Paddock,0.782,Normal,False,False,2,False
+DET01000,VID005,999,2025-11-11 10:29:30,D008,0.24,0.46,0.14,0.25,Grey,Left,Running,73,Water Zone,0.932,Normal,False,False,4,False

@@ -1,0 +1,185 @@
+/* ============================================================================
+   LIGHT THEME OVERRIDES
+   ============================================================================ */
+
+/* Light Theme Glass Effects */
+.light .glass-panel {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.light .glass-strong {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Light Theme Text Colors */
+.light .text-white {
+    color: #0F172A !important;
+}
+
+.light .text-slate-400 {
+    color: #64748B !important;
+}
+
+.light .text-slate-300 {
+    color: #475569 !important;
+}
+
+.light .text-slate-500 {
+    color: #64748B !important;
+}
+
+.light .text-slate-600 {
+    color: #475569 !important;
+}
+
+/* Light Theme Backgrounds */
+.light .bg-slate-900,
+.light .bg-slate-950 {
+    background-color: #F1F5F9 !important;
+}
+
+.light .bg-slate-800 {
+    background-color: #E2E8F0 !important;
+}
+
+.light .bg-slate-700 {
+    background-color: #CBD5E1 !important;
+}
+
+/* Light Theme Borders */
+.light .border-slate-700,
+.light .border-slate-800 {
+    border-color: #CBD5E1 !important;
+}
+
+/* Light Theme Navigation */
+.light .glass-nav-btn {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    color: #64748B;
+}
+
+.light .glass-nav-btn:hover {
+    background: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.12);
+    color: #0F172A;
+}
+
+.light .glass-nav-btn.active {
+    background: linear-gradient(90deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%);
+    border-color: rgba(16, 185, 129, 0.4);
+    color: #059669;
+}
+
+/* Light Theme Buttons */
+.light .btn-secondary {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    color: #475569;
+}
+
+.light .btn-secondary:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(148, 163, 184, 0.5);
+    color: #0F172A;
+}
+
+.light .btn-icon {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    color: #64748B;
+}
+
+.light .btn-icon:hover {
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(148, 163, 184, 0.5);
+    color: #0F172A;
+}
+
+/* Light Theme Cards */
+.light .stat-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+}
+
+.light .card-hover:hover {
+    box-shadow:
+        0 30px 60px -12px rgba(0, 0, 0, 0.2),
+        0 0 50px rgba(16, 185, 129, 0.15);
+}
+
+/* Light Theme Inputs */
+.light input[type="text"],
+.light input[type="email"],
+.light input[type="password"],
+.light input[type="number"],
+.light textarea,
+.light select {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    color: #0F172A;
+}
+
+.light input[type="text"]:focus,
+.light input[type="email"]:focus,
+.light input[type="password"]:focus,
+.light input[type="number"]:focus,
+.light textarea:focus,
+.light select:focus {
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(16, 185, 129, 0.5);
+    box-shadow:
+        0 0 0 3px rgba(16, 185, 129, 0.1),
+        inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Light Theme Scrollbar */
+.light ::-webkit-scrollbar-track {
+    background: rgba(241, 245, 249, 0.5);
+}
+
+.light ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #10B981 0%, #3B82F6 100%);
+}
+
+/* Light Theme Header */
+.light header {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+/* Light Theme Sidebar */
+.light aside {
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(20px);
+    border-right: 1px solid rgba(148, 163, 184, 0.2) !important;
+}
+
+/* Light Theme Tooltips */
+.light .tooltip::before {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    color: white;
+}
+
+/* Light Theme Shadows */
+.light .shadow-xl {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+.light .shadow-2xl {
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Light Theme Chart Container */
+.light .chart-container {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+}

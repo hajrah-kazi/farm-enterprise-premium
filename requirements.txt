@@ -1,0 +1,10 @@
+Flask==3.0.0
+Flask-CORS==4.0.0
+# Future AI/ML dependencies (uncomment when ready to implement)
+# ultralytics==8.0.0  # YOLOv8
+# easyocr==1.7.0      # OCR for ear tags
+# opencv-python==4.8.0
+# numpy==1.24.0
+# pandas==2.0.0
+# torch==2.0.0
+# torchvision==0.15.0
