@@ -16,7 +16,7 @@ const LiveFeed = () => {
 
         const interval = setInterval(async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/live-feed');
+                const response = await axios.get('/api/live-feed');
                 if (response.data.success && response.data.data) {
                     setDetections(response.data.data.detections || []);
                 }

@@ -37,7 +37,7 @@ const Reports = () => {
 
     const fetchReports = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/reports');
+            const response = await axios.get('/api/reports');
             if (response.data.success && response.data.data) {
                 setReports(response.data.data.reports || []);
             } else if (response.data.reports) {
@@ -65,7 +65,7 @@ const Reports = () => {
                 ...config
             };
 
-            const response = await axios.post('http://localhost:5000/api/reports/generate', payload);
+            const response = await axios.post('/api/reports/generate', payload);
 
             if (response.data && response.data.data) {
                 // If the backend returns the generated data
@@ -206,7 +206,7 @@ const Reports = () => {
     const downloadExistingReport = async (report) => {
         try {
             // First fetch full data
-            const response = await axios.get(`http://localhost:5000/api/reports/${report.report_id}`);
+            const response = await axios.get(`/api/reports/${report.report_id}`);
             if (response.data) {
                 // Reuse preview logic to set data, then download immediately? 
                 // Or just reproduce the logic. Let's just set preview and show modal so they can see it first.

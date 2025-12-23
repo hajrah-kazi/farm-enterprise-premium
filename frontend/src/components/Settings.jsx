@@ -19,7 +19,7 @@ const Settings = () => {
 
     const fetchSettings = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/settings');
+            const response = await axios.get('/api/settings');
             if (response.data.success && response.data.data) {
                 // Parse values where necessary
                 const parsed = { ...response.data.data };
@@ -36,7 +36,7 @@ const Settings = () => {
     const handleSave = async () => {
         setSaving(true);
         try {
-            await axios.post('http://localhost:5000/api/settings', settings);
+            await axios.post('/api/settings', settings);
             setTimeout(() => setSaving(false), 1000);
         } catch (error) {
             console.error('Error saving settings:', error);

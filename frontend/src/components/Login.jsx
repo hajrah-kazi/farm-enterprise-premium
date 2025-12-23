@@ -27,7 +27,7 @@ const Login = ({ onLogin }) => {
             // Simulated delay for effect if almost instant
             await new Promise(r => setTimeout(r, 800));
 
-            const response = await axios.post('http://localhost:5000/api/login', {
+            const response = await axios.post('/api/login', {
                 username,
                 password
             });

@@ -68,7 +68,7 @@ const Dashboard = () => {
 
     const fetchDashboardData = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/dashboard');
+            const response = await axios.get('/api/dashboard');
             // Support both wrapped and unwrapped data
             const data = response.data.data || response.data;
             if (data && typeof data === 'object') {
@@ -83,7 +83,7 @@ const Dashboard = () => {
 
     const fetchSystemStatus = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/system/status');
+            const response = await axios.get('/api/system/status');
             const data = response.data.data || response.data;
             if (data) {
                 setSystemStatus(data);

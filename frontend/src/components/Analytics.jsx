@@ -22,7 +22,7 @@ const Analytics = () => {
     const fetchMassData = async () => {
         setLoading(true);
         try {
-            const response = await axios.get('http://localhost:5000/api/analytics/mass');
+            const response = await axios.get('/api/analytics/mass');
             // Backend returns: { success: true, data: [...] } OR just [...] 
             // My successful curl showed a raw array? No, wait. 
             // Invok-RestMethod usually parses JSON automatically. 

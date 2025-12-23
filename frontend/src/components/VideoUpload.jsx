@@ -57,7 +57,7 @@ const VideoUpload = () => {
     const processVideo = async (fileObj) => {
         try {
             // 1. Register with backend
-            const response = await axios.post('http://localhost:5000/api/videos', {
+            const response = await axios.post('/api/videos', {
                 filename: fileObj.name,
                 file_path: `/data/videos/${fileObj.name}`,
                 file_size: parseFloat(fileObj.size),
@@ -90,7 +90,7 @@ const VideoUpload = () => {
         const interval = setInterval(async () => {
             try {
                 // Fetch all videos (simplest way since we don't have get_video_by_id)
-                const response = await axios.get('http://localhost:5000/api/videos');
+                const response = await axios.get('/api/videos');
                 const videos = response.data.data.videos || [];
                 const video = videos.find(v => v.video_id === backendId);
 

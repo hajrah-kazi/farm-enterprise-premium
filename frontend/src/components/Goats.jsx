@@ -32,7 +32,7 @@ const Goats = () => {
     const fetchGoats = async () => {
         try {
             setLoading(true);
-            const response = await axios.get(`http://localhost:5000/api/goats?page=${page}&status=${filterStatus}&search=${searchTerm}`);
+            const response = await axios.get(`/api/goats?page=${page}&status=${filterStatus}&search=${searchTerm}`);
             const data = response.data.data !== undefined ? response.data.data : response.data.goats;
             if (data) {
                 setGoats(data || []);
@@ -47,7 +47,7 @@ const Goats = () => {
 
     const fetchGoatDetails = async (id) => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/goats/${id}`);
+            const response = await axios.get(`/api/goats/${id}`);
             const data = response.data.data || response.data.goat || response.data;
             if (data) {
                 setSelectedGoat(data);
@@ -60,7 +60,7 @@ const Goats = () => {
     const handleAddGoat = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/api/goats', newGoat);
+            await axios.post('/api/goats', newGoat);
             setIsModalOpen(false);
             fetchGoats();
             setNewGoat({ ear_tag: '', breed: '', gender: 'Female', weight: '' });

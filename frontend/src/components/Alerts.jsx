@@ -14,7 +14,7 @@ const Alerts = () => {
 
     const fetchAlerts = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/alerts');
+            const response = await axios.get('/api/alerts');
             const data = response.data.data ? response.data.data.alerts : (response.data.alerts || response.data);
             if (data) {
                 setAlerts(Array.isArray(data) ? data : []);
@@ -28,7 +28,7 @@ const Alerts = () => {
 
     const resolveAlert = async (id) => {
         try {
-            await axios.patch(`http://localhost:5000/api/alerts/${id}`);
+            await axios.patch(`/api/alerts/${id}`);
             // Remove from local state
             setAlerts(prev => prev.filter(a => a.event_id !== id));
         } catch (error) {
