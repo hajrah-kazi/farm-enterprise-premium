@@ -1,0 +1,8 @@
+{
+    "name": "farm-enterprise-premium",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "npm run build --prefix frontend",
+        "install": "npm install --prefix frontend"
+    }
+}
