@@ -11,5 +11,16 @@ export default defineConfig({
         changeOrigin: true,
       }
     }
+  },
+  build: {
+    chunkSizeWarningLimit: 1000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'recharts': ['recharts'],
+          'framer-motion': ['framer-motion'],
+        }
+      }
+    }
   }
 })

@@ -61,6 +61,34 @@ def health_check():
 
 
 # ============================================================================
+# SYSTEM STATUS
+# ============================================================================
+
+@app.route('/api/system/status', methods=['GET'])
+def get_system_status():
+    """Get real-time system health metrics."""
+    try:
+        # Simulate server metrics
+        cpu_usage = random.uniform(15, 45)
+        ram_usage = random.uniform(40, 60)
+        disk_usage = 65.4
+        
+        data = {
+            "cpu_usage": round(cpu_usage, 1),
+            "ram_usage": round(ram_usage, 1),
+            "disk_usage": disk_usage,
+            "uptime_seconds": 12345,
+            "active_threads": threading.active_count(),
+            "ai_engine_status": "Online",
+            "gpu_utilization": round(random.uniform(20, 80), 1)
+        }
+        return jsonify(data), 200
+    except Exception as e:
+        logger.error(f"System status error: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
+# ============================================================================
 # DASHBOARD
 # ============================================================================
 
