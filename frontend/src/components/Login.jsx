@@ -24,22 +24,26 @@ const Login = ({ onLogin }) => {
         setError('');
 
         try {
-            // Simulated delay for effect if almost instant
+            // Simulated delay for effect
             await new Promise(r => setTimeout(r, 800));
 
-            const response = await axios.post('/api/login', {
-                username,
-                password
-            });
-
-            const responseData = response.data;
-            const userData = responseData.data?.user || responseData.user;
-
-            if (userData) {
+            // Client-side authentication for Vercel deployment
+            // In production, this would be replaced with actual API authentication
+            if ((username === 'admin' && password === 'admin') ||
+                (username === 'demo' && password === 'demo')) {
+                const userData = {
+                    username: username,
+                    role: 'admin',
+                    name: username === 'admin' ? 'Administrator' : 'Demo User',
+                    email: `${username}@goatfarm.com`
+                };
                 onLogin(userData);
+            } else {
+                setError('Invalid credentials. Use admin/admin or demo/demo');
+                setLoading(false);
             }
         } catch (err) {
-            setError(err.response?.data?.error || 'Authentication failed');
+            setError('Authentication failed');
             setLoading(false);
         }
     };
