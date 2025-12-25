@@ -33,11 +33,11 @@ const Goats = () => {
         try {
             setLoading(true);
             const response = await axios.get(`/api/goats?page=${page}&status=${filterStatus}&search=${searchTerm}`);
-            const data = response.data.data !== undefined ? response.data.data : response.data.goats;
-            if (data) {
-                setGoats(data || []);
-                setTotalPages(response.data.pages || 1);
-            }
+            const resData = response.data.data || response.data;
+            const goatsList = Array.isArray(resData) ? resData : (resData.goats || []);
+
+            setGoats(goatsList);
+            setTotalPages(resData.pages || 1);
             setLoading(false);
         } catch (error) {
             console.error('Error fetching goats:', error);

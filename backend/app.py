@@ -22,6 +22,12 @@ from datetime import datetime, timedelta
 from typing import Dict, List, Any, Optional
 from simulation import start_simulation_thread  # Import simulation logic
 
+# Import Blueprints
+from routes.analytics import analytics_bp
+from routes.reports import reports_bp
+from routes.alerts import alerts_bp
+from routes.goats import goats_bp
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -36,6 +42,12 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 # Initialize database
 db = DatabaseManager()
 db.initialize_database()
+
+# Register Blueprints
+app.register_blueprint(analytics_bp, url_prefix='/api')
+app.register_blueprint(reports_bp, url_prefix='/api')
+app.register_blueprint(alerts_bp, url_prefix='/api')
+app.register_blueprint(goats_bp, url_prefix='/api')
 
 # ============================================================================
 # HEALTH CHECK
@@ -163,60 +175,8 @@ def get_dashboard_stats():
         return jsonify({"error": str(e)}), 500
 
 
-# ============================================================================
-# GOATS MANAGEMENT
-# ============================================================================
-
-@app.route('/api/goats', methods=['GET'])
-def get_goats():
-    """Get list of all goats with pagination and search."""
-    try:
-        page = int(request.args.get('page', 1))
-        per_page = int(request.args.get('per_page', 20))
-        status = request.args.get('status', 'Active')
-        search = request.args.get('search', '')
-        
-        offset = (page - 1) * per_page
-        
-        # Base query
-        query = "SELECT * FROM goats WHERE status = ?"
-        params = [status]
-        
-        # Add search filter if provided
-        if search:
-            query += " AND (ear_tag LIKE ? OR breed LIKE ?)"
-            search_term = f"%{search}%"
-            params.extend([search_term, search_term])
-            
-        query += " ORDER BY last_seen DESC LIMIT ? OFFSET ?"
-        params.extend([per_page, offset])
-        
-        goats = db.execute_query(query, tuple(params))
-        
-        # Get total count
-        count_query = "SELECT COUNT(*) as count FROM goats WHERE status = ?"
-        count_params = [status]
-        if search:
-            count_query += " AND (ear_tag LIKE ? OR breed LIKE ?)"
-            count_params.extend([search_term, search_term])
-            
-        total = db.execute_query(count_query, tuple(count_params))[0]['count']
-        
-        return jsonify({
-            "goats": [dict(goat) for goat in goats],
-            "total": total,
-            "page": page,
-            "per_page": per_page,
-            "pages": (total + per_page - 1) // per_page
-        }), 200
-        
-    except Exception as e:
-        logger.error(f"Get goats error: {e}")
-        return jsonify({"error": str(e)}), 500
-
-
 @app.route('/api/live-feed', methods=['GET'])
-def get_live_feed():
+def get_live_feed_api():
     """Get the latest detections to simulate a live feed."""
     try:
         # Get detections from the last 5 seconds
@@ -385,58 +345,16 @@ def create_video():
 # ALERTS / EVENTS
 # ============================================================================
 
-@app.route('/api/alerts', methods=['GET'])
-def get_alerts():
-    """Get active alerts/events."""
-    try:
-        severity = request.args.get('severity')  # Filter by severity
-        resolved = request.args.get('resolved', '0')  # Default: unresolved
-        
-        query = """
-            SELECT e.*, g.ear_tag 
-            FROM events e
-            LEFT JOIN goats g ON e.goat_id = g.goat_id
-            WHERE e.resolved = ?
-        """
-        params = [int(resolved)]
-        
-        if severity:
-            query += " AND e.severity = ?"
-            params.append(severity)
-        
-        query += " ORDER BY e.timestamp DESC LIMIT 50"
-        
-        alerts = db.execute_query(query, tuple(params))
-        
-        return jsonify({
-            "alerts": [dict(a) for a in alerts],
-            "count": len(alerts)
-        }), 200
-        
-    except Exception as e:
-        logger.error(f"Get alerts error: {e}")
-        return jsonify({"error": str(e)}), 500
+# Handled by alerts blueprint
+# @app.route('/api/alerts', methods=['GET'])
+# def get_alerts():
+#     ...
 
 
-@app.route('/api/alerts/<int:alert_id>', methods=['PATCH'])
-def resolve_alert(alert_id):
-    """Mark an alert as resolved."""
-    try:
-        query = """
-            UPDATE events 
-            SET resolved = 1, resolved_at = CURRENT_TIMESTAMP, resolved_by = 'System User'
-            WHERE event_id = ?
-        """
-        rows = db.execute_update(query, (alert_id,))
-        
-        if rows > 0:
-            return jsonify({"message": "Alert resolved successfully"}), 200
-        else:
-            return jsonify({"error": "Alert not found"}), 404
-            
-    except Exception as e:
-        logger.error(f"Resolve alert error: {e}")
-        return jsonify({"error": str(e)}), 500
+# Handled by alerts blueprint
+# @app.route('/api/alerts/<int:alert_id>', methods=['PATCH'])
+# def resolve_alert(alert_id):
+#     ...
 
 
 # ============================================================================
@@ -479,167 +397,16 @@ def get_health_stats():
 # REPORTS
 # ============================================================================
 
-@app.route('/api/reports', methods=['GET'])
-def list_reports():
-    """Get list of generated reports."""
-    try:
-        query = """
-            SELECT report_id, report_type, title, description, start_date, end_date, 
-                   format, created_at, generated_by
-            FROM reports
-            ORDER BY created_at DESC
-            LIMIT 50
-        """
-        
-        reports = db.execute_query(query)
-        
-        return jsonify({
-            "reports": [dict(r) for r in reports]
-        }), 200
-        
-    except Exception as e:
-        logger.error(f"List reports error: {e}")
-        return jsonify({"error": str(e)}), 500
+# Handled by reports blueprint
+# @app.route('/api/reports', methods=['GET'])
+# def list_reports():
+#     ...
 
 
-@app.route('/api/reports/generate', methods=['POST'])
-def generate_report():
-    """Generate a new report based on type and date info."""
-    try:
-        data = request.get_json()
-        
-        report_type = data.get('report_type', 'Daily')
-        start_date = data.get('start_date')
-        end_date = data.get('end_date') or datetime.now().date().isoformat()
-        
-        report_data = {}
-        title = data.get('title', f'{report_type} Report')
-        description = data.get('description', f'Generated {report_type} report for {end_date}')
-        
-        # 1. Health Summary
-        if report_type == 'Health Summary':
-            # Distribution of health status
-            dist_query = """
-                SELECT status, COUNT(*) as count 
-                FROM health_records 
-                WHERE timestamp >= datetime('now', '-7 days')
-                GROUP BY status
-            """
-            dist_res = db.execute_query(dist_query)
-            distribution = {row['status']: row['count'] for row in dist_res}
-            
-            # Average metrics
-            avg_query = """
-                SELECT 
-                    AVG(health_score) as avg_health,
-                    AVG(temperature) as avg_temp,
-                    AVG(body_condition_score) as avg_bcs
-                FROM health_records
-                WHERE timestamp >= datetime('now', '-7 days')
-            """
-            avg_res = db.execute_query(avg_query)
-            metrics = dict(avg_res[0]) if avg_res else {}
-            
-            report_data = {
-                "summary": "7-Day Health Overview",
-                "health_distribution": distribution,
-                "key_metrics": metrics,
-                "notes": "Based on latest veterinary checks and AI monitoring."
-            }
-
-        # 2. Production Yield
-        elif report_type == 'Production Yield':
-            # Estimate yield based on current weight of active goats
-            query = "SELECT goat_id, ear_tag, breed, weight FROM goats WHERE status = 'Active'"
-            goats = db.execute_query(query)
-            
-            yield_data = []
-            total_meat_projection = 0
-            
-            for goat in goats:
-                meat_yield = round(goat['weight'] * 0.45, 2) # 45% standard yield
-                total_meat_projection += meat_yield
-                yield_data.append({
-                    "ear_tag": goat['ear_tag'],
-                    "breed": goat['breed'],
-                    "weight_kg": goat['weight'],
-                    "projected_meat_kg": meat_yield
-                })
-            
-            report_data = {
-                "summary": f"Total Projected Meat Yield: {round(total_meat_projection, 2)} kg",
-                "total_heads": len(goats),
-                "details": yield_data
-            }
-
-        # 3. Inventory Log
-        elif report_type == 'Inventory Log':
-            query = """
-                SELECT ear_tag, breed, gender, date_of_birth, weight, status, last_seen 
-                FROM goats 
-                ORDER BY ear_tag
-            """
-            inventory = db.execute_query(query)
-            report_data = {
-                "inventory_date": datetime.now().isoformat(),
-                "total_count": len(inventory),
-                "records": [dict(g) for g in inventory]
-            }
-
-        # 4. Daily/Weekly Standard Report
-        else: # Default to Daily/Weekly activity
-            # Date filtering logic could be added here
-            query = """
-                SELECT 
-                    COUNT(DISTINCT goat_id) as active_goats,
-                    AVG(health_score) as avg_health,
-                    COUNT(*) as total_health_checks
-                FROM health_records
-            """
-            result = db.execute_query(query)
-            stats = dict(result[0]) if result else {}
-            
-            # Events
-            events_query = "SELECT event_type, COUNT(*) as count FROM events GROUP BY event_type"
-            events_res = db.execute_query(events_query)
-            events_summary = {row['event_type']: row['count'] for row in events_res}
-            
-            report_data = {
-                "period": report_type,
-                "stats": stats,
-                "events_summary": events_summary
-            }
-        
-        # Save to DB
-        insert_query = """
-            INSERT INTO reports (report_type, title, description, start_date, end_date, format, data, generated_by)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        """
-        params = (
-            report_type,
-            title,
-            description,
-            start_date,
-            end_date,
-            data.get('format', 'JSON'),
-            json.dumps(report_data),
-            data.get('generated_by', 'System')
-        )
-        
-        db.execute_update(insert_query, params)
-        
-        # Return the ID of the new report
-        new_report_id = db.execute_query("SELECT last_insert_rowid() as id")[0]['id']
-        
-        return jsonify({
-            "message": "Report generated successfully",
-            "report_id": new_report_id,
-            "data": report_data
-        }), 201
-        
-    except Exception as e:
-        logger.error(f"Generate report error: {e}")
-        return jsonify({"error": str(e)}), 500
+# Handled by reports blueprint
+# @app.route('/api/reports/generate', methods=['POST'])
+# def generate_report():
+#     ...
 
 
 # ============================================================================
@@ -1153,28 +920,10 @@ def internal_error(error):
 # SYSTEM & ADVANCED ANALYTICS
 # ============================================================================
 
-@app.route('/api/system/status', methods=['GET'])
-def get_system_status():
-    """Get real-time system health metrics."""
-    try:
-        # Simulate server metrics for demo
-        # In production, use psutil: cpu_usage = psutil.cpu_percent()
-        cpu_usage = random.uniform(15, 45)
-        ram_usage = random.uniform(40, 60)
-        disk_usage = 65.4
-        
-        return jsonify({
-            "cpu_usage": round(cpu_usage, 1),
-            "ram_usage": round(ram_usage, 1),
-            "disk_usage": disk_usage,
-            "uptime_seconds": 12345,
-            "active_threads": threading.active_count(),
-            "ai_engine_status": "Online",
-            "gpu_utilization": round(random.uniform(20, 80), 1) # Simulate GPU
-        }), 200
-    except Exception as e:
-        logger.error(f"System status error: {e}")
-        return jsonify({"error": str(e)}), 500
+# Duplicate Handled above
+# @app.route('/api/system/status', methods=['GET'])
+# def get_system_status():
+#     ...
 
 @app.route('/api/analytics/advanced', methods=['GET'])
 def get_advanced_analytics():

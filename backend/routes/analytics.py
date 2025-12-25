@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
-from ..database import DatabaseManager
-from ..utils.response import success_response, error_response
-from ..utils.formulas import calculate_mass, calculate_meat_yield
+from database import DatabaseManager
+from utils.response import success_response, error_response
+from utils.formulas import calculate_mass, calculate_meat_yield
 import logging
 
 analytics_bp = Blueprint('analytics', __name__)

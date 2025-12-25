@@ -68,19 +68,6 @@ const Reports = () => {
             const response = await axios.post('/api/reports/generate', payload);
 
             if (response.data && response.data.data) {
-                // If the backend returns the generated data
-                const reportRecord = {
-                    ...response.data.data, // This is the 'content' of the report
-                    title: payload.title,
-                    report_type: selectedType,
-                    created_at: new Date().toISOString(),
-                    report_id: response.data.report_id // The ID of the saved report
-                };
-
-                // Backend 'data' field in response might be the metrics directly or nested
-                // Based on app.py: return jsonify({ ..., data: report_data })
-                // So response.data.data IS the report content object (stats, inventory etc)
-
                 setPreviewData({
                     metadata: {
                         title: payload.title,
@@ -207,9 +194,7 @@ const Reports = () => {
         try {
             // First fetch full data
             const response = await axios.get(`/api/reports/${report.report_id}`);
-            if (response.data) {
-                // Reuse preview logic to set data, then download immediately? 
-                // Or just reproduce the logic. Let's just set preview and show modal so they can see it first.
+            if (response.data && response.data.data) {
                 setPreviewData({
                     metadata: {
                         title: report.title,
@@ -369,8 +354,8 @@ const Reports = () => {
                             <div key={report.report_id} className="p-6 hover:bg-slate-800/40 transition-all flex flex-col md:flex-row md:items-center justify-between gap-6 group">
                                 <div className="flex items-center gap-5">
                                     <div className={`p-4 rounded-2xl shadow-lg ${report.report_type.includes('Health') ? 'bg-blue-500/10 text-blue-400' :
-                                            report.report_type.includes('Log') ? 'bg-orange-500/10 text-orange-400' :
-                                                'bg-emerald-500/10 text-emerald-400'
+                                        report.report_type.includes('Log') ? 'bg-orange-500/10 text-orange-400' :
+                                            'bg-emerald-500/10 text-emerald-400'
                                         }`}>
                                         <FileText className="w-6 h-6" />
                                     </div>

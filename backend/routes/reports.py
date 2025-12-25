@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, Response, make_response
-from ..database import DatabaseManager
-from ..utils.response import success_response, error_response
+from database import DatabaseManager
+from utils.response import success_response, error_response
 import logging
 import json
 from datetime import datetime
@@ -175,12 +175,13 @@ def get_report(report_id):
         
         r_data = dict(report[0])
         
-        # Parse 'data' JSON string back to dict
         if r_data.get('data'):
             try:
-                r_data['data'] = json.loads(r_data['data'])
+                content = json.loads(r_data.pop('data'))
+                if isinstance(content, dict):
+                    r_data.update(content)
             except:
-                pass # keep as is if fail
+                pass 
         
         return success_response(r_data)
     except Exception as e:
@@ -225,7 +226,7 @@ def generate_report():
         return success_response({
             "message": "Report generated successfully",
             "report_id": report_id,
-            **report_content  # Spread content directly so frontend can access .stats, .records etc.
+            "data": report_content
         })
     except Exception as e:
         logger.error(f"Generate Report Error: {e}")
