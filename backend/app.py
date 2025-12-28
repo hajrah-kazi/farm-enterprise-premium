@@ -110,6 +110,27 @@ def initialize_mock_data():
                         VALUES (?, ?, ?, ?, ?, ?)
                     """, (goat['goat_id'], random.choice(activities), random.choice(feeds), random.uniform(0.5, 2.0), random.randint(10, 60), t))
             
+            # 4. Populate Health Records (For Health Summary)
+            for goat in goats:
+                db.execute_update("""
+                    INSERT INTO health_records (
+                        goat_id, health_score, status, body_condition_score, 
+                        temperature, heart_rate, respiratory_rate, 
+                        gait_status, posture_status, isolation_flag, 
+                        timestamp, recorded_by
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (
+                    goat['goat_id'],
+                    random.randint(60, 100),
+                    random.choice(['Excellent', 'Good', 'Fair', 'Poor']),
+                    random.randint(2, 5), # BCS
+                    random.uniform(38.5, 40.0), # Temp
+                    random.randint(70, 90), # HR
+                    random.randint(15, 30), # RR
+                    'Normal', 'Normal', 0,
+                    cur_time, 'System Auto-Check'
+                ))
+            
             # Events
             for i in range(10):
                 g = random.choice(goats)

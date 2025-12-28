@@ -254,26 +254,31 @@ def download_report(report_id):
             cw = csv.writer(si)
             
             # Flatten data for CSV
+            # Flatten data for CSV
             if isinstance(content_data, dict):
                 # Check for list structures (like Inventory Log)
-                if 'records' in content_data and isinstance(content_data['records'], list):
-                    keys = content_data['records'][0].keys() if content_data['records'] else []
-                    cw.writerow(keys)
+                if 'records' in content_data and isinstance(content_data['records'], list) and content_data['records']:
+                    # Get headers from first record keys
+                    headers = list(content_data['records'][0].keys())
+                    cw.writerow(headers)
                     for row in content_data['records']:
-                        cw.writerow([row.get(k) for k in keys])
-                elif 'details' in content_data and isinstance(content_data['details'], list):
-                     keys = content_data['details'][0].keys() if content_data['details'] else []
-                     cw.writerow(keys)
+                        cw.writerow([str(row.get(k, '')) for k in headers])
+                        
+                elif 'details' in content_data and isinstance(content_data['details'], list) and content_data['details']:
+                     headers = list(content_data['details'][0].keys())
+                     cw.writerow(headers)
                      for row in content_data['details']:
-                         cw.writerow([row.get(k) for k in keys])
+                         cw.writerow([str(row.get(k, '')) for k in headers])
+                         
                 else:
-                    # Key-Value pairs
+                    # Generic Key-Value dump for other reports
                     cw.writerow(['Metric', 'Value'])
                     for k, v in content_data.items():
-                        if isinstance(v, (dict, list)):
-                             cw.writerow([k, json.dumps(v)])
-                        else:
-                             cw.writerow([k, v])
+                        if k not in ['records', 'details']: # Skip large lists in summary view
+                            if isinstance(v, (dict, list)):
+                                 cw.writerow([k, json.dumps(v)])
+                            else:
+                                 cw.writerow([k, str(v)])
             
             output = make_response(si.getvalue())
             output.headers["Content-Disposition"] = f"attachment; filename={r_data['title']}.csv"
