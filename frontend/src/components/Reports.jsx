@@ -410,10 +410,17 @@ const Reports = () => {
                                 </div>
                                 <div className="flex items-center gap-3">
                                     <button
-                                        onClick={downloadPDF}
+                                        onClick={() => {
+                                            if (['Inventory Log', 'Feeding Log', 'Activity Log', 'Production Yield'].includes(previewData.metadata.type)) {
+                                                window.open(`/api/reports/${previewData.metadata.id}/download?format=csv`, '_blank');
+                                            } else {
+                                                downloadPDF();
+                                            }
+                                        }}
                                         className="px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg font-bold flex items-center gap-2 transition-colors shadow-lg shadow-emerald-500/20"
                                     >
-                                        <Download className="w-4 h-4" /> Download PDF
+                                        <Download className="w-4 h-4" />
+                                        {['Inventory Log', 'Feeding Log', 'Activity Log', 'Production Yield'].includes(previewData.metadata.type) ? 'Download CSV' : 'Download PDF'}
                                     </button>
                                     <button
                                         onClick={() => setShowPreview(false)}

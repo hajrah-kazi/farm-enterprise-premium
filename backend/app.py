@@ -40,8 +40,90 @@ app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # Initialize database
+# Initialize database
 db = DatabaseManager()
 db.initialize_database()
+
+def initialize_mock_data():
+    """Populate database with demo data if empty."""
+    try:
+        count = db.execute_query("SELECT COUNT(*) as count FROM goats")[0]['count']
+        if count == 0:
+            logger.info("Database empty. Seeding mock data...")
+            cur_time = datetime.now()
+            
+            # 1. Create Goats
+            breeds = ['Boer', 'Kiko', 'Nubian', 'Spanish']
+            for i in range(25):
+                db.execute_update("""
+                    INSERT INTO goats (ear_tag, breed, gender, status, weight, date_of_birth, health_score, color, horn_status)
+                    VALUES (?, ?, ?, 'Active', ?, ?, ?, ?, ?)
+                """, (
+                    f"TAG-{100+i}", 
+                    random.choice(breeds), 
+                    random.choice(['Male', 'Female']), 
+                    random.uniform(30, 80), 
+                    (cur_time - timedelta(days=random.randint(300, 1000))).strftime('%Y-%m-%d'),
+                    random.randint(70, 100),
+                    random.choice(['White', 'Brown', 'Mixed', 'Black']),
+                    random.choice(['Polled', 'Horned', 'Disbudded'])
+                ))
+
+            goats = db.execute_query("SELECT goat_id, ear_tag FROM goats")
+            
+            # 2. Populated Detections & Positions (Critical for Analytics)
+            for goat in goats:
+                bbox_w = random.uniform(200, 300)
+                bbox_h = random.uniform(150, 250)
+                
+                db.execute_update("""
+                    INSERT INTO detections (
+                        goat_id, timestamp, bounding_box_x, bounding_box_y, bounding_box_w, bounding_box_h,
+                        confidence_score, health_score, gait_status, activity_label
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                """, (
+                    goat['goat_id'], cur_time,
+                    random.uniform(0, 1920), random.uniform(0, 1080),
+                    bbox_w, bbox_h,
+                    random.uniform(0.8, 0.99),
+                    random.randint(70, 100), 'Normal',
+                    random.choice(['Grazing', 'Walking'])
+                ))
+                
+                db.execute_update("""
+                    INSERT OR REPLACE INTO goat_positions (goat_id, x, y, z, last_updated)
+                    VALUES (?, ?, ?, ?, ?)
+                """, (
+                    goat['goat_id'],
+                    random.uniform(-10, 10), random.uniform(0, 2),
+                    random.uniform(2, 8), cur_time
+                ))
+
+            # 3. Populate Feeding & Events (For Reports)
+            activities = ['Grazing', 'Feeding', 'Drinking']
+            feeds = ['Hay', 'Grain', 'Pasture']
+            for goat in goats[:15]:
+                for _ in range(3):
+                    t = cur_time - timedelta(hours=random.randint(1, 24))
+                    db.execute_update("""
+                        INSERT INTO feeding_records (goat_id, activity, feed_type, consumption_rate, duration, timestamp)
+                        VALUES (?, ?, ?, ?, ?, ?)
+                    """, (goat['goat_id'], random.choice(activities), random.choice(feeds), random.uniform(0.5, 2.0), random.randint(10, 60), t))
+            
+            # Events
+            for i in range(10):
+                g = random.choice(goats)
+                t = cur_time - timedelta(hours=random.randint(0, 48))
+                db.execute_update("""
+                    INSERT INTO events (goat_id, event_type, severity, title, description, timestamp, resolved)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                """, (g['goat_id'], 'Health Alert', random.choice(['Low', 'Medium']), f"Routine check for {g['ear_tag']}", "Automated health scan.", t, 0))
+
+            logger.info("Mock data seeded successfully.")
+    except Exception as e:
+        logger.error(f"Seeding error: {e}")
+
+initialize_mock_data()
 
 # Register Blueprints
 app.register_blueprint(analytics_bp, url_prefix='/api')
