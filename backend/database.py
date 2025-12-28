@@ -10,10 +10,15 @@ logger = logging.getLogger(__name__)
 
 # Get absolute path for database
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(BASE_DIR, 'data', 'goat_farm.db')
 
-# Ensure data directory exists
-os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
+# Check if running on Vercel (read-only file system except /tmp)
+if os.environ.get('VERCEL'):
+    DB_PATH = os.path.join('/tmp', 'goat_farm.db')
+    logger.info("Vercel environment detected: Using ephemeral database at /tmp/goat_farm.db")
+else:
+    DB_PATH = os.path.join(BASE_DIR, 'data', 'goat_farm.db')
+    # Ensure data directory exists
+    os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
 
 
 class DatabaseManager:
