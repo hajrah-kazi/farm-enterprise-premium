@@ -10,11 +10,11 @@ const Toast = ({ message, type = 'info', onClose }) => {
         info: <Info className="w-5 h-5" />
     };
 
-    const colors = {
-        success: 'from-emerald-500 to-teal-500',
-        error: 'from-red-500 to-pink-500',
-        warning: 'from-orange-500 to-yellow-500',
-        info: 'from-blue-500 to-cyan-500'
+    const config = {
+        success: { color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20', label: 'SUCCESS' },
+        error: { color: 'text-rose-400', bg: 'bg-rose-500/10', border: 'border-rose-500/20', label: 'ERROR' },
+        warning: { color: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20', label: 'WARNING' },
+        info: { color: 'text-indigo-400', bg: 'bg-indigo-500/10', border: 'border-indigo-500/20', label: 'INFORMATION' }
     };
 
     useEffect(() => {
@@ -24,32 +24,46 @@ const Toast = ({ message, type = 'info', onClose }) => {
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: -50, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
-            className="glass-strong rounded-2xl p-4 border border-slate-700/50 shadow-2xl min-w-[320px] max-w-md"
+            initial={{ opacity: 0, x: 50, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 20, scale: 0.95, transition: { duration: 0.3 } }}
+            className={`glass-panel rounded-[1.5rem] p-5 shadow-3xl min-w-[380px] max-w-md ${config[type].bg} ${config[type].border} border backdrop-blur-3xl`}
         >
-            <div className="flex items-start gap-3">
-                <div className={`p-2 rounded-xl bg-gradient-to-br ${colors[type]} text-white shrink-0`}>
+            <div className="flex items-start gap-5">
+                <div className={`w-12 h-12 rounded-2xl ${config[type].bg} ${config[type].color} border border-white/5 flex items-center justify-center shrink-0 shadow-2xl transition-transform duration-500 hover:rotate-6`}>
                     {icons[type]}
                 </div>
-                <div className="flex-1 min-w-0">
-                    <p className="text-white font-semibold text-sm leading-relaxed">{message}</p>
+                <div className="flex-1 min-w-0 pt-0.5">
+                    <div className="flex items-center gap-3 mb-1">
+                        <span className={`text-[9px] font-black uppercase tracking-[0.3em] ${config[type].color}`}>
+                            {config[type].label}
+                        </span>
+                        <div className="h-px flex-1 bg-white/5" />
+                    </div>
+                    <p className="text-zinc-200 font-bold text-[13px] leading-relaxed tracking-tight">{message}</p>
                 </div>
                 <button
                     onClick={onClose}
-                    className="p-1 rounded-lg hover:bg-white/10 text-slate-400 hover:text-white transition-colors shrink-0"
+                    className="p-2 rounded-xl hover:bg-white/5 text-zinc-600 hover:text-white transition-all duration-300 shrink-0"
                 >
                     <X className="w-4 h-4" />
                 </button>
             </div>
+
+            {/* Auto-dismiss progress bar */}
+            <motion.div
+                initial={{ width: "100%" }}
+                animate={{ width: "0%" }}
+                transition={{ duration: 5, ease: "linear" }}
+                className={`absolute bottom-0 left-0 h-0.5 rounded-full ${config[type].color.replace('text', 'bg')} opacity-20`}
+            />
         </motion.div>
     );
 };
 
 export const ToastContainer = ({ toasts, removeToast }) => {
     return (
-        <div className="fixed top-4 right-4 z-[9999] flex flex-col gap-3">
+        <div className="fixed bottom-10 right-10 z-[10000] flex flex-col gap-4">
             <AnimatePresence>
                 {toasts.map((toast) => (
                     <Toast
@@ -64,6 +78,7 @@ export const ToastContainer = ({ toasts, removeToast }) => {
     );
 };
 
+
 // Hook for using toasts
 export const useToast = () => {
     const [toasts, setToasts] = useState([]);
@@ -77,7 +92,7 @@ export const useToast = () => {
         setToasts((prev) => prev.filter((toast) => toast.id !== id));
     };
 
-    return { toasts, addToast, removeToast, ToastContainer };
+    return { toasts, addToast, removeToast };
 };
 
 export default Toast;

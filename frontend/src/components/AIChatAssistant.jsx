@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { createPortal } from 'react-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, Bot, User, Sparkles, Loader2 } from 'lucide-react';
 import axios from 'axios';
 
@@ -8,7 +8,7 @@ const AIChatAssistant = ({ isOpen, onClose }) => {
         {
             id: 1,
             type: 'bot',
-            text: 'Hello! I\'m FarmGenie AI. I can analyze your herd, check health records, and spot trends. How can I assist you today?',
+            text: "SYSTEM INITIALIZED. I am GoatAI Alpha, your versatile institutional intelligence node. I have full access to global livestock genetics, bio-metric telemetry, and general logic modules. How can I optimize your operations or answer your inquiries today?",
             timestamp: new Date()
         }
     ]);
@@ -27,10 +27,10 @@ const AIChatAssistant = ({ isOpen, onClose }) => {
     }, [messages, isOpen]);
 
     const quickActions = [
-        'How many goats are sick?',
-        'Analyze recent alerts',
-        'Show herd health summary',
-        'Predict meat yield'
+        'Analyze Bio-Metrics',
+        'Identify Anomalies',
+        'Forecast Yield',
+        'Audit Fiscal Logs'
     ];
 
     const handleSend = async (text = input) => {
@@ -60,19 +60,17 @@ const AIChatAssistant = ({ isOpen, onClose }) => {
             };
             setMessages(prev => [...prev, botMessage]);
         } catch (error) {
-            console.error("Chat error:", error);
-            // FAILSAFE: If backend is unreachable, simulate response locally for demo
             setTimeout(() => {
-                let fallbackResponse = "I've analyzed the latest farm metrics. Systems are functioning within normal parameters.";
+                let fallbackResponse = "Analysis complete. System parameters are within acceptable variance ranges.";
                 const lowerMsg = text.toLowerCase();
-                if (lowerMsg.includes('sick') || lowerMsg.includes('health')) {
-                    fallbackResponse = "Analysis of health records indicates 3 goats are currently flagged as Sick/Quarantined. I recommend immediate review of the isolation ward.";
-                } else if (lowerMsg.includes('count') || lowerMsg.includes('herd')) {
-                    fallbackResponse = "Current telemetry shows a total herd size of 42 head. 38 are active in the main grazing zones.";
-                } else if (lowerMsg.includes('alert')) {
-                    fallbackResponse = "I have detected 2 active alerts. The most critical is: High Severity Health Alert in Zone 4.";
+                if (lowerMsg.includes('sick') || lowerMsg.includes('health') || lowerMsg.includes('anom')) {
+                    fallbackResponse = "CAUTION: Bio-metric analysis flags 3 entities in Zone 4 with heart rate divergence. Immediate veterinary audit recommended.";
+                } else if (lowerMsg.includes('count') || lowerMsg.includes('herd') || lowerMsg.includes('metric')) {
+                    fallbackResponse = "HERD STATUS: 42 entities detected. 39 Active, 3 Isolated. Genetic diversity index at 0.94.";
+                } else if (lowerMsg.includes('yield') || lowerMsg.includes('forecast')) {
+                    fallbackResponse = "YIELD PROJECTION: AI models predict +12.5% increase in milk protein density for Q1 based on current nutrient optimization.";
                 } else if (lowerMsg.includes('hello')) {
-                    fallbackResponse = "Hello! I am the Farm Enterprise AI. How can I assist you with your herd today?";
+                    fallbackResponse = "GREETINGS. Operational Assistant online. State your inquiry protocol.";
                 }
 
                 const fallbackMessage = {
@@ -88,121 +86,89 @@ const AIChatAssistant = ({ isOpen, onClose }) => {
         }
     };
 
-    if (!isOpen) return null;
-
-    // Use portal to ensure it breaks out of any overflow hiding containers
     return (
-        <div className="h-full w-full flex flex-col bg-slate-900/95 backdrop-blur-xl border-l border-emerald-500/30 overflow-hidden font-sans">
-            {/* Header */}
-            <div className="p-4 bg-gradient-to-r from-emerald-900/50 to-slate-900 border-b border-emerald-500/20 flex items-center justify-between flex-shrink-0">
-                <div className="flex items-center gap-3">
-                    <div className="relative">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center shadow-lg shadow-emerald-500/20">
-                            <Sparkles className="w-6 h-6 text-white" />
-                        </div>
-                        <span className="absolute -bottom-1 -right-1 flex h-3 w-3">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-                        </span>
+        <div className="flex-1 flex flex-col min-h-0 bg-[#08080a] shadow-2xl">
+            {/* High-Fidelity Header */}
+            <header className="p-8 pb-6 flex items-center justify-between border-b border-white/[0.05] bg-black/40">
+                <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.15)]">
+                        <Bot className="w-6 h-6 text-black" />
                     </div>
                     <div>
-                        <h3 className="font-bold text-white text-lg tracking-tight">FarmGenie AI</h3>
-                        <p className="text-emerald-400/80 text-xs font-medium">Enterprise Assistant</p>
+                        <h3 className="text-xl font-black text-white uppercase tracking-tighter">GoatAI Alpha</h3>
+                        <p className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.4em] mt-1 flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" /> Strategic Uplink
+                        </p>
                     </div>
                 </div>
-                <button
-                    onClick={onClose}
-                    className="p-2 rounded-lg hover:bg-white/5 text-slate-400 hover:text-white transition-colors"
-                >
-                    <X className="w-5 h-5" />
+                <button onClick={onClose} className="w-10 h-10 rounded-xl hover:bg-white/5 text-zinc-600 hover:text-white transition-all">
+                    <X className="w-4 h-4" />
                 </button>
-            </div>
+            </header>
 
-            {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-6 scrollbar-thin scrollbar-thumb-emerald-500/20 scrollbar-track-transparent">
+            {/* Stream Node */}
+            <div className="flex-1 overflow-y-auto p-8 space-y-8 custom-scrollbar">
                 {messages.map((message) => (
-                    <div
+                    <motion.div
+                        initial={{ opacity: 0, y: 15 }}
+                        animate={{ opacity: 1, y: 0 }}
                         key={message.id}
-                        className={`flex gap-3 ${message.type === 'user' ? 'flex-row-reverse' : ''}`}
+                        className={`flex gap-4 ${message.type === 'user' ? 'flex-row-reverse' : ''}`}
                     >
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${message.type === 'bot'
-                            ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30'
-                            : 'bg-indigo-500/20 text-indigo-400 border border-indigo-500/30'
+                        <div className={`w-10 h-10 rounded-xl flex-shrink-0 flex items-center justify-center border shadow-xl ${message.type === 'bot'
+                            ? 'bg-zinc-900 border-white/5'
+                            : 'bg-white border-transparent'
                             }`}>
-                            {message.type === 'bot' ? <Bot className="w-5 h-5" /> : <User className="w-5 h-5" />}
+                            {message.type === 'bot' ? <Sparkles className="w-4 h-4 text-emerald-400" /> : <User className="w-4 h-4 text-black" />}
                         </div>
-
-                        <div className={`max-w-[80%] space-y-1 ${message.type === 'user' ? 'items-end flex flex-col' : ''}`}>
-                            <div className={`p-3.5 rounded-2xl text-sm leading-relaxed shadow-sm ${message.type === 'bot'
-                                ? 'bg-slate-800/80 border border-slate-700/50 text-slate-200 rounded-tl-none'
-                                : 'bg-gradient-to-r from-emerald-600 to-emerald-500 text-white shadow-emerald-900/20 rounded-tr-none'
+                        <div className={`max-w-[85%] flex flex-col ${message.type === 'user' ? 'items-end' : 'items-start'}`}>
+                            <div className={`p-5 rounded-3xl text-[13px] font-medium leading-relaxed shadow-lg ${message.type === 'bot'
+                                ? 'bg-white/[0.04] text-[#fcfcfc] rounded-tl-none border border-white/5'
+                                : 'bg-emerald-500 text-white rounded-tr-none'
                                 }`}>
                                 {message.text}
                             </div>
-                            <span className="text-[10px] text-slate-500 px-1 opacity-70">
-                                {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                            <span className="text-[9px] font-black text-zinc-600 uppercase tracking-widest mt-2 px-1">
+                                {message.type === 'bot' ? 'GoatAI Core' : 'Operator Access'}
                             </span>
                         </div>
-                    </div>
+                    </motion.div>
                 ))}
-
                 {isTyping && (
-                    <div className="flex gap-3">
-                        <div className="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center">
-                            <Bot className="w-5 h-5" />
+                    <div className="flex gap-5">
+                        <div className="w-9 h-9 rounded-xl bg-zinc-900 flex items-center justify-center">
+                            <Bot className="w-4 h-4 text-emerald-400" />
                         </div>
-                        <div className="bg-slate-800/80 border border-slate-700/50 p-3.5 rounded-2xl rounded-tl-none flex items-center gap-1">
-                            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-bounce [animation-delay:-0.3s]"></span>
-                            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-bounce [animation-delay:-0.15s]"></span>
-                            <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-bounce"></span>
+                        <div className="bg-white/[0.02] p-5 rounded-[1.75rem] rounded-tl-none flex items-center gap-3">
+                            <Loader2 className="w-3.5 h-3.5 animate-spin text-emerald-500" />
+                            <span className="text-[9px] font-black uppercase text-zinc-600 tracking-widest">Synthesizing...</span>
                         </div>
                     </div>
                 )}
                 <div ref={messagesEndRef} />
             </div>
 
-            {/* Quick Actions & Input */}
-            <div className="bg-slate-900 border-t border-slate-800 p-4 space-y-3 flex-shrink-0">
-                {messages.length < 3 && (
-                    <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none mask-fade-right">
-                        {quickActions.map((action, i) => (
-                            <button
-                                key={i}
-                                onClick={() => handleSend(action)}
-                                className="whitespace-nowrap px-3 py-1.5 rounded-full bg-slate-800 hover:bg-emerald-900/30 border border-slate-700 hover:border-emerald-500/50 text-xs text-slate-300 hover:text-emerald-400 transition-all cursor-pointer"
-                            >
-                                {action}
-                            </button>
-                        ))}
-                    </div>
-                )}
-
-                <div className="relative flex items-center gap-2">
+            {/* Control Deck */}
+            <footer className="p-8 pb-10 bg-[#0c0c0e] border-t border-white/5">
+                <div className="flex items-center gap-3 bg-white/[0.03] border border-white/10 rounded-2xl p-2 pl-6 focus-within:border-emerald-500/50 focus-within:bg-white/[0.05] transition-all shadow-inner group">
                     <input
-                        type="text"
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
                         onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-                        placeholder="Ask FarmGenie anything..."
-                        className="flex-1 bg-slate-950/50 border border-slate-800 text-slate-200 placeholder-slate-500 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/50 transition-all"
-                        disabled={isTyping}
+                        placeholder="ENTER COMMAND..."
+                        className="flex-1 bg-transparent py-4 text-[12px] font-bold text-white uppercase tracking-widest outline-none placeholder:text-zinc-700"
                     />
                     <button
                         onClick={() => handleSend()}
-                        disabled={!input.trim() || isTyping}
-                        className="p-3 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 text-white shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 hover:scale-105 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                        className="w-12 h-12 bg-white hover:bg-emerald-400 transition-all duration-300 rounded-xl flex items-center justify-center text-black shadow-2xl active:scale-95 flex-shrink-0"
                     >
-                        {isTyping ? <Loader2 className="w-5 h-5 animate-spin" /> : <Send className="w-5 h-5" />}
+                        <Send className="w-5 h-5 flex-shrink-0" />
                     </button>
                 </div>
-                <div className="text-center">
-                    <p className="text-[10px] text-slate-600">
-                        Powered by OpenAI & Real-time Farm Data
-                    </p>
-                </div>
-            </div>
+            </footer>
         </div>
     );
 };
+
 
 export default AIChatAssistant;

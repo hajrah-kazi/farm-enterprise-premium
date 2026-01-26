@@ -3,19 +3,20 @@ from flask_cors import CORS
 import logging
 
 # Import Blueprints
-from .routes.analytics import analytics_bp
-from .routes.detections import detections_bp
-from .routes.goats import goats_bp
-from .routes.system import system_bp
-from .routes.reports import reports_bp
-from .routes.videos import videos_bp
-from .routes.dashboard import dashboard_bp
-from .routes.chat import chat_bp
-from .routes.settings import settings_bp
-from .routes.alerts import alerts_bp
-from .routes.live_feed import live_feed_bp
-from .routes.auth import auth_bp
-from .utils.response import error_response
+# Import Blueprints
+from routes.analytics import analytics_bp
+from routes.detections import detections_bp
+from routes.goats import goats_bp
+from routes.system import system_bp
+from routes.reports import reports_bp
+from routes.videos import videos_bp
+from routes.dashboard import dashboard_bp
+from routes.chat import chat_bp
+from routes.settings import settings_bp
+from routes.alerts import alerts_bp
+from routes.live_feed import live_feed_bp
+from routes.auth import auth_bp
+from utils.response import error_response
 
 # Configure Logging
 logging.basicConfig(level=logging.INFO)

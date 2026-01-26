@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 import random
 import threading
-from ..utils.response import success_response, error_response
+from utils.response import success_response, error_response
 import logging
 
 system_bp = Blueprint('system', __name__)

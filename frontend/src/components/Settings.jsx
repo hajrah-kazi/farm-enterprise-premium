@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Settings as SettingsIcon, Save, Bell, Shield, Users, Database, Smartphone } from 'lucide-react';
+import { Settings as SettingsIcon, Save, Bell, Shield, Users, Database, Smartphone, Loader2, Globe, ShieldCheck, HardDrive } from 'lucide-react';
 import axios from 'axios';
 
 const Settings = () => {
@@ -21,7 +21,6 @@ const Settings = () => {
         try {
             const response = await axios.get('/api/settings');
             if (response.data.success && response.data.data) {
-                // Parse values where necessary
                 const parsed = { ...response.data.data };
                 if (parsed.health_threshold) parsed.health_threshold = parseInt(parsed.health_threshold);
                 if (parsed.data_retention_days) parsed.data_retention_days = parseInt(parsed.data_retention_days);
@@ -37,142 +36,128 @@ const Settings = () => {
         setSaving(true);
         try {
             await axios.post('/api/settings', settings);
-            setTimeout(() => setSaving(false), 1000);
+            setTimeout(() => setSaving(false), 800);
         } catch (error) {
-            console.error('Error saving settings:', error);
             setSaving(false);
         }
     };
 
-    return (
-        <div className="space-y-8">
-            {/* Header */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div>
-                    <h2 className="text-3xl font-black text-white flex items-center gap-3">
-                        <SettingsIcon className="w-8 h-8 text-emerald-400" />
-                        System Configuration
-                    </h2>
-                    <p className="text-slate-400 mt-1 text-lg">Manage farm parameters and system preferences</p>
+    const SettingGroup = ({ title, icon: Icon, children }) => (
+        <section className="space-y-6">
+            <div className="flex items-center gap-3 px-1">
+                <div className="p-2 rounded-lg bg-white/[0.03] border border-white/5">
+                    <Icon className="w-5 h-5 text-emerald-500" />
                 </div>
+                <h3 className="text-xs font-black text-zinc-500 uppercase tracking-[0.3em]">{title}</h3>
+            </div>
+            <div className="glass-panel p-8 rounded-[2.5rem] space-y-10">
+                {children}
+            </div>
+        </section>
+    );
+
+    return (
+        <div className="flex flex-col gap-12 max-w-[900px] mx-auto pb-32 pt-8">
+            {/* Header */}
+            <header className="flex flex-col sm:flex-row sm:items-end justify-between gap-8">
+                <div className="space-y-2">
+                    <div className="flex items-center gap-3">
+                        <div className="w-2 h-8 bg-emerald-500 rounded-full shadow-lg shadow-emerald-500/40" />
+                        <h1 className="h1-premium gradient-text">System Protocols</h1>
+                    </div>
+                    <p className="text-lg text-zinc-500 font-medium tracking-tight">Configure enterprise node parameters and security matrices.</p>
+                </div>
+
                 <button
                     onClick={handleSave}
                     disabled={saving}
-                    className="flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold shadow-lg shadow-emerald-500/20 hover:scale-105 transition-transform disabled:opacity-50"
+                    className="btn-premium btn-premium-primary min-w-[180px] h-14 text-base font-bold active:scale-[0.98] shadow-2xl shadow-white/5"
                 >
                     {saving ? (
-                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        <Loader2 className="w-5 h-5 animate-spin" />
                     ) : (
                         <Save className="w-5 h-5" />
                     )}
-                    {saving ? 'Saving...' : 'Save Changes'}
+                    <span>{saving ? 'Synchronizing...' : 'Commit Changes'}</span>
                 </button>
-            </div>
+            </header>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="space-y-12">
                 {/* General Settings */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="glass-strong p-8 rounded-3xl border border-slate-700/50"
-                >
-                    <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                        <Database className="w-5 h-5 text-blue-400" />
-                        General Settings
-                    </h3>
-
-                    <div className="space-y-6">
-                        <div>
-                            <label className="block text-sm font-medium text-slate-400 mb-2">Farm Name</label>
+                <SettingGroup title="Identity Node" icon={Globe}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div className="space-y-3">
+                            <label className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] ml-1">Enterprise Designation</label>
                             <input
                                 type="text"
                                 value={settings.farm_name}
                                 onChange={(e) => setSettings({ ...settings, farm_name: e.target.value })}
-                                className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 text-white focus:border-emerald-500 focus:outline-none"
+                                className="w-full bg-white/[0.03] border border-white/10 text-white px-6 py-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all font-medium placeholder:text-zinc-800"
+                                placeholder="Enter designation"
                             />
                         </div>
-                        <div>
-                            <label className="block text-sm font-medium text-slate-400 mb-2">Data Retention (Days)</label>
-                            <input
-                                type="number"
-                                value={settings.data_retention_days}
-                                onChange={(e) => setSettings({ ...settings, data_retention_days: parseInt(e.target.value) })}
-                                className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 text-white focus:border-emerald-500 focus:outline-none"
-                            />
-                        </div>
-                    </div>
-                </motion.div>
-
-                {/* Alert Configuration */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className="glass-strong p-8 rounded-3xl border border-slate-700/50"
-                >
-                    <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                        <Bell className="w-5 h-5 text-orange-400" />
-                        Alert Thresholds
-                    </h3>
-
-                    <div className="space-y-6">
-                        <div>
-                            <div className="flex justify-between mb-2">
-                                <label className="text-sm font-medium text-slate-400">Health Score Threshold</label>
-                                <span className="text-sm font-bold text-emerald-400">{settings.health_threshold}%</span>
-                            </div>
-                            <input
-                                type="range"
-                                min="0" max="100"
-                                value={settings.health_threshold}
-                                onChange={(e) => setSettings({ ...settings, health_threshold: parseInt(e.target.value) })}
-                                className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500"
-                            />
-                            <p className="text-xs text-slate-500 mt-2">Alerts will be triggered if health score falls below this value.</p>
-                        </div>
-
-                        <div>
-                            <label className="block text-sm font-medium text-slate-400 mb-2">Alert Notification Email</label>
+                        <div className="space-y-3">
+                            <label className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] ml-1">Superuser Communication</label>
                             <input
                                 type="email"
                                 value={settings.alert_email}
                                 onChange={(e) => setSettings({ ...settings, alert_email: e.target.value })}
-                                className="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 text-white focus:border-emerald-500 focus:outline-none"
+                                className="w-full bg-white/[0.03] border border-white/10 text-white px-6 py-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all font-medium placeholder:text-zinc-800"
+                                placeholder="admin@protocol.io"
                             />
                         </div>
                     </div>
-                </motion.div>
+                </SettingGroup>
 
-                {/* Security & Access */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="glass-strong p-8 rounded-3xl border border-slate-700/50"
-                >
-                    <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
-                        <Shield className="w-5 h-5 text-purple-400" />
-                        Security & Access
-                    </h3>
-
-                    <div className="space-y-4">
-                        <div className="flex items-center justify-between p-4 rounded-xl bg-slate-800/50 border border-slate-700">
-                            <div className="flex items-center gap-3">
-                                <Users className="w-5 h-5 text-slate-400" />
-                                <div>
-                                    <p className="font-bold text-white">Admin Access</p>
-                                    <p className="text-xs text-slate-500">Manage system administrators</p>
-                                </div>
+                {/* System Parameters */}
+                <SettingGroup title="Neural Parameters" icon={HardDrive}>
+                    <div className="space-y-12">
+                        <div className="space-y-6">
+                            <div className="flex justify-between items-center px-1">
+                                <label className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em]">Vitality Alert Threshold</label>
+                                <span className="text-2xl font-black text-white tracking-tighter">{settings.health_threshold}%</span>
                             </div>
-                            <button className="px-4 py-2 text-sm font-bold text-slate-300 bg-slate-800/50 border border-slate-700 rounded-lg hover:bg-slate-700 hover:text-white transition-colors">Manage</button>
+                            <div className="relative pt-2">
+                                <input
+                                    type="range"
+                                    min="0" max="100"
+                                    value={settings.health_threshold}
+                                    onChange={(e) => setSettings({ ...settings, health_threshold: parseInt(e.target.value) })}
+                                    className="w-full h-1.5 bg-white/5 rounded-full appearance-none cursor-pointer accent-emerald-500"
+                                />
+                                <div className="absolute top-1/2 -translate-y-1/2 left-0 h-1.5 bg-emerald-500 rounded-full pointer-events-none transition-all" style={{ width: `${settings.health_threshold}%` }} />
+                            </div>
+                            <p className="text-xs text-zinc-500 font-medium italic">Autonomous alerts trigger when population vitality index drops below critical vector.</p>
                         </div>
 
-                        <div className="flex items-center justify-between p-4 rounded-xl bg-slate-800/50 border border-slate-700">
-                            <div className="flex items-center gap-3">
-                                <Smartphone className="w-5 h-5 text-slate-400" />
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-8 border-t border-white/5">
+                            <div className="space-y-3">
+                                <label className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] ml-1">Archive Lifecycle</label>
+                                <div className="relative">
+                                    <input
+                                        type="number"
+                                        value={settings.data_retention_days}
+                                        onChange={(e) => setSettings({ ...settings, data_retention_days: parseInt(e.target.value) })}
+                                        className="w-full bg-white/[0.03] border border-white/10 text-white px-6 py-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all font-medium placeholder:text-zinc-800 pr-20"
+                                    />
+                                    <span className="absolute right-6 top-1/2 -translate-y-1/2 text-[10px] font-black text-zinc-700 uppercase tracking-widest">Cycles</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </SettingGroup>
+
+                {/* Notifications & Privacy */}
+                <SettingGroup title="Security Matrix" icon={ShieldCheck}>
+                    <div className="space-y-6">
+                        <div className="flex items-center justify-between p-6 rounded-[2rem] bg-white/[0.01] hover:bg-white/[0.03] transition-all border border-transparent hover:border-white/5 group">
+                            <div className="flex items-center gap-6">
+                                <div className="w-14 h-14 rounded-2xl bg-zinc-800/50 flex items-center justify-center text-zinc-400 group-hover:text-emerald-500 transition-colors">
+                                    <Smartphone className="w-7 h-7" />
+                                </div>
                                 <div>
-                                    <p className="font-bold text-white">Mobile Notifications</p>
-                                    <p className="text-xs text-slate-500">Push alerts to mobile app</p>
+                                    <p className="text-lg font-bold text-white tracking-tight">Peripheral Flux</p>
+                                    <p className="text-sm text-zinc-500 font-medium">Transmit critical telemetry to verified external nodes.</p>
                                 </div>
                             </div>
                             <label className="relative inline-flex items-center cursor-pointer">
@@ -182,14 +167,28 @@ const Settings = () => {
                                     onChange={(e) => setSettings({ ...settings, mobile_notifications: e.target.checked })}
                                     className="sr-only peer"
                                 />
-                                <div className="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+                                <div className="w-14 h-7 bg-zinc-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-zinc-400 after:rounded-full after:h-[20px] after:w-[22px] after:transition-all peer-checked:bg-emerald-500 peer-checked:after:bg-black" />
                             </label>
                         </div>
+
+                        <div className="flex items-center justify-between p-6 rounded-[2rem] bg-white/[0.01] hover:bg-white/[0.03] transition-all border border-transparent hover:border-white/5 border-t border-white/5 group mt-4">
+                            <div className="flex items-center gap-6">
+                                <div className="w-14 h-14 rounded-2xl bg-zinc-800/50 flex items-center justify-center text-zinc-400 group-hover:text-amber-500 transition-colors">
+                                    <Shield className="w-7 h-7" />
+                                </div>
+                                <div>
+                                    <p className="text-lg font-bold text-white tracking-tight">Neural Encryption</p>
+                                    <p className="text-sm text-zinc-500 font-medium">Activate multi-vector terminal authentication protocols.</p>
+                                </div>
+                            </div>
+                            <button className="text-[10px] font-black text-zinc-600 hover:text-white uppercase tracking-[0.2em] transition-colors py-2 px-4 rounded-xl bg-white/5 border border-white/10 hover:border-white/20">Configure</button>
+                        </div>
                     </div>
-                </motion.div>
+                </SettingGroup>
             </div>
         </div>
     );
 };
+
 
 export default Settings;

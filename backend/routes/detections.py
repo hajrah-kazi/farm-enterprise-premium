@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
-from ..database import DatabaseManager
-from ..utils.response import success_response, error_response
+from database import DatabaseManager
+from utils.response import success_response, error_response
 import logging
 
 detections_bp = Blueprint('detections', __name__)

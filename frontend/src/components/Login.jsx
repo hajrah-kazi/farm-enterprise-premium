@@ -1,22 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Activity, Lock, User, ArrowRight, ShieldCheck, Zap, Globe } from 'lucide-react';
+import { Activity, Lock, User, ArrowRight, AlertCircle } from 'lucide-react';
 import axios from 'axios';
 
 const Login = ({ onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-    useEffect(() => {
-        const handleMouseMove = (e) => {
-            setMousePosition({ x: e.clientX, y: e.clientY });
-        };
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
+    const [error, setError] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -24,165 +15,130 @@ const Login = ({ onLogin }) => {
         setError('');
 
         try {
-            // Simulated delay for effect
-            await new Promise(r => setTimeout(r, 800));
-
-            // Client-side authentication for Vercel deployment
-            // In production, this would be replaced with actual API authentication
-            if ((username === 'admin' && password === 'admin') ||
-                (username === 'demo' && password === 'demo')) {
-                const userData = {
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            // Simulate login or call API
+            if ((username === 'admin' && password === 'admin123') || (username === 'demo' && password === 'demo123')) {
+                onLogin({
+                    id: 1,
                     username: username,
-                    role: 'admin',
-                    name: username === 'admin' ? 'Administrator' : 'Demo User',
-                    email: `${username}@goatfarm.com`
-                };
-                onLogin(userData);
+                    role: 'Admin',
+                    full_name: username === 'admin' ? 'System Administrator' : 'Demo User'
+                });
             } else {
-                setError('Invalid credentials. Use admin/admin or demo/demo');
-                setLoading(false);
+                const response = await axios.post('/api/login', { username, password });
+                onLogin(response.data.user);
             }
         } catch (err) {
-            setError('Authentication failed');
+            setError(err.response?.data?.error || 'Neural link synchronization failed. Verify protocol credentials.');
             setLoading(false);
         }
     };
 
     return (
-        <div className="min-h-screen bg-slate-950 flex relative overflow-hidden font-sans">
-            {/* Dynamic Background Mesh */}
-            <div className="absolute inset-0 z-0 bg-slate-950">
-                <div
-                    className="absolute top-0 left-0 w-[500px] h-[500px] bg-emerald-500/20 rounded-full blur-[120px] mix-blend-screen animate-pulse"
-                    style={{ transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)` }}
-                />
-                <div
-                    className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] mix-blend-screen"
-                    style={{ transform: `translate(${mousePosition.x * -0.02}px, ${mousePosition.y * -0.02}px)` }}
-                />
-            </div>
+        <div className="auth-card-container relative overflow-hidden bg-black min-h-screen">
+            <div className="mesh-bg opacity-30" />
 
-            {/* Visual Side (Desktop) */}
-            <div className="hidden lg:flex lg:w-1/2 relative items-center justify-center p-12 z-10">
-                <div className="max-w-xl">
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.8 }}
-                    >
-                        <div className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/80 backdrop-blur-md border border-slate-700/50 text-emerald-400 text-sm font-semibold">
-                            <Zap className="w-4 h-4" />
-                            <span>Enterprise Version 2.4</span>
-                        </div>
-                        <h1 className="text-6xl font-black text-white tracking-tight mb-6 leading-tight">
-                            The Future of <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-500">
-                                Farm Intelligence
-                            </span>
-                        </h1>
-                        <p className="text-slate-400 text-lg leading-relaxed mb-12">
-                            Manage your herd with military-grade precision. AI-driven analytics, biometric tracking, and predictive yield modeling in one premium dashboard.
-                        </p>
+            {/* Ambient Background Elements */}
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px] animate-pulse" />
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] animate-pulse" />
 
-                        <div className="grid grid-cols-2 gap-6">
-                            <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm">
-                                <ShieldCheck className="w-8 h-8 text-emerald-500 mb-4" />
-                                <h3 className="text-white font-bold mb-2">Secure Data</h3>
-                                <p className="text-sm text-slate-500">End-to-end encrypted biometrics database.</p>
-                            </div>
-                            <div className="p-6 rounded-2xl bg-slate-900/50 border border-slate-800 backdrop-blur-sm">
-                                <Globe className="w-8 h-8 text-cyan-500 mb-4" />
-                                <h3 className="text-white font-bold mb-2">Global Access</h3>
-                                <p className="text-sm text-slate-500">Real-time monitoring from anywhere on Earth.</p>
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-            </div>
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="w-full max-w-md z-10"
+            >
+                <div className="glass-panel p-10 rounded-[2.5rem] border-white/10 shadow-2xl relative group overflow-hidden">
+                    {/* Subtle Top Glow */}
+                    <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent" />
 
-            {/* Login Form Side */}
-            <div className="w-full lg:w-1/2 flex items-center justify-center p-6 z-20">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="w-full max-w-md"
-                >
-                    <div className="bg-slate-900/40 backdrop-blur-xl p-8 md:p-12 rounded-[2rem] border border-slate-700/50 shadow-2xl relative overflow-hidden group">
-
-                        {/* Shimmer Effect */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none" />
-
-                        <div className="mb-10 text-center">
-                            <div className="w-20 h-20 mx-auto bg-gradient-to-tr from-emerald-500 to-cyan-500 rounded-3xl flex items-center justify-center shadow-lg shadow-emerald-500/20 mb-6 rotate-3 group-hover:rotate-6 transition-transform duration-300">
-                                <Activity className="w-10 h-10 text-white" />
-                            </div>
-                            <h2 className="text-3xl font-bold text-white mb-2">Welcome Back</h2>
-                            <p className="text-slate-400">Enter your credentials to access the terminal.</p>
-                        </div>
-
-                        <form onSubmit={handleSubmit} className="space-y-6">
-                            <div className="space-y-2">
-                                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">Username</label>
-                                <div className="relative group/input">
-                                    <User className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500 group-focus-within/input:text-emerald-400 transition-colors" />
-                                    <input
-                                        type="text"
-                                        value={username}
-                                        onChange={(e) => setUsername(e.target.value)}
-                                        className="w-full pl-14 pr-6 py-4 bg-slate-950/50 border border-slate-700 rounded-2xl text-white placeholder:text-slate-600 focus:border-emerald-500/50 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all duration-300"
-                                        placeholder="admin"
-                                        required
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="space-y-2">
-                                <label className="text-xs font-bold text-slate-500 uppercase tracking-wider ml-1">Password</label>
-                                <div className="relative group/input">
-                                    <Lock className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500 group-focus-within/input:text-emerald-400 transition-colors" />
-                                    <input
-                                        type="password"
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                        className="w-full pl-14 pr-6 py-4 bg-slate-950/50 border border-slate-700 rounded-2xl text-white placeholder:text-slate-600 focus:border-emerald-500/50 focus:ring-4 focus:ring-emerald-500/10 focus:outline-none transition-all duration-300"
-                                        placeholder="••••••••"
-                                        required
-                                    />
-                                </div>
-                            </div>
-
-                            <AnimatePresence>
-                                {error && (
-                                    <motion.div
-                                        initial={{ opacity: 0, height: 0 }}
-                                        animate={{ opacity: 1, height: 'auto' }}
-                                        exit={{ opacity: 0, height: 0 }}
-                                        className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-medium text-center"
-                                    >
-                                        {error}
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-
-                            <button
-                                type="submit"
-                                disabled={loading}
-                                className="w-full py-5 rounded-2xl bg-gradient-to-r from-emerald-500 to-cyan-600 text-white font-bold text-lg shadow-xl shadow-emerald-900/20 hover:shadow-emerald-500/20 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed group/btn"
-                            >
-                                {loading ? (
-                                    <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                ) : (
-                                    <>
-                                        Access Dashboard
-                                        <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
-                                    </>
-                                )}
-                            </button>
-                        </form>
+                    <div className="flex flex-col items-center mb-10 text-center">
+                        <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            className="w-24 h-24 rounded-[2rem] bg-white flex items-center justify-center mb-8 shadow-[0_0_50px_rgba(255,255,255,0.1)]"
+                        >
+                            <Activity className="w-12 h-12 text-black" />
+                        </motion.div>
+                        <h1 className="text-5xl font-black tracking-tighter text-white mb-2 uppercase">GoatAI</h1>
+                        <p className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.5em]">Enterprise Intelligence System</p>
                     </div>
-                </motion.div>
-            </div>
+
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        <div className="space-y-2">
+                            <label className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] ml-1">Operator ID</label>
+                            <div className="relative group/input">
+                                <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-zinc-500 group-focus-within/input:text-emerald-500 transition-colors">
+                                    <User className="w-5 h-5" />
+                                </div>
+                                <input
+                                    type="text"
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    className="w-full bg-white/[0.03] border border-white/10 text-white pl-14 pr-6 py-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500/50 transition-all font-medium placeholder:text-zinc-700"
+                                    placeholder="Enter username"
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <div className="space-y-2">
+                            <label className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] ml-1">Access Key</label>
+                            <div className="relative group/input">
+                                <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none text-zinc-500 group-focus-within/input:text-blue-500 transition-colors">
+                                    <Lock className="w-5 h-5" />
+                                </div>
+                                <input
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className="w-full bg-white/[0.03] border border-white/10 text-white pl-14 pr-6 py-4 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500/50 transition-all font-medium placeholder:text-zinc-700"
+                                    placeholder="Enter password"
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <AnimatePresence>
+                            {error && (
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    className="bg-rose-500/10 border border-rose-500/20 text-rose-400 p-4 rounded-2xl text-xs font-bold leading-relaxed flex items-start gap-3"
+                                >
+                                    <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                                    {error}
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            className="w-full btn-premium btn-premium-primary btn-shimmer h-15 text-[15px] font-bold tracking-[0.1em] shadow-[0_20px_40px_-10px_rgba(255,255,255,0.2)] disabled:opacity-50"
+                        >
+                            {loading ? (
+                                <div className="flex items-center gap-3">
+                                    <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                                    <span>SYNCHRONIZING...</span>
+                                </div>
+                            ) : (
+                                <div className="flex items-center gap-3">
+                                    <span>INITIATE PROTOCOL</span>
+                                    <ArrowRight className="w-5 h-5" />
+                                </div>
+                            )}
+                        </button>
+                    </form>
+
+                    <div className="mt-12 pt-10 border-t border-white/[0.03] text-center">
+                        <p className="text-[9px] font-black text-zinc-700 uppercase tracking-[0.4em] leading-relaxed">
+                            Secured by Neural Guardian v4.2<br />
+                            Authorized Terminal: Alpha-1 Sector India
+                        </p>
+                    </div>
+                </div>
+            </motion.div>
         </div>
     );
 };

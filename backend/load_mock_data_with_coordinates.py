@@ -118,6 +118,24 @@ def load_csv_data_with_coordinates():
                     x, y, z, detection_confidence
                 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ''', (db_video_id, frame_number, timestamp, bbox_x, bbox_y, bbox_w, bbox_h, x, y, z, confidence))
+
+            # Insert into detections table (legacy support and health scores)
+            # Generate a random health score mostly high
+            health_score = random.randint(70, 100) if random.random() > 0.1 else random.randint(40, 69)
+            
+            cursor.execute('''
+                INSERT INTO detections (
+                    video_id, goat_id, frame_number, timestamp,
+                    ear_tag_detected, bounding_box_x, bounding_box_y, bounding_box_w, bounding_box_h,
+                    confidence_score, color_detected, horns_present,
+                    health_score, location_zone
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (
+                db_video_id, goat_id, frame_number, timestamp,
+                ear_tag, bbox_x, bbox_y, bbox_w, bbox_h,
+                confidence, color, horn_status,
+                health_score, 'Paddock A'
+            ))
             
             # Update goat_positions table with latest position
             if goat_id:

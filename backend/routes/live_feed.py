@@ -1,6 +1,6 @@
 from flask import Blueprint
-from ..database import DatabaseManager
-from ..utils.response import success_response, error_response
+from database import DatabaseManager
+from utils.response import success_response, error_response
 import logging
 import random
 import time

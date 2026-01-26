@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, X, Clock, TrendingUp } from 'lucide-react';
 
-const AdvancedSearch = ({ onSearch, placeholder = 'Search...', suggestions = [] }) => {
+const AdvancedSearch = ({ onSearch, placeholder = 'Search Neural Database...', suggestions = [] }) => {
     const [query, setQuery] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     const [recentSearches, setRecentSearches] = useState(() => {
@@ -43,7 +43,6 @@ const AdvancedSearch = ({ onSearch, placeholder = 'Search...', suggestions = [] 
 
     const handleSearch = (searchQuery) => {
         if (searchQuery.trim()) {
-            // Add to recent searches
             const updated = [searchQuery, ...recentSearches.filter(s => s !== searchQuery)].slice(0, 5);
             setRecentSearches(updated);
             localStorage.setItem('recentSearches', JSON.stringify(updated));
@@ -68,9 +67,9 @@ const AdvancedSearch = ({ onSearch, placeholder = 'Search...', suggestions = [] 
     };
 
     return (
-        <div className="relative w-full max-w-md">
+        <div className="relative w-full">
             <div className="relative group">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within:text-emerald-400 transition-colors" />
+                <Search className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-600 group-focus-within:text-indigo-400 group-focus-within:scale-110 transition-all duration-500" />
                 <input
                     ref={inputRef}
                     type="text"
@@ -79,12 +78,13 @@ const AdvancedSearch = ({ onSearch, placeholder = 'Search...', suggestions = [] 
                     onKeyDown={handleKeyDown}
                     onFocus={() => query && setIsOpen(true)}
                     placeholder={placeholder}
-                    className="w-full pl-12 pr-12 py-3 rounded-xl bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 transition-all"
+                    className="w-full pl-14 pr-12 py-4 rounded-[1.5rem] border focus:outline-none transition-all duration-500 backdrop-blur-3xl font-medium tracking-tight"
+                    style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-subtle)', color: 'var(--text-primary)' }}
                 />
                 {query && (
                     <button
                         onClick={clearSearch}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-lg hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-xl hover:bg-white/5 text-zinc-600 hover:text-white transition-all duration-500"
                     >
                         <X className="w-4 h-4" />
                     </button>
@@ -92,19 +92,21 @@ const AdvancedSearch = ({ onSearch, placeholder = 'Search...', suggestions = [] 
             </div>
 
             <AnimatePresence>
-                {isOpen && (filteredSuggestions.length > 0 || recentSearches.length > 0) && (
+                {isOpen && (filteredSuggestions.length > 0 || (query === '' && recentSearches.length > 0)) && (
                     <motion.div
                         ref={dropdownRef}
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        className="absolute top-full mt-2 w-full glass-strong rounded-2xl border border-slate-700/50 shadow-2xl overflow-hidden z-50"
+                        initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: 10, scale: 0.98 }}
+                        transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                        className="absolute top-full mt-4 w-full rounded-[2rem] border shadow-3xl overflow-hidden z-[100] backdrop-blur-3xl"
+                        style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-medium)' }}
                     >
                         {filteredSuggestions.length > 0 && (
-                            <div className="p-2">
-                                <div className="flex items-center gap-2 px-3 py-2 text-xs font-bold text-slate-500 uppercase tracking-wider">
-                                    <TrendingUp className="w-3 h-3" />
-                                    Suggestions
+                            <div className="p-3">
+                                <div className="flex items-center gap-3 px-4 py-3 text-[9px] font-black text-zinc-600 uppercase tracking-[0.4em] leading-none mb-1">
+                                    <TrendingUp className="w-3 h-3 text-indigo-500" />
+                                    Neural Suggestions
                                 </div>
                                 {filteredSuggestions.map((suggestion, index) => (
                                     <button
@@ -113,19 +115,21 @@ const AdvancedSearch = ({ onSearch, placeholder = 'Search...', suggestions = [] 
                                             setQuery(suggestion);
                                             handleSearch(suggestion);
                                         }}
-                                        className="w-full px-3 py-2 rounded-lg text-left text-white hover:bg-emerald-500/10 hover:text-emerald-400 transition-colors"
+                                        className="w-full px-4 py-3.5 rounded-xl text-left hover:bg-primary/5 transition-all duration-300 font-medium tracking-tight flex items-center justify-between group/item"
+                                        style={{ color: 'var(--text-secondary)' }}
                                     >
-                                        {suggestion}
+                                        <span className="group-hover/item:text-primary transition-colors">{suggestion}</span>
+                                        <Search className="w-3 h-3 opacity-0 group-hover/item:opacity-100 transition-opacity text-primary" />
                                     </button>
                                 ))}
                             </div>
                         )}
 
                         {query === '' && recentSearches.length > 0 && (
-                            <div className="p-2 border-t border-slate-700/50">
-                                <div className="flex items-center gap-2 px-3 py-2 text-xs font-bold text-slate-500 uppercase tracking-wider">
-                                    <Clock className="w-3 h-3" />
-                                    Recent
+                            <div className="p-3">
+                                <div className="flex items-center gap-3 px-4 py-3 text-[9px] font-black text-zinc-600 uppercase tracking-[0.4em] leading-none mb-1">
+                                    <Clock className="w-3 h-3 text-indigo-400" />
+                                    Recent Queries
                                 </div>
                                 {recentSearches.map((search, index) => (
                                     <button
@@ -134,9 +138,11 @@ const AdvancedSearch = ({ onSearch, placeholder = 'Search...', suggestions = [] 
                                             setQuery(search);
                                             handleSearch(search);
                                         }}
-                                        className="w-full px-3 py-2 rounded-lg text-left text-slate-300 hover:bg-white/5 hover:text-white transition-colors"
+                                        className="w-full px-4 py-3.5 rounded-xl text-left hover:bg-primary/5 transition-all duration-300 font-medium tracking-tight flex items-center justify-between group/item"
+                                        style={{ color: 'var(--text-muted)' }}
                                     >
-                                        {search}
+                                        <span className="group-hover/item:text-primary transition-colors">{search}</span>
+                                        <Clock className="w-3 h-3 opacity-0 group-hover/item:opacity-100 transition-opacity text-primary" />
                                     </button>
                                 ))}
                             </div>
@@ -147,5 +153,6 @@ const AdvancedSearch = ({ onSearch, placeholder = 'Search...', suggestions = [] 
         </div>
     );
 };
+
 
 export default AdvancedSearch;

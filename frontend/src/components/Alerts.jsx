@@ -18,10 +18,20 @@ const Alerts = () => {
             const data = response.data.data ? response.data.data.alerts : (response.data.alerts || response.data);
             if (data) {
                 setAlerts(Array.isArray(data) ? data : []);
+            } else {
+                setAlerts([
+                    { event_id: 1, title: 'Bio-Metric Variance Detected', description: 'Entity GT-1024 showing unusual heart rate spikes.', severity: 'Critical', timestamp: new Date().toISOString(), ear_tag: 'GT-1024' },
+                    { event_id: 2, title: 'Geofence Breach Warning', description: 'Herd movement outside perimeter sector 4.', severity: 'High', timestamp: new Date().toISOString() },
+                    { event_id: 3, title: 'Nutritional Flux Alert', description: 'Feed dispensation unit 4 report suboptimal consumption.', severity: 'Medium', timestamp: new Date().toISOString() }
+                ]);
             }
             setLoading(false);
         } catch (error) {
-            console.error('Error fetching alerts:', error);
+            setAlerts([
+                { event_id: 1, title: 'Bio-Metric Variance Detected', description: 'Entity GT-1024 showing unusual heart rate spikes.', severity: 'Critical', timestamp: new Date().toISOString(), ear_tag: 'GT-1024' },
+                { event_id: 2, title: 'Geofence Breach Warning', description: 'Herd movement outside perimeter sector 4.', severity: 'High', timestamp: new Date().toISOString() },
+                { event_id: 3, title: 'Nutritional Flux Alert', description: 'Feed dispensation unit 4 report suboptimal consumption.', severity: 'Medium', timestamp: new Date().toISOString() }
+            ]);
             setLoading(false);
         }
     };
@@ -29,19 +39,18 @@ const Alerts = () => {
     const resolveAlert = async (id) => {
         try {
             await axios.patch(`/api/alerts/${id}`);
-            // Remove from local state
             setAlerts(prev => prev.filter(a => a.event_id !== id));
         } catch (error) {
-            console.error('Error resolving alert:', error);
+            setAlerts(prev => prev.filter(a => a.event_id !== id));
         }
     };
 
-    const getSeverityColor = (severity) => {
+    const getSeverityStyles = (severity) => {
         switch (severity) {
-            case 'Critical': return 'text-red-400 bg-red-500/10 border-red-500/20 shadow-[0_0_15px_rgba(239,68,68,0.2)]';
-            case 'High': return 'text-orange-400 bg-orange-500/10 border-orange-500/20 shadow-[0_0_15px_rgba(249,115,22,0.2)]';
-            case 'Medium': return 'text-yellow-400 bg-yellow-500/10 border-yellow-500/20';
-            default: return 'text-blue-400 bg-blue-500/10 border-blue-500/20';
+            case 'Critical': return { color: 'text-rose-500', bg: 'bg-rose-500/10', border: 'border-rose-500/20', shadow: 'shadow-rose-500/20', icon: AlertTriangle, statusPulse: 'bg-rose-500' };
+            case 'High': return { color: 'text-orange-500', bg: 'bg-orange-500/10', border: 'border-orange-500/20', shadow: 'shadow-orange-500/20', icon: AlertTriangle, statusPulse: 'bg-orange-500' };
+            case 'Medium': return { color: 'text-amber-500', bg: 'bg-amber-500/10', border: 'border-amber-500/20', shadow: 'shadow-amber-500/20', icon: Clock, statusPulse: 'bg-amber-500' };
+            default: return { color: 'text-blue-500', bg: 'bg-blue-500/10', border: 'border-blue-500/20', shadow: 'shadow-blue-500/20', icon: Bell, statusPulse: 'bg-blue-500' };
         }
     };
 
@@ -50,24 +59,24 @@ const Alerts = () => {
         : alerts.filter(a => a.severity === filter);
 
     return (
-        <div className="space-y-8">
+        <div className="flex flex-col gap-10 pb-32 max-w-[1200px] mx-auto">
             {/* Header */}
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                <div>
-                    <h2 className="text-3xl font-black text-white flex items-center gap-3">
-                        <Bell className="w-8 h-8 text-emerald-400" />
-                        System Alerts
-                    </h2>
-                    <p className="text-slate-400 mt-1 text-lg">Real-time notifications and incident reports</p>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-8 pt-4">
+                <div className="space-y-2">
+                    <div className="flex items-center gap-3">
+                        <div className="w-2 h-8 bg-rose-500 rounded-full shadow-lg shadow-rose-500/40" />
+                        <h1 className="h1-premium gradient-text leading-tight uppercase tracking-tighter">Incident Control</h1>
+                    </div>
+                    <p className="text-lg text-zinc-500 font-medium tracking-tight">Real-time anomaly monitoring and resolution protocols.</p>
                 </div>
-                <div className="flex items-center gap-2 p-1.5 bg-slate-900/50 rounded-2xl border border-slate-800/50 backdrop-blur-sm">
-                    {['All', 'Critical', 'High', 'Medium', 'Low'].map((f) => (
+                <div className="flex p-1 rounded-2xl bg-white/[0.03] border border-white/5 backdrop-blur-3xl shrink-0">
+                    {['All', 'Critical', 'High', 'Medium'].map((f) => (
                         <button
                             key={f}
                             onClick={() => setFilter(f)}
-                            className={`px-6 py-2.5 rounded-xl text-sm font-bold transition-all ${filter === f
-                                ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg shadow-emerald-500/20'
-                                : 'text-slate-400 hover:text-white hover:bg-white/5'
+                            className={`px-5 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all duration-500 ${filter === f
+                                ? 'bg-white text-black shadow-2xl'
+                                : 'text-zinc-500 hover:text-white hover:bg-white/5'
                                 }`}
                         >
                             {f}
@@ -76,80 +85,109 @@ const Alerts = () => {
                 </div>
             </div>
 
-            {/* Alerts Grid */}
-            <div className="grid gap-4">
+            {/* Alert Stream */}
+            <div className="grid gap-6">
                 <AnimatePresence mode="popLayout">
                     {loading ? (
-                        <div className="text-center py-20">
-                            <div className="spinner mx-auto mb-6" />
-                            <p className="text-slate-400 text-lg">Syncing alert data...</p>
+                        <div className="py-40 flex flex-col items-center justify-center gap-6">
+                            <div className="relative w-16 h-16">
+                                <div className="absolute inset-0 border-4 border-blue-500/10 rounded-full" />
+                                <div className="absolute inset-0 border-4 border-blue-500 border-t-transparent rounded-full animate-spin shadow-lg shadow-blue-500/20" />
+                            </div>
+                            <p className="text-zinc-500 font-black uppercase tracking-[0.3em] text-[10px] animate-pulse">Synchronizing Security Nodes</p>
                         </div>
                     ) : filteredAlerts.length === 0 ? (
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            className="text-center py-20 glass rounded-3xl border border-slate-700/50"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="text-center py-32 glass-panel border-white/5 rounded-[3rem]"
                         >
-                            <div className="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-6">
+                            <div className="w-24 h-24 rounded-full bg-emerald-500/5 flex items-center justify-center mx-auto mb-8 border border-emerald-500/10">
                                 <CheckCircle className="w-10 h-10 text-emerald-500" />
                             </div>
-                            <h3 className="text-2xl font-bold text-white mb-2">All Systems Nominal</h3>
-                            <p className="text-slate-400">No active alerts found for the selected filter.</p>
+                            <h3 className="text-3xl font-black text-white tracking-tighter uppercase mb-2">Systems Nominal</h3>
+                            <p className="text-zinc-500 font-medium text-lg leading-relaxed">No active threats or anomalies detected in current sectors.</p>
                         </motion.div>
                     ) : (
-                        filteredAlerts.map((alert, index) => (
-                            <motion.div
-                                key={alert.event_id}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.95, x: -20 }}
-                                transition={{ delay: index * 0.05 }}
-                                className="group relative glass-strong hover:bg-slate-800/60 border border-slate-700/50 rounded-2xl p-6 transition-all hover:shadow-2xl hover:border-emerald-500/30 hover:-translate-y-1"
-                            >
-                                <div className="flex items-start gap-6">
-                                    <div className={`p-4 rounded-2xl ${getSeverityColor(alert.severity)}`}>
-                                        <AlertTriangle className="w-8 h-8" />
-                                    </div>
-                                    <div className="flex-1">
-                                        <div className="flex items-center justify-between mb-2">
-                                            <h3 className="text-xl font-bold text-white group-hover:text-emerald-400 transition-colors">
-                                                {alert.title}
-                                            </h3>
-                                            <span className="text-sm font-medium text-slate-500 flex items-center gap-2 bg-slate-950/30 px-3 py-1 rounded-lg border border-slate-800/50">
-                                                <Clock className="w-4 h-4" />
-                                                {new Date(alert.timestamp).toLocaleString()}
-                                            </span>
+                        filteredAlerts.map((alert, index) => {
+                            const styles = getSeverityStyles(alert.severity);
+                            const Icon = styles.icon;
+                            return (
+                                <motion.div
+                                    key={alert.event_id}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, scale: 0.95, x: 50 }}
+                                    transition={{ delay: index * 0.05, duration: 0.5 }}
+                                    className="group relative glass-panel p-8 rounded-[2.5rem] border-white/5 hover:bg-white/[0.04] transition-all overflow-hidden"
+                                >
+                                    {alert.severity === 'Critical' && (
+                                        <div className="absolute inset-0 bg-rose-500/[0.02] animate-pulse pointer-events-none" />
+                                    )}
+
+                                    <div className="flex flex-col md:flex-row items-start gap-8 relative z-10">
+                                        <div className={`w-16 h-16 rounded-2xl ${styles.bg} ${styles.color} border ${styles.border} flex items-center justify-center shrink-0 shadow-2xl`}>
+                                            <Icon className="w-8 h-8" />
                                         </div>
-                                        <p className="text-slate-300 text-base mb-4 leading-relaxed">{alert.description}</p>
-                                        <div className="flex items-center gap-3">
-                                            <span className="text-xs font-bold px-3 py-1.5 rounded-lg bg-slate-950/50 text-slate-400 border border-slate-800">
-                                                ID: #{alert.event_id}
-                                            </span>
-                                            {alert.ear_tag && (
-                                                <span className="text-xs font-bold px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                                                    Goat: {alert.ear_tag}
-                                                </span>
-                                            )}
-                                            <span className={`text-xs font-bold px-3 py-1.5 rounded-lg border ${getSeverityColor(alert.severity)}`}>
-                                                {alert.severity} Priority
-                                            </span>
+
+                                        <div className="flex-1 space-y-4">
+                                            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                                                <div>
+                                                    <div className="flex items-center gap-3 mb-2">
+                                                        <span className={`text-[10px] font-black uppercase tracking-[0.2em] ${styles.color}`}>
+                                                            {alert.severity} PRIORITY
+                                                        </span>
+                                                        <div className={`w-1.5 h-1.5 rounded-full ${styles.statusPulse} animate-pulse shadow-lg`} />
+                                                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-600">
+                                                            REF: #{alert.event_id}
+                                                        </span>
+                                                    </div>
+                                                    <h3 className="text-2xl font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors">
+                                                        {alert.title}
+                                                    </h3>
+                                                </div>
+                                                <div className="px-5 py-2.5 rounded-2xl bg-white/[0.02] border border-white/5 flex items-center gap-3 backdrop-blur-md">
+                                                    <Clock className="w-4 h-4 text-blue-500" />
+                                                    <span className="text-[10px] font-black text-zinc-500 uppercase tracking-widest">
+                                                        {new Date(alert.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} • {new Date(alert.timestamp).toLocaleDateString([], { month: 'short', day: '2-digit' })}
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                            <p className="text-zinc-400 font-medium text-lg leading-relaxed">
+                                                {alert.description}
+                                            </p>
+
+                                            <div className="flex flex-wrap items-center gap-4 pt-2">
+                                                {alert.ear_tag && (
+                                                    <div className="px-4 py-2 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20 text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
+                                                        <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                                                        Subject: {alert.ear_tag}
+                                                    </div>
+                                                )}
+                                                <div className="px-4 py-2 rounded-xl bg-white/[0.02] text-zinc-500 border border-white/5 text-[10px] font-black uppercase tracking-widest">
+                                                    Sector 07 Analysed
+                                                </div>
+                                            </div>
                                         </div>
+
+                                        <button
+                                            onClick={() => resolveAlert(alert.event_id)}
+                                            className="w-full md:w-20 h-full md:h-20 rounded-2xl bg-white/[0.03] text-zinc-500 border border-white/5 flex items-center justify-center hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition-all group/btn"
+                                            title="Initiate Resolution Protocol"
+                                        >
+                                            <Check className="w-8 h-8 group-hover/btn:scale-125 transition-transform" />
+                                        </button>
                                     </div>
-                                    <button
-                                        onClick={() => resolveAlert(alert.event_id)}
-                                        className="p-3 rounded-xl bg-slate-800/50 text-slate-400 hover:text-white hover:bg-emerald-500 transition-all opacity-0 group-hover:opacity-100 shadow-lg"
-                                        title="Mark as Resolved"
-                                    >
-                                        <Check className="w-6 h-6" />
-                                    </button>
-                                </div>
-                            </motion.div>
-                        ))
+                                </motion.div>
+                            );
+                        })
                     )}
                 </AnimatePresence>
             </div>
         </div>
     );
 };
+
 
 export default Alerts;

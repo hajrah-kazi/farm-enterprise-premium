@@ -35,9 +35,10 @@ class DatabaseManager:
     def _connect(self) -> sqlite3.Connection:
         """Create and return a database connection with proper configuration."""
         try:
-            conn = sqlite3.connect(self.db_path, check_same_thread=False)
+            conn = sqlite3.connect(self.db_path, check_same_thread=False, timeout=30.0)
             conn.row_factory = sqlite3.Row  # Enable dict-like access
             conn.execute("PRAGMA foreign_keys = ON")  # Enable foreign keys
+            conn.execute("PRAGMA journal_mode = WAL")  # Enable Write-Ahead Logging
             return conn
         except sqlite3.Error as e:
             logger.error(f"Database connection error: {e}")
@@ -96,6 +97,8 @@ class DatabaseManager:
                     fps INTEGER,
                     resolution TEXT,
                     processing_status TEXT DEFAULT 'Pending' CHECK(processing_status IN ('Pending', 'Processing', 'Completed', 'Failed')),
+                    progress INTEGER DEFAULT 0,
+                    error_message TEXT,
                     frames_processed INTEGER DEFAULT 0,
                     detections_count INTEGER DEFAULT 0,
                     upload_date DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -112,10 +115,11 @@ class DatabaseManager:
                     event_id INTEGER PRIMARY KEY AUTOINCREMENT,
                     goat_id INTEGER,
                     video_id INTEGER,
-                    event_type TEXT NOT NULL CHECK(event_type IN ('Health Alert', 'Behavior Alert', 'Feeding Alert', 'Movement Alert', 'System Alert')),
+                    event_type TEXT NOT NULL CHECK(event_type IN ('Health Alert', 'Behavior Alert', 'Feeding Alert', 'Movement Alert', 'System Alert', 'SIGHTING')),
                     severity TEXT NOT NULL CHECK(severity IN ('Low', 'Medium', 'High', 'Critical')),
                     title TEXT NOT NULL,
                     description TEXT,
+                    details TEXT, -- Added for BioEngine compatibility
                     location TEXT,
                     resolved BOOLEAN DEFAULT 0,
                     resolved_at DATETIME,
@@ -291,6 +295,19 @@ class DatabaseManager:
                 );
             ''');
 
+            # NEW: Visual Signatures for High-Level Identification
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS goat_visual_signatures (
+                    signature_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    goat_id INTEGER,
+                    embedding BLOB,  -- Vector representation of the goat
+                    color_signature TEXT, -- JSON histogram
+                    pattern_id TEXT,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY (goat_id) REFERENCES goats(goat_id) ON DELETE CASCADE
+                );
+            ''');
+
             # Create indexes for better query performance
             cursor.execute('CREATE INDEX IF NOT EXISTS idx_goats_ear_tag ON goats(ear_tag)')
             cursor.execute('CREATE INDEX IF NOT EXISTS idx_goats_status ON goats(status)')
@@ -304,6 +321,53 @@ class DatabaseManager:
             cursor.execute('CREATE INDEX IF NOT EXISTS idx_detections_video_id ON detections(video_id)')
             cursor.execute('CREATE INDEX IF NOT EXISTS idx_detections_goat_id ON detections(goat_id)')
             
+            # Migration: Ensure 'details' column exists in events
+            try:
+                cursor.execute("ALTER TABLE events ADD COLUMN details TEXT")
+                logger.info("Migrated events table: Added details column")
+            except sqlite3.OperationalError:
+                pass # Already exists
+
+            # Migration: Ensure 'error_message' column exists in videos
+            try:
+                cursor.execute("ALTER TABLE videos ADD COLUMN error_message TEXT")
+                logger.info("Migrated videos table: Added error_message column")
+            except sqlite3.OperationalError:
+                pass # Already exists
+
+            # Migration: Ensure 'SIGHTING' is in events check constraint
+            try:
+                cursor.execute("SELECT sql FROM sqlite_master WHERE type='table' AND name='events'")
+                sql = cursor.fetchone()[0]
+                if "'SIGHTING'" not in sql:
+                    logger.info("Migrating events table for 'SIGHTING' constraint...")
+                    cursor.execute("ALTER TABLE events RENAME TO events_v1")
+                    cursor.execute('''
+                        CREATE TABLE events (
+                            event_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            goat_id INTEGER,
+                            video_id INTEGER,
+                            event_type TEXT NOT NULL CHECK(event_type IN ('Health Alert', 'Behavior Alert', 'Feeding Alert', 'Movement Alert', 'System Alert', 'SIGHTING')),
+                            severity TEXT NOT NULL CHECK(severity IN ('Low', 'Medium', 'High', 'Critical')),
+                            title TEXT NOT NULL,
+                            description TEXT,
+                            details TEXT,
+                            location TEXT,
+                            resolved BOOLEAN DEFAULT 0,
+                            resolved_at DATETIME,
+                            resolved_by TEXT,
+                            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+                            metadata TEXT,
+                            FOREIGN KEY (goat_id) REFERENCES goats(goat_id) ON DELETE CASCADE,
+                            FOREIGN KEY (video_id) REFERENCES videos(video_id) ON DELETE SET NULL
+                        )
+                    ''')
+                    cursor.execute("INSERT INTO events (event_id, goat_id, video_id, event_type, severity, title, description, details, location, resolved, resolved_at, resolved_by, timestamp, metadata) SELECT event_id, goat_id, video_id, event_type, severity, title, description, details, location, resolved, resolved_at, resolved_by, timestamp, metadata FROM events_v1")
+                    cursor.execute("DROP TABLE events_v1")
+                    logger.info("Events table migrated successfully.")
+            except Exception as e:
+                logger.error(f"Failed to migrate events table: {e}")
+
             conn.commit()
             logger.info("Database schema initialized successfully")
             

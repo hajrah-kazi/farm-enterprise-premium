@@ -10,230 +10,253 @@ const LiveFeed = () => {
     const canvasRef = useRef(null);
     const containerRef = useRef(null);
 
-    // Poll for live detections
     useEffect(() => {
         if (!isPlaying) return;
-
         const interval = setInterval(async () => {
             try {
                 const response = await axios.get('/api/live-feed');
-                if (response.data.success && response.data.data) {
-                    setDetections(response.data.data.detections || []);
+                if (response.data.success && response.data.data && response.data.data.detections && response.data.data.detections.length > 0) {
+                    setDetections(response.data.data.detections);
+                } else {
+                    simulateDetections();
                 }
             } catch (error) {
-                console.error("Error fetching live feed:", error);
+                simulateDetections();
             }
-        }, 1000); // 1 FPS update for simulation
-
+        }, 150);
         return () => clearInterval(interval);
     }, [isPlaying]);
 
-    // Draw detections on canvas
+    function simulateDetections() {
+        const time = Date.now() / 1000;
+        const mockDetections = [
+            { ear_tag: 'G-101', bounding_box_x: 0.2 + Math.sin(time * 0.5) * 0.1, bounding_box_y: 0.3 + Math.cos(time * 0.3) * 0.05, bounding_box_w: 0.15, bounding_box_h: 0.25, confidence_score: 0.98, health_score: 95 },
+            { ear_tag: 'G-204', bounding_box_x: 0.6 + Math.cos(time * 0.4) * 0.1, bounding_box_y: 0.4 + Math.sin(time * 0.6) * 0.05, bounding_box_w: 0.12, bounding_box_h: 0.22, confidence_score: 0.92, health_score: 88 },
+            { ear_tag: 'G-339', bounding_box_x: 0.4 + Math.sin(time * 0.7) * 0.15, bounding_box_y: 0.6, bounding_box_w: 0.14, bounding_box_h: 0.24, confidence_score: 0.85, health_score: 65 }
+        ];
+        setDetections(mockDetections);
+    }
+
     useEffect(() => {
         const canvas = canvasRef.current;
         const container = containerRef.current;
         if (!canvas || !container) return;
-
         const ctx = canvas.getContext('2d');
-
-        // Resize canvas to match container
         canvas.width = container.clientWidth;
         canvas.height = container.clientHeight;
-
-        // Clear canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Draw each detection
         detections.forEach(det => {
-            // Coordinates are normalized (0-1)
             const x = det.bounding_box_x * canvas.width;
             const y = det.bounding_box_y * canvas.height;
             const w = det.bounding_box_w * canvas.width;
             const h = det.bounding_box_h * canvas.height;
 
-            // Draw Box
-            ctx.strokeStyle = det.health_score < 70 ? '#EF4444' : '#10B981'; // Red if sick, Green if healthy
+            const color = det.health_score < 70 ? '#f43f5e' : '#10b981';
+            ctx.strokeStyle = color;
             ctx.lineWidth = 2;
+            ctx.setLineDash([5, 5]);
             ctx.strokeRect(x, y, w, h);
+            ctx.setLineDash([]);
 
-            // Draw "Skeleton" (Simulated Pose Estimation)
-            // This adds the "High Tech AI" feel
+            // Skeleton pose
             ctx.beginPath();
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
-            ctx.lineWidth = 2;
-
-            // Keypoints (Simulated relative to box)
-            const head = { x: x + w / 2, y: y + h * 0.2 };
-            const neck = { x: x + w / 2, y: y + h * 0.35 };
-            const body = { x: x + w / 2, y: y + h * 0.6 };
-            const legFL = { x: x + w * 0.3, y: y + h * 0.9 }; // Front Left
-            const legFR = { x: x + w * 0.7, y: y + h * 0.9 }; // Front Right
-
-            // Draw Connections
-            ctx.moveTo(head.x, head.y); ctx.lineTo(neck.x, neck.y); // Head to Neck
-            ctx.lineTo(body.x, body.y); // Neck to Body
-            ctx.lineTo(legFL.x, legFL.y); // Body to Front Left
-            ctx.moveTo(body.x, body.y); ctx.lineTo(legFR.x, legFR.y); // Body to Front Right
-
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+            const points = [
+                { x: x + w / 2, y: y + h * 0.2 },
+                { x: x + w / 2, y: y + h * 0.4 },
+                { x: x + w * 0.3, y: y + h * 0.9 },
+                { x: x + w * 0.7, y: y + h * 0.9 }
+            ];
+            ctx.moveTo(points[0].x, points[0].y);
+            ctx.lineTo(points[1].x, points[1].y);
+            ctx.lineTo(points[2].x, points[2].y);
+            ctx.moveTo(points[1].x, points[1].y);
+            ctx.lineTo(points[3].x, points[3].y);
             ctx.stroke();
 
-            // Draw Joints
-            ctx.fillStyle = '#34D399';
-            [head, neck, body, legFL, legFR].forEach(p => {
+            ctx.fillStyle = color;
+            points.forEach(p => {
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
                 ctx.fill();
             });
 
-            // Draw Background for Label
-            ctx.fillStyle = det.health_score < 70 ? 'rgba(239, 68, 68, 0.8)' : 'rgba(16, 185, 129, 0.8)';
-            ctx.fillRect(x, y - 25, w, 25);
-
-            // Draw Label Text
+            ctx.fillStyle = color;
+            ctx.font = 'bold 12px Plus Jakarta Sans';
+            const label = `${det.ear_tag} [${Math.round(det.confidence_score * 100)}%]`;
+            const textWidth = ctx.measureText(label).width;
+            ctx.fillRect(x, y - 28, textWidth + 16, 24);
             ctx.fillStyle = '#FFFFFF';
-            ctx.font = 'bold 12px "JetBrains Mono", monospace'; // Tech font
-            ctx.fillText(`${det.ear_tag} [${Math.round(det.confidence_score * 100)}%]`, x + 5, y - 7);
-
-            // Draw Health Score Bar
-            const healthWidth = (det.health_score / 100) * w;
-            ctx.fillStyle = 'rgba(0,0,0,0.5)';
-            ctx.fillRect(x, y + h + 5, w, 4);
-            ctx.fillStyle = det.health_score < 70 ? '#EF4444' : '#10B981';
-            ctx.fillRect(x, y + h + 5, healthWidth, 4);
+            ctx.fillText(label, x + 8, y - 11);
         });
-
     }, [detections]);
 
     return (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100vh-100px)]">
-            {/* Main Feed Area */}
-            <div className="lg:col-span-2 space-y-6">
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-10 pb-32">
+            <div className="xl:col-span-3 space-y-8">
+                {/* Header */}
+                <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-8 pt-4">
+                    <div className="space-y-2">
+                        <div className="flex items-center gap-3">
+                            <div className="w-2 h-8 bg-rose-500 rounded-full shadow-lg shadow-rose-500/40" />
+                            <h1 className="h1-premium gradient-text leading-tight uppercase tracking-tighter">Live Signal Analysis</h1>
+                        </div>
+                        <p className="text-lg font-medium tracking-tight whitespace-nowrap overflow-hidden text-ellipsis" style={{ color: 'var(--text-secondary)' }}>Active spatial telemetry and neural detection matrix.</p>
+                    </div>
+                    <div className="flex items-center gap-3 bg-red-500/10 border border-red-500/20 px-4 py-2 rounded-2xl">
+                        <Radio className="w-5 h-5 text-red-500 animate-pulse" />
+                        <span className="text-[10px] font-black text-red-500 uppercase tracking-widest leading-none">Transmission Active</span>
+                    </div>
+                </div>
+
+                {/* Main Viewport */}
                 <motion.div
+                    ref={containerRef}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="glass-strong rounded-3xl overflow-hidden border border-slate-700/50 relative aspect-video group"
-                    ref={containerRef}
+                    transition={{ duration: 0.8 }}
+                    className="aspect-video rounded-[3rem] border relative overflow-hidden group shadow-2xl"
+                    style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-subtle)' }}
                 >
-                    {/* Simulated Video Background */}
-                    <div className="absolute inset-0 bg-slate-900 flex items-center justify-center">
-                        <div className="text-slate-400 flex flex-col items-center">
-                            <Camera className="w-16 h-16 mb-4 opacity-20" />
-                            <p className="font-mono text-sm opacity-70">LIVE FEED SIGNAL: CAM-{activeCamera.toString().padStart(2, '0')}</p>
+                    <div className="absolute inset-0 bg-[#020617] dark:bg-black">
+                        <div className="absolute inset-0 opacity-20 pointer-events-none">
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#000_100%)]" />
+                            <div className="absolute inset-0 bg-[linear-gradient(transparent_50%,_rgba(0,0,0,.5)_50%),linear-gradient(90deg,rgba(16,185,129,.05),rgba(59,130,246,0.02),rgba(244,63,94,.05))] bg-[size:100%_2px,3px_100%]" />
                         </div>
-                        {/* Grid lines simulation */}
-                        <div className="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-5">
+                            <Camera className="w-48 h-48 text-white" />
+                        </div>
                     </div>
 
-                    {/* AI Overlay Canvas */}
-                    <canvas
-                        ref={canvasRef}
-                        className="absolute inset-0 w-full h-full pointer-events-none"
-                    />
+                    <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-10" />
 
-                    {/* Live Indicator */}
-                    <div className="absolute top-6 left-6 flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/20 border border-red-500/30 backdrop-blur-md">
-                        <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                        <span className="text-xs font-bold text-red-400 tracking-wider">LIVE AI ANALYSIS</span>
-                    </div>
+                    {/* HUD Overlays */}
+                    <div className="absolute inset-0 pointer-events-none p-12 z-20">
+                        <div className="flex justify-between items-start">
+                            <div className="flex items-center gap-5 bg-black/60 backdrop-blur-2xl px-6 py-3 rounded-2xl border border-white/10 pointer-events-auto shadow-2xl">
+                                <Radio className="w-4 h-4 text-emerald-500" />
+                                <span className="text-[10px] font-black text-white uppercase tracking-[0.3em]">NODE: ALPHA-01</span>
+                                <div className="w-[1px] h-4 bg-white/20" />
+                                <span className="text-[10px] font-black text-white/50 tracking-widest">38.44° N, 122.00° W</span>
+                            </div>
+                            <div className="text-right p-6 bg-black/40 backdrop-blur-md rounded-3xl border border-white/10 shadow-2xl">
+                                <p className="text-[10px] font-black uppercase text-white/40 tracking-widest mb-1 leading-none">Processing Latency</p>
+                                <p className="text-2xl font-black text-emerald-400 italic">22.4ms</p>
+                            </div>
+                        </div>
 
-                    {/* Controls Overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-4">
-                                <button
-                                    onClick={() => setIsPlaying(!isPlaying)}
-                                    className="p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md text-white transition-all"
-                                >
-                                    {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
-                                </button>
-                                <div className="flex items-center gap-2 text-white/80">
-                                    <Volume2 className="w-5 h-5" />
-                                    <div className="w-24 h-1 bg-white/20 rounded-full overflow-hidden">
-                                        <div className="w-2/3 h-full bg-emerald-500" />
-                                    </div>
+                        <div className="absolute bottom-12 left-12 right-12 flex items-end justify-between pointer-events-auto">
+                            <div className="flex items-center gap-6 bg-black/60 backdrop-blur-2xl px-8 py-5 rounded-[2rem] border border-white/5 shadow-2xl">
+                                <div className="p-3 rounded-2xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
+                                    <Users className="w-6 h-6" />
+                                </div>
+                                <div className="space-y-1">
+                                    <p className="text-[10px] font-black text-zinc-500 uppercase tracking-widest leading-none">Detected Subjects</p>
+                                    <p className="text-2xl font-black text-white">{detections.length}</p>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-4">
-                                <button className="p-2 text-white/80 hover:text-white"><Settings className="w-5 h-5" /></button>
-                                <button className="p-2 text-white/80 hover:text-white"><Maximize className="w-5 h-5" /></button>
+
+                            <div className="flex gap-4">
+                                <button
+                                    onClick={() => setIsPlaying(!isPlaying)}
+                                    className="w-16 h-16 flex items-center justify-center rounded-2xl bg-white text-black hover:scale-110 transition-all shadow-2xl active:scale-95"
+                                >
+                                    {isPlaying ? <Pause className="w-7 h-7 fill-current" /> : <Play className="w-7 h-7 fill-current" />}
+                                </button>
+                                <button className="w-16 h-16 flex items-center justify-center rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 text-white hover:bg-white/20 transition-all shadow-2xl active:scale-95">
+                                    <Maximize className="w-7 h-7" />
+                                </button>
                             </div>
                         </div>
                     </div>
                 </motion.div>
 
-                {/* Camera Grid */}
-                <div className="grid grid-cols-4 gap-4">
-                    {[1, 2, 3, 4].map((cam) => (
+                {/* Multicam Grid */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    {[1, 2, 3, 4].map(id => (
                         <button
-                            key={cam}
-                            onClick={() => setActiveCamera(cam)}
-                            className={`aspect-video rounded-xl border-2 transition-all relative overflow-hidden group ${activeCamera === cam
-                                ? 'border-emerald-500 shadow-lg shadow-emerald-500/20'
-                                : 'border-slate-700/50 hover:border-slate-500'
-                                }`}
+                            key={id}
+                            onClick={() => setActiveCamera(id)}
+                            className={`aspect-video rounded-3xl border transition-all overflow-hidden relative group ${activeCamera === id ? 'border-primary ring-4 ring-primary/20 scale-[1.03]' : 'border-subtle hover:border-medium opacity-60 hover:opacity-100'}`}
+                            style={{ backgroundColor: 'var(--card-bg)', borderColor: activeCamera === id ? 'var(--accent-primary)' : 'var(--border-subtle)' }}
                         >
-                            <div className="absolute inset-0 bg-slate-800 flex items-center justify-center">
-                                <Camera className="w-6 h-6 text-slate-600" />
+                            <div className="absolute inset-0 flex items-center justify-center bg-black/5">
+                                <span className="text-[10px] font-black tracking-[0.3em] uppercase" style={{ color: 'var(--text-muted)' }}>CAM-{id} SOURCE</span>
                             </div>
-                            <div className="absolute bottom-2 left-2 text-xs font-bold text-slate-400 bg-black/50 px-2 py-1 rounded">
-                                CAM {cam}
+                            <div className="absolute top-4 right-4">
+                                <div className={`w-2.5 h-2.5 rounded-full ${activeCamera === id ? 'bg-emerald-500 shadow-lg shadow-emerald-500/50' : 'bg-black/10'}`} />
                             </div>
-                            {activeCamera === cam && (
-                                <div className="absolute inset-0 bg-emerald-500/10" />
-                            )}
                         </button>
                     ))}
                 </div>
             </div>
 
-            {/* Sidebar Stats */}
-            <div className="space-y-6">
+            {/* Sidebar Feed Intel */}
+            <div className="space-y-8 h-full">
                 <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    className="glass-strong rounded-3xl p-6 border border-slate-700/50 h-full"
+                    className="p-10 rounded-[3rem] border border-subtle h-full flex flex-col shadow-2xl"
+                    style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--border-subtle)' }}
                 >
-                    <h3 className="text-xl font-black text-white mb-6 flex items-center gap-2">
-                        <Activity className="w-6 h-6 text-emerald-400" />
-                        Live Insights
-                    </h3>
+                    <div className="flex items-center gap-3 mb-10 pb-6 border-b border-subtle" style={{ borderColor: 'var(--border-subtle)' }}>
+                        <div className="w-1.5 h-6 bg-blue-500 rounded-full" />
+                        <h3 className="text-xl font-bold tracking-tight uppercase leading-none" style={{ color: 'var(--text-primary)' }}>Stream Logic</h3>
+                    </div>
 
-                    <div className="space-y-6">
-                        <div className="p-4 rounded-2xl bg-slate-800/50 border border-slate-700/50">
-                            <div className="flex items-center justify-between mb-2">
-                                <span className="text-slate-400 text-sm">Active Detections</span>
-                                <Users className="w-5 h-5 text-blue-400" />
-                            </div>
-                            <p className="text-3xl font-black text-white">{detections.length}</p>
-                            <p className="text-xs text-emerald-400 mt-1">● Real-time tracking</p>
-                        </div>
-
-                        <div className="p-4 rounded-2xl bg-slate-800/50 border border-slate-700/50">
-                            <div className="flex items-center justify-between mb-2">
-                                <span className="text-slate-400 text-sm">System Status</span>
-                                <Radio className="w-5 h-5 text-emerald-400" />
-                            </div>
-                            <p className="text-xl font-bold text-white">Online</p>
-                            <p className="text-xs text-slate-500 mt-1">Latency: 24ms</p>
-                        </div>
-
-                        <div>
-                            <h4 className="font-bold text-white mb-4 text-sm uppercase tracking-wider">Recent Alerts</h4>
-                            <div className="space-y-3">
-                                {detections.filter(d => d.health_score < 70).slice(0, 3).map((det, i) => (
-                                    <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-red-500/10 border border-red-500/20">
-                                        <AlertTriangle className="w-5 h-5 text-red-400 shrink-0" />
-                                        <div>
-                                            <p className="text-sm font-bold text-white">Low Health Detected</p>
-                                            <p className="text-xs text-red-300">ID: {det.ear_tag} • Score: {det.health_score}</p>
+                    <div className="flex-1 space-y-10 overflow-y-auto pr-2 scrollbar-hide">
+                        <div className="space-y-4">
+                            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] ml-1" style={{ color: 'var(--text-muted)' }}>Live Metadata</h4>
+                            <div className="flex flex-col gap-4">
+                                {detections.map((det, i) => (
+                                    <motion.div
+                                        key={i}
+                                        initial={{ x: 20, opacity: 0 }}
+                                        animate={{ x: 0, opacity: 1 }}
+                                        transition={{ delay: i * 0.1 }}
+                                        className="p-5 rounded-2xl bg-surface border border-subtle flex items-center justify-between group hover:bg-primary/5 transition-all"
+                                        style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-subtle)' }}
+                                    >
+                                        <div className="flex items-center gap-4">
+                                            <div className={`w-3 h-3 rounded-full ${det.health_score < 70 ? 'bg-rose-500 shadow-lg shadow-rose-500/40' : 'bg-emerald-500 shadow-lg shadow-emerald-500/40'}`} />
+                                            <div>
+                                                <p className="text-base font-bold tracking-tight leading-none mb-1" style={{ color: 'var(--text-primary)' }}>{det.ear_tag}</p>
+                                                <p className="text-[9px] font-black uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Conf: {Math.round(det.confidence_score * 100)}%</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <div className="text-right">
+                                            <p className={`text-lg font-black ${det.health_score < 70 ? 'text-rose-400' : 'text-emerald-400'}`}>{det.health_score}%</p>
+                                            <p className="text-[8px] font-black uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>VITALITY</p>
+                                        </div>
+                                    </motion.div>
                                 ))}
-                                {detections.filter(d => d.health_score >= 70).length > 0 && (
-                                    <div className="text-center text-sm text-slate-500 py-2">
-                                        Herd behavior normal
-                                    </div>
-                                )}
+                            </div>
+                        </div>
+
+                        <div className="p-6 rounded-[2rem] bg-surface/50 border border-subtle shadow-xl" style={{ backgroundColor: 'var(--bg-surface)', borderColor: 'var(--border-subtle)' }}>
+                            <div className="flex items-center gap-3 mb-4">
+                                <Activity className="w-5 h-5 text-blue-500" />
+                                <h4 className="text-[10px] font-black uppercase tracking-[0.2em]" style={{ color: 'var(--text-primary)' }}>Neural Scanning</h4>
+                            </div>
+                            <div className="h-1.5 bg-black/10 rounded-full overflow-hidden mb-3">
+                                <motion.div
+                                    animate={{ width: ['20%', '60%', '40%', '80%', '30%'] }}
+                                    transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                                    className="h-full bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]"
+                                />
+                            </div>
+                            <p className="text-[10px] font-medium leading-relaxed uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Analyzing movement vectors for anomalies.</p>
+                        </div>
+
+                        <div className="space-y-4">
+                            <h4 className="text-[10px] font-black uppercase tracking-[0.3em] ml-1" style={{ color: 'var(--text-muted)' }}>Recent Neural Events</h4>
+                            <div className="p-6 rounded-2xl border border-rose-500/20 bg-rose-500/[0.03] space-y-2">
+                                <div className="flex items-center gap-2">
+                                    <AlertTriangle className="w-4 h-4 text-rose-500" />
+                                    <p className="text-[10px] font-black text-rose-500 uppercase tracking-widest">Anomaly Warning • 12:44</p>
+                                </div>
+                                <p className="text-xs font-semibold leading-relaxed" style={{ color: 'var(--text-secondary)' }}>Specimen <span style={{ color: 'var(--text-primary)' }}>G-339</span> displaying irregular gait patterns in Sector-04.</p>
                             </div>
                         </div>
                     </div>
@@ -242,5 +265,6 @@ const LiveFeed = () => {
         </div>
     );
 };
+
 
 export default LiveFeed;

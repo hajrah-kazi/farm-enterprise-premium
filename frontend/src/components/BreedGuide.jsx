@@ -1,225 +1,177 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Ruler, Wheat, Droplets, Info, Heart, Home, ChevronDown, Search } from 'lucide-react';
-import { GOAT_BREEDS } from '../data/breeds';
+import { Heart, Search, Globe, ChevronRight, Filter, Info } from 'lucide-react';
+import axios from 'axios';
 
 const BreedGuide = () => {
-    const [selectedBreedId, setSelectedBreedId] = useState("");
-    const [imageError, setImageError] = useState({});
+    const [breeds, setBreeds] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selectedBreed, setSelectedBreed] = useState(null);
+    const [loading, setLoading] = useState(true);
 
-    // Find the full breed object based on selection
-    const selectedBreed = GOAT_BREEDS.find(b => b.id === selectedBreedId);
+    useEffect(() => {
+        const fetchBreeds = async () => {
+            try {
+                const response = await axios.get('/api/breeds');
+                setBreeds(response.data.data.breeds || []);
+            } catch (e) {
+                console.error("Breed fetch failed", e);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchBreeds();
+    }, []);
 
-    const handleImageError = (id) => {
-        setImageError(prev => ({ ...prev, [id]: true }));
-    };
+    const filteredBreeds = breeds.filter(b =>
+        b.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        b.origin.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    if (loading) return (
+        <div className="flex items-center justify-center p-40">
+            <div className="w-10 h-10 border-2 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin" />
+        </div>
+    );
 
     return (
-        <div className="min-h-screen bg-slate-50 dark:bg-[#0b1120] text-slate-800 dark:text-white font-sans pb-20 transition-colors duration-300">
-            {/* Header */}
-            <div className="relative pt-20 pb-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center z-10">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                >
-                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-xs font-bold uppercase tracking-wider mb-6">
-                        <Sparkles className="w-3 h-3" /> Genetic Database
-                    </span>
-                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-slate-900 dark:text-white">
-                        Breed <span className="text-indigo-600 dark:text-indigo-400">Encyclopedia</span>
-                    </h1>
-                    <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg mb-10">
-                        Select a breed from the list below to view comprehensive genetic and nutritional data.
-                    </p>
-                </motion.div>
+        <div className="flex flex-col gap-12 pb-32">
+            <div className="flex items-end justify-between gap-8 pt-4">
+                <div className="space-y-4">
+                    <div className="flex items-center gap-3">
+                        <div className="w-2 h-8 bg-emerald-500 rounded-full shadow-[0_0_20px_rgba(16,185,129,0.4)]" />
+                        <h1 className="h1-premium text-white leading-none">Global Registry</h1>
+                    </div>
+                    <p className="text-zinc-500 text-lg font-medium tracking-tight">Institutional knowledge base of worldwide caprine genetics.</p>
+                </div>
 
-                {/* Dropdown Selection Area */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    className="max-w-xl mx-auto relative group"
-                >
-                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <Search className="h-5 w-5 text-slate-400" />
-                    </div>
-                    <select
-                        value={selectedBreedId}
-                        onChange={(e) => setSelectedBreedId(e.target.value)}
-                        className="block w-full pl-11 pr-10 py-4 text-lg bg-white dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 rounded-2xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all appearance-none cursor-pointer shadow-lg hover:shadow-xl text-slate-900 dark:text-white font-medium"
-                    >
-                        <option value="" disabled>Select a Breed...</option>
-                        {GOAT_BREEDS.map((breed) => (
-                            <option key={breed.id} value={breed.id}>
-                                {breed.name} ({breed.category})
-                            </option>
-                        ))}
-                    </select>
-                    <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
-                        <ChevronDown className="h-5 w-5 text-slate-400 group-hover:text-indigo-500 transition-colors" />
-                    </div>
-                </motion.div>
+                <div className="relative w-96">
+                    <Search className="absolute left-6 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" />
+                    <input
+                        type="text"
+                        placeholder="SCAN REGISTRY..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        className="w-full bg-white/[0.02] border border-white/[0.05] rounded-2xl pl-16 pr-8 py-5 text-[11px] font-black uppercase tracking-[0.2em] focus:border-emerald-500/50 outline-none transition-all placeholder:text-zinc-600"
+                    />
+                </div>
             </div>
 
-            {/* Detailed Content Display */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <AnimatePresence mode="wait">
-                    {selectedBreed ? (
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                {/* Breed Scroll Surface */}
+                <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {filteredBreeds.map((breed) => (
                         <motion.div
-                            key={selectedBreed.id}
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -20 }}
-                            transition={{ duration: 0.4 }}
-                            className="bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700/50"
+                            layout
+                            key={breed.id}
+                            onClick={() => setSelectedBreed(breed)}
+                            className={`p-8 rounded-3xl cursor-pointer border transition-all duration-500 ${selectedBreed?.id === breed.id
+                                ? 'bg-white/[0.04] border-emerald-500/40 shadow-[0_12px_30px_rgba(0,0,0,0.4)]'
+                                : 'bg-white/[0.01] border-white/[0.05] hover:bg-white/[0.02] hover:border-white/[0.1] hover:-translate-y-1'
+                                }`}
                         >
-                            <div className="flex flex-col lg:flex-row">
-                                {/* Image Section */}
-                                <div className="lg:w-2/5 relative h-96 lg:h-auto min-h-[500px]">
-                                    <img
-                                        src={imageError[selectedBreed.id] ? `https://placehold.co/800x1200/1e293b/cbd5e1?text=${encodeURIComponent(selectedBreed.name)}` : selectedBreed.image}
-                                        onError={() => handleImageError(selectedBreed.id)}
-                                        alt={selectedBreed.name}
-                                        className="absolute inset-0 w-full h-full object-cover"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent lg:bg-gradient-to-r" />
-
-                                    <div className="absolute bottom-0 left-0 p-8 lg:p-12 text-white">
-                                        <div className="inline-block px-3 py-1 mb-4 rounded-full bg-indigo-600/90 backdrop-blur-md text-xs font-bold uppercase tracking-wider border border-white/20">
-                                            {selectedBreed.origin}
-                                        </div>
-                                        <h2 className="text-4xl lg:text-5xl font-black leading-tight mb-2 tracking-tight">
-                                            {selectedBreed.name}
-                                        </h2>
-                                        <p className="text-lg text-slate-300 font-medium">{selectedBreed.category} Breed</p>
-                                    </div>
+                            <div className="flex justify-between items-start mb-10">
+                                <div className="w-16 h-16 rounded-3xl bg-zinc-900 flex items-center justify-center border border-white/5">
+                                    <Globe className="w-8 h-8 text-zinc-600" />
                                 </div>
+                                <span className="px-5 py-2 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-black uppercase tracking-widest rounded-full">
+                                    {breed.category}
+                                </span>
+                            </div>
 
-                                {/* Data Section */}
-                                <div className="lg:w-3/5 p-8 lg:p-12 bg-slate-50/50 dark:bg-slate-900/50">
-                                    <div className="space-y-10">
-                                        {/* Description */}
-                                        <section>
-                                            <h3 className="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-white mb-4">
-                                                <Info className="w-5 h-5 text-indigo-500" />
-                                                Overview
-                                            </h3>
-                                            <p className="text-slate-600 dark:text-slate-300 leading-8 text-lg">
-                                                {selectedBreed.description}
-                                            </p>
+                            <h3 className="text-2xl font-bold text-white mb-2 tracking-tight">{breed.name}</h3>
+                            <p className="text-xs font-black text-zinc-600 uppercase tracking-[0.2em]">{breed.origin}</p>
 
-                                            {/* Vital Stats Grid */}
-                                            {selectedBreed.stats && (
-                                                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                                                    <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl border border-indigo-100 dark:border-indigo-800">
-                                                        <span className="text-xs font-bold text-indigo-500 uppercase tracking-widest block mb-1">Male Weight</span>
-                                                        <span className="text-lg font-black text-slate-900 dark:text-white">{selectedBreed.stats.weight_male}</span>
-                                                    </div>
-                                                    <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl border border-indigo-100 dark:border-indigo-800">
-                                                        <span className="text-xs font-bold text-indigo-500 uppercase tracking-widest block mb-1">Female Weight</span>
-                                                        <span className="text-lg font-black text-slate-900 dark:text-white">{selectedBreed.stats.weight_female}</span>
-                                                    </div>
-                                                    <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl border border-indigo-100 dark:border-indigo-800">
-                                                        <span className="text-xs font-bold text-indigo-500 uppercase tracking-widest block mb-1">Avg Height</span>
-                                                        <span className="text-lg font-black text-slate-900 dark:text-white">{selectedBreed.stats.height}</span>
-                                                    </div>
-                                                    <div className="p-4 bg-indigo-50 dark:bg-indigo-900/20 rounded-xl border border-indigo-100 dark:border-indigo-800">
-                                                        <span className="text-xs font-bold text-indigo-500 uppercase tracking-widest block mb-1">Lifespan</span>
-                                                        <span className="text-lg font-black text-slate-900 dark:text-white">{selectedBreed.stats.lifespan}</span>
-                                                    </div>
-                                                </div>
-                                            )}
-                                        </section>
+                            <div className="mt-10 flex items-center gap-3 text-emerald-500 font-black text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                                Access Dossier <ChevronRight className="w-4 h-4" />
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
 
-                                        {/* Key Metrics Grid */}
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
-                                                <h4 className="flex items-center gap-2 text-sm font-bold text-slate-400 uppercase tracking-wider mb-5">
-                                                    <Ruler className="w-4 h-4" /> Physical Traits
-                                                </h4>
-                                                <ul className="space-y-4">
-                                                    {Object.entries(selectedBreed.traits).map(([k, v]) => (
-                                                        <li key={k} className="flex justify-between items-center text-sm border-b border-slate-100 dark:border-slate-700/50 pb-2 last:border-0 last:pb-0">
-                                                            <span className="text-slate-500 capitalize font-medium">{k.replace(/_/g, ' ')}</span>
-                                                            <span className="font-bold text-slate-900 dark:text-white">{v}</span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
+                {/* Intelligence Dossier Side Panel */}
+                <div className="lg:col-span-4 sticky top-32">
+                    <AnimatePresence mode="wait">
+                        {selectedBreed ? (
+                            <motion.div
+                                key={selectedBreed.id}
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 20 }}
+                                className="p-10 rounded-3xl bg-[#0a0a0c] border border-white/[0.05] shadow-2xl relative overflow-y-auto max-h-[80vh] custom-scrollbar group"
+                            >
+                                <div className="absolute top-0 right-0 w-60 h-60 bg-emerald-500/5 blur-[100px] rounded-full -translate-y-1/2 translate-x-1/2" />
 
-                                            <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
-                                                <h4 className="flex items-center gap-2 text-sm font-bold text-slate-400 uppercase tracking-wider mb-5">
-                                                    <Wheat className="w-4 h-4" /> Nutritional Needs
-                                                </h4>
-                                                <ul className="space-y-4">
-                                                    {Object.entries(selectedBreed.nutrition).map(([k, v]) => (
-                                                        <li key={k} className="flex justify-between items-center text-sm border-b border-slate-100 dark:border-slate-700/50 pb-2 last:border-0 last:pb-0">
-                                                            <span className="text-slate-500 capitalize font-medium">{k.replace(/_/g, ' ')}</span>
-                                                            <span className="font-bold text-slate-900 dark:text-white text-right pl-4">{v}</span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            </div>
+                                <h2 className="text-4xl font-black text-white mb-8 tracking-tighter leading-none">{selectedBreed.name}</h2>
+
+                                <div className="space-y-10">
+                                    <div>
+                                        <label className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.3em]">Genetic Lineage</label>
+                                        <p className="text-base text-zinc-400 mt-2 font-medium leading-relaxed">{selectedBreed.description}</p>
+                                    </div>
+
+                                    <div className="grid grid-cols-2 gap-8">
+                                        <div>
+                                            <label className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.3em]">Productivity</label>
+                                            <p className="text-base text-emerald-500 mt-2 font-black uppercase tracking-widest">{selectedBreed.productivity}</p>
+                                        </div>
+                                        <div>
+                                            <label className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.3em]">Adaptability</label>
+                                            <p className="text-base text-blue-500 mt-2 font-black uppercase tracking-widest">{selectedBreed.adaptability}</p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.3em]">Key Attributes</label>
+                                        <div className="flex flex-wrap gap-2 mt-4">
+                                            {selectedBreed.traits.map((t, i) => (
+                                                <span key={i} className={`px-4 py-2 bg-zinc-900 border border-white/5 rounded-xl text-[10px] font-bold uppercase tracking-widest ${i % 2 === 0 ? 'text-emerald-500/80' : 'text-blue-500/80'}`}>
+                                                    {t}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Advanced Operational Metrics */}
+                                    <div className="space-y-8 pt-8 border-t border-white/5">
+                                        <div>
+                                            <label className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.3em] flex items-center gap-2">
+                                                <div className="w-1 h-1 rounded-full bg-amber-500" /> DIETARY MATRIX
+                                            </label>
+                                            <p className="text-sm text-zinc-300 mt-2 font-medium leading-relaxed">{selectedBreed.eating_habits || 'Accessing protocol...'}</p>
                                         </div>
 
-                                        {/* Secondary Info */}
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div className="bg-orange-50 dark:bg-orange-950/30 p-6 rounded-2xl border border-orange-100 dark:border-orange-500/20">
-                                                <h4 className="flex items-center gap-2 text-orange-700 dark:text-orange-400 font-bold text-sm uppercase tracking-wider mb-3">
-                                                    <Home className="w-4 h-4" /> Environment
-                                                </h4>
-                                                <p className="text-orange-900/80 dark:text-orange-200/80 leading-relaxed font-medium">
-                                                    {selectedBreed.living_conditions}
-                                                </p>
-                                            </div>
-
-                                            <div>
-                                                <h4 className="flex items-center gap-2 text-rose-600 dark:text-rose-400 font-bold text-sm uppercase tracking-wider mb-4">
-                                                    <Heart className="w-4 h-4" /> Favorite Foods
-                                                </h4>
-                                                <div className="flex flex-wrap gap-2">
-                                                    {selectedBreed.favorite_foods?.map(food => (
-                                                        <span key={food} className="px-4 py-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm font-bold text-slate-700 dark:text-slate-300 shadow-sm">
-                                                            {food}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            </div>
+                                        <div>
+                                            <label className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.3em] flex items-center gap-2">
+                                                <div className="w-1 h-1 rounded-full bg-blue-500" /> SLEEP CYCLES
+                                            </label>
+                                            <p className="text-sm text-zinc-300 mt-2 font-medium leading-relaxed">{selectedBreed.sleeping_habits || 'Analyzing sensor logs...'}</p>
                                         </div>
 
-                                        {/* Feeding Strategy */}
-                                        <div className="pt-6 border-t border-slate-200 dark:border-slate-700">
-                                            <h3 className="flex items-center gap-2 text-lg font-bold text-slate-900 dark:text-white mb-6">
-                                                <Droplets className="w-5 h-5 text-blue-500" />
-                                                Recommended Feeding Strategy
-                                            </h3>
-                                            <div className="grid md:grid-cols-3 gap-6">
-                                                {Object.entries(selectedBreed.feeding_guide).map(([k, v]) => (
-                                                    <div key={k} className="relative pl-6">
-                                                        <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full" />
-                                                        <h5 className="font-bold text-slate-900 dark:text-white text-sm capitalize mb-2">{k.replace(/_/g, ' ')}</h5>
-                                                        <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">{v}</p>
-                                                    </div>
-                                                ))}
-                                            </div>
+                                        <div>
+                                            <label className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.3em] flex items-center gap-2">
+                                                <div className="w-1 h-1 rounded-full bg-emerald-500" /> BIO-NUTRIENT PROTOCOL
+                                            </label>
+                                            <p className="text-sm text-zinc-300 mt-2 font-medium leading-relaxed">{selectedBreed.nutrition || 'Compiling nutritional data...'}</p>
+                                        </div>
+
+                                        <div>
+                                            <label className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.3em] flex items-center gap-2">
+                                                <div className="w-1 h-1 rounded-full bg-purple-500" /> ENVIRONMENTAL VARIANCE
+                                            </label>
+                                            <p className="text-sm text-zinc-300 mt-2 font-medium leading-relaxed">{selectedBreed.env_conditions || 'Calculating adaptive index...'}</p>
                                         </div>
                                     </div>
                                 </div>
+                            </motion.div>
+                        ) : (
+                            <div className="p-20 text-center rounded-[3.5rem] border border-dashed border-white/10 opacity-30">
+                                <Info className="w-12 h-12 mx-auto mb-6 text-zinc-500" />
+                                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-zinc-500 leading-loose">Select genotype for<br />institutional briefing</p>
                             </div>
-                        </motion.div>
-                    ) : (
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            className="text-center py-20 opacity-50"
-                        >
-                            <div className="inline-block p-6 rounded-full bg-slate-100 dark:bg-slate-800 mb-4">
-                                <Search className="w-12 h-12 text-slate-400" />
-                            </div>
-                            <p className="text-xl text-slate-500 font-medium">Use the dropdown above to view breed details</p>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                        )}
+                    </AnimatePresence>
+                </div>
             </div>
         </div>
     );

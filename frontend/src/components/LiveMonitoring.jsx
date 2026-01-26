@@ -25,253 +25,280 @@ const LiveMonitoring = () => {
     ];
 
     return (
-        <div className="space-y-6">
-            {/* Live Status Banner */}
-            <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="glass rounded-xl p-4 border border-slate-700 flex items-center justify-between"
-            >
-                <div className="flex items-center gap-4">
-                    <div className={`w-3 h-3 rounded-full ${isLive ? 'bg-red-500 pulse-glow' : 'bg-slate-500'}`} />
-                    <div>
-                        <h3 className="font-bold">{isLive ? 'LIVE MONITORING' : 'MONITORING PAUSED'}</h3>
-                        <p className="text-sm text-slate-400">
-                            {isLive ? 'Real-time video analysis active' : 'Click play to start monitoring'}
-                        </p>
+        <div className="flex flex-col gap-10 pb-32 max-w-[1400px] mx-auto">
+            {/* Live Status Header */}
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-8 pt-4">
+                <div className="space-y-2">
+                    <div className="flex items-center gap-3">
+                        <div className="w-2 h-8 bg-rose-500 rounded-full shadow-lg shadow-rose-500/40" />
+                        <h1 className="h1-premium gradient-text leading-tight uppercase tracking-tighter">Live Neural Feed</h1>
                     </div>
+                    <p className="text-lg text-zinc-500 font-medium tracking-tight">Real-time computer vision and behavioral telemetry streaming.</p>
                 </div>
+
                 <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     onClick={() => setIsLive(!isLive)}
-                    className={`p-4 rounded-xl ${isLive
-                            ? 'bg-red-500 hover:bg-red-600'
-                            : 'bg-emerald-500 hover:bg-emerald-600'
-                        } transition-colors`}
+                    className={`px-10 py-5 rounded-2xl flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.3em] transition-all duration-700 shadow-2xl ${isLive
+                        ? 'bg-rose-500 text-white shadow-rose-500/20'
+                        : 'bg-emerald-500 text-white shadow-emerald-500/20'
+                        }`}
                 >
-                    {isLive ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
+                    {isLive ? (
+                        <>
+                            <Pause className="w-5 h-5 fill-current" />
+                            Terminate Feed
+                        </>
+                    ) : (
+                        <>
+                            <Play className="w-5 h-5 fill-current" />
+                            Initialize Stream
+                        </>
+                    )}
                 </motion.button>
-            </motion.div>
+            </div>
 
             {/* Video Feed Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 xl:grid-cols-12 gap-10">
                 {/* Main Feed */}
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.98 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="glass rounded-2xl p-6 border border-slate-700"
+                    className="xl:col-span-8 glass-panel p-10 rounded-[3.5rem] border-white/5 bg-white/[0.01] shadow-2xl relative overflow-hidden group"
                 >
-                    <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-2">
-                            <Video className="w-5 h-5 text-emerald-500" />
-                            <h3 className="font-bold">Camera 1 - Main Paddock</h3>
+                    <div className="flex items-center justify-between mb-8">
+                        <div className="flex items-center gap-4">
+                            <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
+                                <Video className="w-5 h-5 text-rose-500" />
+                            </div>
+                            <div>
+                                <h3 className="text-xl font-bold text-white tracking-tight uppercase leading-none">Primary Paddock Node</h3>
+                                <p className="text-[9px] font-black text-zinc-600 uppercase tracking-widest mt-1">AXIS-8200 IR THERMAL SENSOR</p>
+                            </div>
                         </div>
-                        <div className="flex items-center gap-2 text-sm text-slate-400">
-                            <Clock className="w-4 h-4" />
+                        <div className="px-5 py-2.5 rounded-full bg-black/40 border border-white/5 text-[10px] font-black uppercase tracking-widest text-zinc-400 flex items-center gap-3">
+                            <div className={`w-2 h-2 rounded-full ${isLive ? 'bg-rose-500 animate-pulse' : 'bg-zinc-800'}`} />
                             {new Date().toLocaleTimeString()}
                         </div>
                     </div>
 
-                    {/* Video Placeholder */}
-                    <div className="relative aspect-video bg-slate-900 rounded-xl overflow-hidden mb-4">
+                    {/* Video Placeholder Visual */}
+                    <div className="relative aspect-video bg-zinc-950 rounded-[2.5rem] overflow-hidden border border-white/5 shadow-inner">
+                        <div className="absolute inset-0 opacity-20 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+
                         <div className="absolute inset-0 flex items-center justify-center">
-                            <Camera className="w-16 h-16 text-slate-700" />
-                        </div>
-                        {isLive && (
-                            <div className="absolute top-4 left-4 px-3 py-1 bg-red-500 rounded-lg flex items-center gap-2">
-                                <div className="w-2 h-2 rounded-full bg-white pulse-glow" />
-                                <span className="text-sm font-semibold">LIVE</span>
+                            <div className="relative">
+                                <Camera className="w-24 h-24 text-zinc-900" />
+                                <div className="absolute inset-0 animate-pulse bg-rose-500/5 blur-3xl rounded-full" />
                             </div>
-                        )}
-                        {isLive && (
-                            <div className="absolute bottom-4 left-4 right-4">
-                                <div className="glass rounded-lg p-3">
-                                    <div className="flex items-center justify-between text-sm">
-                                        <span>Frame: {currentFrame}</span>
-                                        <span>FPS: 30</span>
-                                        <span>Resolution: 1920x1080</span>
+                        </div>
+
+                        {/* Artificial HUD Elements */}
+                        <div className="absolute inset-0 pointer-events-none p-8 flex flex-col justify-between">
+                            <div className="flex justify-between items-start opacity-40">
+                                <div className="border-l-2 border-t-2 border-white/20 w-8 h-8 rounded-tl-lg" />
+                                <div className="border-r-2 border-t-2 border-white/20 w-8 h-8 rounded-tr-lg" />
+                            </div>
+
+                            {isLive && (
+                                <div className="flex flex-col gap-4">
+                                    <div className="w-48 h-1 bg-white/5 rounded-full overflow-hidden">
+                                        <motion.div
+                                            animate={{ x: ['100%', '-100%'] }}
+                                            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                            className="w-1/2 h-full bg-rose-500 shadow-[0_0_10px_#f43f5e]"
+                                        />
                                     </div>
+                                    <div className="text-[10px] font-mono text-rose-500/60 uppercase tracking-widest">
+                                        SCANNING FOR BIOMETRIC TAGS... [NODE_0x72]
+                                    </div>
+                                </div>
+                            )}
+
+                            <div className="flex justify-between items-end opacity-40">
+                                <div className="border-l-2 border-b-2 border-white/20 w-8 h-8 rounded-bl-lg" />
+                                <div className="border-r-2 border-b-2 border-white/20 w-8 h-8 rounded-br-lg" />
+                            </div>
+                        </div>
+
+                        {isLive && (
+                            <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between">
+                                <div className="glass-panel px-6 py-4 rounded-2xl bg-black/60 border-white/10 backdrop-blur-3xl">
+                                    <div className="flex items-center gap-8 text-[10px] font-black uppercase tracking-widest text-zinc-300">
+                                        <div className="space-y-1">
+                                            <p className="text-zinc-500">Node ID</p>
+                                            <p className="text-white">CAM_A1_PRIM</p>
+                                        </div>
+                                        <div className="space-y-1">
+                                            <p className="text-zinc-500">Frame</p>
+                                            <p className="text-rose-500 font-mono">#{currentFrame.toString().padStart(6, '0')}</p>
+                                        </div>
+                                        <div className="space-y-1">
+                                            <p className="text-zinc-500">Latency</p>
+                                            <p className="text-white">14ms</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="px-4 py-2 bg-rose-500 text-white text-[9px] font-black tracking-[0.3em] rounded-lg shadow-lg shadow-rose-500/20">
+                                    SECURE_ENCRYPTED_LINK
                                 </div>
                             </div>
                         )}
                     </div>
 
-                    {/* Detection Overlay */}
-                    <div className="grid grid-cols-2 gap-3">
-                        <div className="glass rounded-lg p-3">
-                            <p className="text-xs text-slate-400 mb-1">Objects Detected</p>
-                            <p className="text-2xl font-bold text-emerald-400">{isLive ? '4' : '0'}</p>
+                    {/* Quick Stats Overlay */}
+                    <div className="grid grid-cols-2 gap-6 mt-8">
+                        <div className="glass-panel p-6 rounded-[2rem] bg-white/[0.02] border-white/5">
+                            <p className="text-[9px] font-black text-zinc-600 uppercase tracking-[0.3em] mb-2 leading-none">Global Entities Detected</p>
+                            <p className="text-4xl font-black text-white leading-none">{isLive ? '14' : '0'}</p>
                         </div>
-                        <div className="glass rounded-lg p-3">
-                            <p className="text-xs text-slate-400 mb-1">Avg Confidence</p>
-                            <p className="text-2xl font-bold text-blue-400">{isLive ? '95.2%' : '0%'}</p>
+                        <div className="glass-panel p-6 rounded-[2rem] bg-white/[0.02] border-white/5">
+                            <p className="text-[9px] font-black text-zinc-600 uppercase tracking-[0.3em] mb-2 leading-none">Neural Inference Accuracy</p>
+                            <p className="text-4xl font-black text-indigo-500 leading-none">{isLive ? '98.8%' : '0%'}</p>
                         </div>
                     </div>
                 </motion.div>
 
-                {/* Secondary Feeds */}
-                <div className="space-y-4">
-                    {['Camera 2 - Feeding Area', 'Camera 3 - Shelter', 'Camera 4 - Water Zone'].map((camera, index) => (
+                {/* Secondary Feeds Sidebar */}
+                <div className="xl:col-span-4 space-y-6">
+                    {['Feeding Sector B', 'Shelter Alpha', 'Birthing Suite'].map((name, i) => (
                         <motion.div
-                            key={index}
+                            key={i}
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.1 }}
-                            className="glass rounded-xl p-4 border border-slate-700"
+                            transition={{ delay: i * 0.1 }}
+                            className="glass-panel p-6 rounded-[2.5rem] border-white/5 bg-white/[0.01] hover:bg-white/[0.03] transition-all duration-700 shadow-xl group"
                         >
-                            <div className="flex items-center gap-4">
-                                <div className="relative w-32 h-20 bg-slate-900 rounded-lg overflow-hidden flex items-center justify-center">
-                                    <Camera className="w-8 h-8 text-slate-700" />
+                            <div className="flex gap-4">
+                                <div className="relative w-32 h-20 bg-zinc-950 rounded-2xl overflow-hidden border border-white/5 flex items-center justify-center">
+                                    <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
+                                    <Camera className="w-6 h-6 text-zinc-900 transition-transform duration-500 group-hover:scale-110" />
                                     {isLive && (
-                                        <div className="absolute top-2 left-2 w-2 h-2 rounded-full bg-red-500 pulse-glow" />
+                                        <div className="absolute top-2 left-2 w-2 h-2 rounded-full bg-rose-500 animate-pulse shadow-[0_0_5px_#f43f5e]" />
                                     )}
                                 </div>
-                                <div className="flex-1">
-                                    <h4 className="font-semibold mb-1">{camera}</h4>
-                                    <div className="flex items-center gap-4 text-sm text-slate-400">
-                                        <span>Status: {isLive ? 'Active' : 'Inactive'}</span>
-                                        <span>Objects: {isLive ? Math.floor(Math.random() * 5) : 0}</span>
+                                <div className="flex-1 py-1">
+                                    <h4 className="font-bold text-white tracking-tight uppercase leading-none mb-2">{name}</h4>
+                                    <div className="space-y-2">
+                                        <div className="flex items-center gap-3">
+                                            <div className={`w-1.5 h-1.5 rounded-full ${isLive ? 'bg-emerald-500' : 'bg-zinc-800'}`} />
+                                            <span className="text-[9px] font-black text-zinc-500 uppercase tracking-widest">{isLive ? 'STREAMING ACTIVE' : 'CONNECTION IDLE'}</span>
+                                        </div>
+                                        <p className="text-[9px] font-black text-zinc-700 uppercase tracking-widest">LINK_STABILITY: 100%</p>
                                     </div>
                                 </div>
                             </div>
                         </motion.div>
                     ))}
+
+                    <div className="glass-panel p-10 rounded-[3rem] border-white/5 bg-indigo-500/[0.03] shadow-2xl relative overflow-hidden h-full">
+                        <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-500/5 rounded-full blur-[80px] -mr-20 -mt-20" />
+                        <Activity className="w-10 h-10 text-indigo-500/20 mb-6" />
+                        <h4 className="text-xl font-bold text-white tracking-tight uppercase leading-none mb-4">Neural Analytics</h4>
+                        <p className="text-sm text-zinc-500 font-medium leading-relaxed">
+                            Parallel processing of 4 streams enabled. YOLOv8 model at full inference capacity.
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            {/* Live Detections */}
+            {/* Live Identification Stream */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="glass rounded-2xl p-6 border border-slate-700"
+                className="glass-panel p-12 rounded-[4rem] border-white/5 bg-white/[0.01] shadow-2xl"
             >
-                <div className="flex items-center gap-2 mb-6">
-                    <Activity className="w-5 h-5 text-emerald-500" />
-                    <h3 className="text-xl font-bold">Real-Time Detections</h3>
+                <div className="flex items-center justify-between mb-12">
+                    <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center border border-white/10">
+                            <Activity className="w-5 h-5 text-emerald-500" />
+                        </div>
+                        <h3 className="text-2xl font-black text-white tracking-tighter uppercase leading-none">Biometric Sequence Stream</h3>
+                    </div>
                 </div>
 
-                <div className="space-y-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
                     {isLive ? (
                         liveDetections.map((detection, index) => (
                             <motion.div
                                 key={detection.id}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: index * 0.1 }}
-                                className="glass rounded-xl p-4 border border-slate-700 hover:border-emerald-500/50 transition-all"
+                                className="glass-panel p-8 rounded-[2.5rem] border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-all duration-700 shadow-xl group"
                             >
-                                <div className="flex items-center justify-between">
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-blue-500 flex items-center justify-center font-bold">
-                                            {detection.tag}
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold">{detection.tag}</h4>
-                                            <p className="text-sm text-slate-400">{detection.activity}</p>
-                                        </div>
+                                <div className="flex items-center gap-5 mb-8">
+                                    <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-emerald-500 flex items-center justify-center text-xl font-black text-white shadow-2xl">
+                                        {detection.tag.charAt(0)}
                                     </div>
+                                    <div>
+                                        <h4 className="text-xl font-black text-white tracking-tighter leading-none mb-1">{detection.tag}</h4>
+                                        <p className="text-[9px] font-black text-zinc-600 uppercase tracking-widest">{detection.activity}</p>
+                                    </div>
+                                </div>
 
-                                    <div className="flex items-center gap-6">
-                                        <div>
-                                            <p className="text-xs text-slate-400">Health</p>
-                                            <p className="font-bold text-emerald-400">{detection.health}</p>
-                                        </div>
-                                        <div>
-                                            <p className="text-xs text-slate-400">Zone</p>
-                                            <p className="font-medium">{detection.zone}</p>
-                                        </div>
-                                        <div>
-                                            <p className="text-xs text-slate-400">Confidence</p>
-                                            <p className="font-bold text-blue-400">{(detection.confidence * 100).toFixed(0)}%</p>
-                                        </div>
+                                <div className="space-y-5">
+                                    <div className="flex justify-between items-end">
+                                        <p className="text-[10px] font-black text-zinc-500 uppercase tracking-widest leading-none">Health Index</p>
+                                        <p className="text-xl font-black text-emerald-500 leading-none">{detection.health}%</p>
+                                    </div>
+                                    <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+                                        <div className="h-full bg-emerald-500/50" style={{ width: `${detection.health}%` }} />
+                                    </div>
+                                    <div className="flex justify-between items-end pt-2">
+                                        <p className="text-[10px] font-black text-zinc-500 uppercase tracking-widest leading-none">Zone Location</p>
+                                        <p className="text-[11px] font-bold text-white leading-none uppercase tracking-tight">{detection.zone}</p>
                                     </div>
                                 </div>
                             </motion.div>
                         ))
                     ) : (
-                        <div className="text-center py-12 text-slate-400">
-                            <Video className="w-16 h-16 mx-auto mb-4 opacity-50" />
-                            <p>Start live monitoring to see real-time detections</p>
+                        <div className="col-span-full text-center py-20 border-2 border-dashed border-white/5 rounded-[3rem]">
+                            <Video className="w-20 h-20 mx-auto mb-6 opacity-10" />
+                            <p className="text-zinc-600 font-black text-[11px] uppercase tracking-[0.4em]">Initialize stream for live biometric telemetry</p>
                         </div>
                     )}
                 </div>
             </motion.div>
 
-            {/* Processing Info */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                    className="glass rounded-xl p-6 border border-slate-700"
-                >
-                    <h4 className="font-bold mb-4">YOLOv8 Detection</h4>
-                    <div className="space-y-2 text-sm">
-                        <div className="flex justify-between">
-                            <span className="text-slate-400">Model:</span>
-                            <span className="font-medium">YOLOv8n</span>
+            {/* Hardware Telemetry */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+                {[
+                    { title: 'Neural Processor', label: 'YOLOv8 Dynamic', stats: [['Inference Time', isLive ? '12ms' : '0ms'], ['GPU Load', isLive ? '42%' : '0%'], ['Throughput', isLive ? '240 fps' : '0 fps']], icon: Activity, color: 'text-rose-500' },
+                    { title: 'OCR Subsystem', label: 'EasyOCR Enterprise', stats: [['Accuracy', isLive ? '99.2%' : '0%'], ['Reads/Sec', isLive ? '3.4' : '0.0'], ['Cache Hit', '85%']], icon: Camera, color: 'text-indigo-500' },
+                    { title: 'Cluster Status', label: 'Edge Node 0x82', stats: [['CPU Usage', isLive ? '31%' : '4%'], ['Memory', isLive ? '2.8 GB' : '0.6 GB'], ['Uptime', '12d 4h']], icon: MapPin, color: 'text-emerald-500' },
+                ].map((node, i) => (
+                    <motion.div
+                        key={i}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.5 + (i * 0.1) }}
+                        className="glass-panel p-10 rounded-[3rem] border-white/5 bg-white/[0.01] shadow-2xl relative overflow-hidden group"
+                    >
+                        <div className="flex items-center gap-4 mb-8">
+                            <div className={`p-2 rounded-xl bg-white/5 ${node.color} border border-white/10`}>
+                                <node.icon className="w-5 h-5" />
+                            </div>
+                            <div>
+                                <h4 className="text-lg font-bold text-white tracking-tight uppercase leading-none mb-1">{node.title}</h4>
+                                <p className="text-[9px] font-black text-zinc-600 uppercase tracking-widest">{node.label}</p>
+                            </div>
                         </div>
-                        <div className="flex justify-between">
-                            <span className="text-slate-400">Inference Time:</span>
-                            <span className="font-medium">{isLive ? '12ms' : 'N/A'}</span>
+                        <div className="space-y-4">
+                            {node.stats.map(([label, val], idx) => (
+                                <div key={idx} className="flex justify-between items-center group/stat">
+                                    <span className="text-[10px] font-black text-zinc-500 uppercase tracking-widest transition-colors group-hover/stat:text-zinc-400">{label}</span>
+                                    <span className="text-xs font-bold text-white tracking-tight">{val}</span>
+                                </div>
+                            ))}
                         </div>
-                        <div className="flex justify-between">
-                            <span className="text-slate-400">GPU Utilization:</span>
-                            <span className="font-medium">{isLive ? '45%' : '0%'}</span>
-                        </div>
-                    </div>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                    className="glass rounded-xl p-6 border border-slate-700"
-                >
-                    <h4 className="font-bold mb-4">EasyOCR Processing</h4>
-                    <div className="space-y-2 text-sm">
-                        <div className="flex justify-between">
-                            <span className="text-slate-400">Tags Read:</span>
-                            <span className="font-medium">{isLive ? '4/4' : '0/0'}</span>
-                        </div>
-                        <div className="flex justify-between">
-                            <span className="text-slate-400">Accuracy:</span>
-                            <span className="font-medium">{isLive ? '98.5%' : 'N/A'}</span>
-                        </div>
-                        <div className="flex justify-between">
-                            <span className="text-slate-400">Processing Time:</span>
-                            <span className="font-medium">{isLive ? '45ms' : 'N/A'}</span>
-                        </div>
-                    </div>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.6 }}
-                    className="glass rounded-xl p-6 border border-slate-700"
-                >
-                    <h4 className="font-bold mb-4">System Status</h4>
-                    <div className="space-y-2 text-sm">
-                        <div className="flex justify-between">
-                            <span className="text-slate-400">CPU Usage:</span>
-                            <span className="font-medium">{isLive ? '32%' : '5%'}</span>
-                        </div>
-                        <div className="flex justify-between">
-                            <span className="text-slate-400">Memory:</span>
-                            <span className="font-medium">{isLive ? '2.4GB' : '0.8GB'}</span>
-                        </div>
-                        <div className="flex justify-between">
-                            <span className="text-slate-400">Uptime:</span>
-                            <span className="font-medium">2h 34m</span>
-                        </div>
-                    </div>
-                </motion.div>
+                    </motion.div>
+                ))}
             </div>
         </div>
     );
 };
+
 
 export default LiveMonitoring;

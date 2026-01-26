@@ -1,6 +1,6 @@
 from flask import Blueprint, request
-from ..database import DatabaseManager
-from ..utils.response import success_response, error_response
+from database import DatabaseManager
+from utils.response import success_response, error_response
 import logging
 
 settings_bp = Blueprint('settings', __name__)

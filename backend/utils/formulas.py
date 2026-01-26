@@ -6,15 +6,16 @@ References:
 """
 import math
 
-# Allometric Coefficients (Sowande & Sobola, 2008)
+# Allometric Coefficients (Sowande & Sobola, 2008 + Indian Regional Studies)
 ALLOMETRIC_COEFFICIENTS = {
     'Boer':         {'a': 85.0, 'b': 1.80, 'c': 1.20, 'base_dressing': 0.52},
+    'Jamnapari':    {'a': 78.0, 'b': 1.75, 'c': 1.15, 'base_dressing': 0.49},
+    'Sirohi':       {'a': 72.0, 'b': 1.70, 'c': 1.12, 'base_dressing': 0.48},
+    'Beetal':       {'a': 75.0, 'b': 1.72, 'c': 1.14, 'base_dressing': 0.50},
+    'Barbari':      {'a': 68.0, 'b': 1.65, 'c': 1.08, 'base_dressing': 0.47},
     'Kiko':         {'a': 80.0, 'b': 1.75, 'c': 1.18, 'base_dressing': 0.50},
     'Kalahari Red': {'a': 75.0, 'b': 1.70, 'c': 1.15, 'base_dressing': 0.50},
-    'Nubian':       {'a': 65.0, 'b': 1.65, 'c': 1.10, 'base_dressing': 0.46},
-    'Savanna':      {'a': 70.0, 'b': 1.68, 'c': 1.12, 'base_dressing': 0.48},
-    'Saanen':       {'a': 60.0, 'b': 1.60, 'c': 1.05, 'base_dressing': 0.45},
-    'Spanish':      {'a': 55.0, 'b': 1.55, 'c': 1.00, 'base_dressing': 0.47},
+    'Nubian':       {'a': 82.0, 'b': 1.77, 'c': 1.19, 'base_dressing': 0.46},
     'Local':        {'a': 50.0, 'b': 1.50, 'c': 0.95, 'base_dressing': 0.44}
 }
 

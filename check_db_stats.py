@@ -1,31 +1,28 @@
-import sqlite3
-import os
 
-db_path = os.path.join('backend', 'data', 'goat_farm.db')
-conn = sqlite3.connect(db_path)
-conn.row_factory = sqlite3.Row
-cursor = conn.cursor()
+from backend.database import DatabaseManager
+import json
 
-print("--- Database Stats ---")
+db = DatabaseManager()
+tables = ['goats', 'goat_positions', 'detections', 'events', 'feeding_records', 'health_records', 'reports']
+
+print("--- DATABASE STATS ---")
+for table in tables:
+    try:
+        count = db.execute_query(f"SELECT COUNT(*) as c FROM {table}")[0]['c']
+        print(f"{table}: {count} rows")
+    except Exception as e:
+        print(f"{table}: Error {e}")
+
+print("\n--- DETECTIONS SAMPLE ---")
 try:
-    cursor.execute("SELECT status, COUNT(*) as count FROM goats GROUP BY status")
-    rows = cursor.fetchall()
-    for row in rows:
-        print(f"Goats Status: {row['status']} -> {row['count']}")
-    
-    cursor.execute("SELECT COUNT(*) as count FROM reports")
-    print(f"Total Reports: {cursor.fetchone()['count']}")
-    
-    cursor.execute("SELECT COUNT(*) as count FROM events")
-    print(f"Total Events: {cursor.fetchone()['count']}")
+    dets = db.execute_query("SELECT * FROM detections LIMIT 1")
+    print(json.dumps([dict(d) for d in dets], default=str))
+except:
+    print("No detections")
 
-    cursor.execute("SELECT COUNT(*) as count FROM detections")
-    print(f"Total Detections: {cursor.fetchone()['count']}")
-
-    cursor.execute("SELECT COUNT(*) as count FROM goat_positions")
-    print(f"Total Goat Positions: {cursor.fetchone()['count']}")
-
-except Exception as e:
-    print(f"Error: {e}")
-
-conn.close()
+print("\n--- GOAT POSITIONS SAMPLE ---")
+try:
+    pos = db.execute_query("SELECT * FROM goat_positions LIMIT 1")
+    print(json.dumps([dict(p) for p in pos], default=str))
+except:
+    print("No positions")

@@ -140,8 +140,9 @@ def get_mass_predictions():
             elif final_mass_kg > 70: status = 'Exceeding'
             else: status = 'Optimal'
             
-            # Market Value
-            market_value = yield_data['boneless_meat_kg'] * 12.50
+            # Market Value (India Regional Benchmarks: ₹550 - ₹750 per kg meat depending on region)
+            # Standardizing on ₹650/kg for boneless yield
+            market_value_inr = yield_data['boneless_meat_kg'] * 650.0
             
             results.append({
                 "goat_id": goat_dict['goat_id'],
@@ -157,7 +158,8 @@ def get_mass_predictions():
                 "hot_carcass_kg": yield_data['hot_carcass_kg'],
                 "cold_carcass_kg": yield_data['cold_carcass_kg'],
                 "status": status,
-                "market_value": round(market_value, 2),
+                "market_value_inr": round(market_value_inr, 2),
+                "currency": "INR",
                 "health_score": health,
                 "measurement_quality": round(bbox_data.get('confidence_score', 0.8), 2)
             })
