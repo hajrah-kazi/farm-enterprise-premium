@@ -11,8 +11,16 @@ import json
 import os
 from dotenv import load_dotenv
 from datetime import datetime
+from config import config
 
 load_dotenv()
+
+# PRODUCTION SAFETY KILL-SWITCH
+if config.IS_PRODUCTION:
+    print(">>> PRODUCTION MODE SECURITY CHECK")
+    # Verify no mock files are being forced
+    if os.environ.get('FORCE_MOCK_DATA', 'False').lower() == 'true':
+        raise RuntimeError("SECURITY_VIOLATION: FORCE_MOCK_DATA detected in Production environment.")
 
 # Import Blueprint instances
 from routes.analytics import analytics_bp
@@ -26,9 +34,18 @@ from routes.settings import settings_bp
 from routes.auth import auth_bp
 from routes.chat import chat_bp
 from routes.system import system_bp
+from routes.diagnostics import diagnostics_bp
 from routes.detections import detections_bp
 from routes.health import health_bp
 from routes.breeds import breeds_bp
+
+# Import enhanced analytics (enterprise features)
+try:
+    from routes.analytics_enhanced import analytics_enhanced_bp
+    ENTERPRISE_ANALYTICS_AVAILABLE = True
+except ImportError:
+    ENTERPRISE_ANALYTICS_AVAILABLE = False
+    logger.warning("Enterprise analytics routes not available")
 
 # Configure logging
 logging.basicConfig(
@@ -45,6 +62,11 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 db = DatabaseManager()
 db.initialize_database()
 
+if config.ALLOW_MOCK_DATA:
+    db.auto_seed()
+else:
+    logger.info("Production Mode: Skipping seed data.")
+
 # Register Blueprints
 app.register_blueprint(analytics_bp, url_prefix='/api')
 app.register_blueprint(reports_bp, url_prefix='/api')
@@ -57,9 +79,15 @@ app.register_blueprint(settings_bp, url_prefix='/api')
 app.register_blueprint(auth_bp, url_prefix='/api')
 app.register_blueprint(chat_bp, url_prefix='/api')
 app.register_blueprint(system_bp, url_prefix='/api')
+app.register_blueprint(diagnostics_bp, url_prefix='/api')
 app.register_blueprint(detections_bp, url_prefix='/api')
 app.register_blueprint(health_bp, url_prefix='/api')
 app.register_blueprint(breeds_bp, url_prefix='/api')
+
+# Register enhanced analytics if available
+if ENTERPRISE_ANALYTICS_AVAILABLE:
+    app.register_blueprint(analytics_enhanced_bp, url_prefix='/api')
+    logger.info("Enterprise analytics routes registered")
 
 @app.route('/health', methods=['GET'])
 def health_check():

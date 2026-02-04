@@ -5,12 +5,16 @@ import threading
 import math
 from datetime import datetime, timedelta
 from database import DatabaseManager
+from config import config
 
 # Initialize DB Manager
 db = DatabaseManager()
 
 class GoatSimulator:
     def __init__(self, goat_data, scenario='Standard'):
+        if not config.ALLOW_MOCK_DATA:
+            raise RuntimeError("CRITICAL_SECURITY_ERR: Simulation engine active in PRODUCTION mode. Hard blocking execution.")
+        
         self.goat = goat_data
         self.scenario = scenario
         self.state = self._initial_state()

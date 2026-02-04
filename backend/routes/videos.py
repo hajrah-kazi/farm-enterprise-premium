@@ -9,32 +9,29 @@ import sqlite3
 
 videos_bp = Blueprint('videos', __name__)
 logger = logging.getLogger(__name__)
+from config import config
 db = DatabaseManager()
+
+from core.master_engine import get_master_engine
 
 def process_video_background(video_id, video_path, db_path):
     """
-    Background worker that triggers the Deep Bio-Analysis Engine.
-    Handles strict error taxonomy.
+    Background worker that triggers the Enterprise Master Engine.
+    Uses the new reliable Herd-Scale Processing pipeline.
     """
     try:
-        # Trigger the Bio Engine (Singleton)
-        logger.info(f"Dispatching Video {video_id} to BioEngine")
-        bio_engine.process_video_batch(video_path, video_id)
+        logger.info(f"Dispatching Video {video_id} to Enterprise Master Engine (Herd Scale Mode)")
         
-    except CodecError as e:
-        logger.error(f"Codec Error for Video {video_id}: {e}")
-        _fail_video_job(db_path, video_id, "CODEC_DECODE_FAILED", str(e))
+        # Get singleton instance
+        engine = get_master_engine(db_path)
         
-    except StorageError as e:
-        logger.error(f"Storage Error for Video {video_id}: {e}")
-        _fail_video_job(db_path, video_id, "UPLOAD_STREAM_INTERRUPTED", str(e))
+        # Process using the new SEV-0 fix pipeline
+        result = engine.process_video_herd_scale(video_id, video_path)
         
-    except BioProcessingError as e:
-        logger.error(f"BioEngine Error for Video {video_id}: {e}")
-        _fail_video_job(db_path, video_id, "PROCESSOR_NODE_REJECTED", str(e))
+        logger.info(f"Video {video_id} processing finished with status: {result.status}")
         
     except Exception as e:
-        logger.critical(f"Unhandled Error for Video {video_id}: {e}")
+        logger.critical(f"Unhandled Dispatch Error for Video {video_id}: {e}")
         _fail_video_job(db_path, video_id, "SYSTEM_FAULT", str(e))
 
 def _fail_video_job(db_path, video_id, error_code, details):
@@ -70,6 +67,10 @@ def create_video():
     try:
         # Check if it's a JSON request (Simulated Node)
         if request.is_json:
+            if not config.ALLOW_MOCK_DATA:
+                logger.error("Simulation Node access attempt in PRODUCTION mode blocked.")
+                return error_response("MOCK_DATA_DISABLED: Use multipart/form-data for real video uploads in Production.")
+            
             data = request.get_json()
             filename = data.get('filename')
             file_path = data.get('file_path', f'/uploads/{filename}')

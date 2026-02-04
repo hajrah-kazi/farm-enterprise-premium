@@ -245,9 +245,16 @@ def download_report(report_id):
             return error_response("Asset not found in Registry", 404)
             
         r_data = dict(report[0])
-        content_data = json.loads(r_data.get('data', '{}'))
+        try:
+            content_data = json.loads(r_data.get('data', '{}'))
+        except (json.JSONDecodeError, TypeError):
+            logger.warning(f"Corrupted data in report {report_id}")
+            content_data = {"error": "Corrupted data payload", "raw": str(r_data.get('data'))}
 
-        requested_format = request.args.get('format', r_data['format']).upper()
+        # Safe get for format with fallback
+        default_fmt = r_data.get('format', 'PDF')
+        if not default_fmt: default_fmt = 'PDF'
+        requested_format = request.args.get('format', default_fmt).upper()
 
         if requested_format == 'CSV':
             si = io.StringIO()
@@ -355,9 +362,5 @@ def download_report(report_id):
         return output
 
     except Exception as e:
-        logger.error(f"Asset Download Error: {e}")
-        return error_response(str(e))
-
-    except Exception as e:
-        logger.error(f"Download Report Error: {e}")
-        return error_response(str(e))
+        logger.error(f"Critical Download Error: {e}", exc_info=True)
+        return error_response(f"Internal processing failed: {str(e)}", 500)

@@ -1,12 +1,16 @@
 import sqlite3
 import os
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Optional, List, Dict, Any
+import random
+from utils.formulas import calculate_mass, calculate_meat_yield
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
+
+from config import config
 
 # Get absolute path for database
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -308,6 +312,20 @@ class DatabaseManager:
                 );
             ''');
 
+            # REAL BIOMETRIC REGISTRY for ReID Persistence
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS biometric_registry (
+                    goat_id INTEGER PRIMARY KEY,
+                    embedding_blob BLOB NOT NULL,
+                    first_seen DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    last_seen DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    quality_score REAL DEFAULT 0.0,
+                    model_version TEXT DEFAULT 'v3.0-prod',
+                    FOREIGN KEY (goat_id) REFERENCES goats(goat_id) ON DELETE CASCADE
+                );
+            ''');
+
             # Create indexes for better query performance
             cursor.execute('CREATE INDEX IF NOT EXISTS idx_goats_ear_tag ON goats(ear_tag)')
             cursor.execute('CREATE INDEX IF NOT EXISTS idx_goats_status ON goats(status)')
@@ -375,7 +393,136 @@ class DatabaseManager:
             logger.error(f"Error initializing database: {e}")
             conn.rollback()
             raise
-    
+            
+    def auto_seed(self):
+        """
+        Populate the database with realistic, scientifically accurate mock data.
+        Only runs if the database is currently empty AND ALLOW_MOCK_DATA is true.
+        """
+        if not config.ALLOW_MOCK_DATA:
+            logger.warning("Production Mode: Auto-seeding blocked. Database must remain reality-grounded.")
+            return
+
+        try:
+            conn = self.get_connection()
+            cursor = conn.cursor()
+            
+            # Check if seeding is needed
+            count = cursor.execute("SELECT COUNT(*) FROM goats").fetchone()[0]
+            if count > 0:
+                logger.info(f"Database contains {count} records. Skipping auto-seed.")
+                return
+
+            logger.info("Database is empty. Initializing Institutional Seed Data...")
+            
+            # 1. Seed Institutional Breeds & Goats with SCIENTIFIC CALCULATIONS
+            # Using formulas.py to generate mass based on breed and approximate age/size
+            
+            seeds = []
+            base_data = [
+                ('GT-1001', 'Boer', 'Male', '2023-01-15', 'White/Brown', 'Horned'),
+                ('GT-1002', 'Boer', 'Female', '2023-02-10', 'Brown', 'Polled'),
+                ('GT-1003', 'Jamnapari', 'Female', '2022-11-20', 'White', 'Horned'),
+                ('GT-1004', 'Nubian', 'Female', '2023-03-05', 'Spotted', 'Polled'),
+                ('GT-1005', 'Sirohi', 'Male', '2023-05-12', 'Brown Patch', 'Horned'),
+                ('GT-1006', 'Kiko', 'Female', '2023-01-22', 'White', 'Polled'),
+                ('GT-1007', 'Beetal', 'Male', '2022-09-30', 'Black', 'Horned'),
+                ('GT-1008', 'Barbari', 'Female', '2023-06-15', 'Spotted', 'Polled')
+            ]
+
+            for tag, breed, gender, dob, color, horns in base_data:
+                # Scientific Mass Estimation
+                # Males are generally larger (1.1x multiplier approx for this seeding logic)
+                gender_mult = 1.1 if gender == 'Male' else 1.0
+                
+                # Approximate typical dimensions for these breeds (Length(m), Height(m))
+                # Randomized slightly for variance
+                if breed == 'Barbari':
+                    L = 0.6 + random.uniform(0, 0.05)
+                    H = 0.6 + random.uniform(0, 0.05)
+                elif breed in ['Boer', 'Beetal', 'Jamnapari']:
+                    L = 0.85 + random.uniform(0, 0.1)
+                    H = 0.85 + random.uniform(0, 0.1)
+                else:
+                    L = 0.75 + random.uniform(0, 0.1)
+                    H = 0.75 + random.uniform(0, 0.1)
+                
+                mass = calculate_mass(breed, L, H) * gender_mult
+                status = 'Active'
+                if tag == 'GT-1005': status = 'Sick'
+                elif tag == 'GT-1008': status = 'Quarantine'
+
+                seeds.append((tag, breed, gender, dob, round(mass, 2), color, horns, status))
+            
+            cursor.executemany("""
+                INSERT INTO goats (ear_tag, breed, gender, date_of_birth, weight, color, horn_status, status)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """, seeds)
+            
+            # 2. Seed Health Records (Scientific Baseline)
+            # Generating realistic vitals based on Mass and Status
+            health_records = []
+            for i, (tag, breed, _, _, mass, _, _, status) in enumerate(seeds, 1):
+                goat_id = i
+                
+                if status == 'Sick':
+                    score = random.randint(40, 60)
+                    h_status = 'Poor'
+                    temp = 40.2 # Fever
+                    hr = 115 # Elevated
+                    rr = 35
+                    gait = 'Limping'
+                    posture = 'Abnormal'
+                else:
+                    score = random.randint(85, 98)
+                    h_status = 'Excellent' if score > 90 else 'Good'
+                    temp = 38.5 + random.uniform(-0.5, 0.5)
+                    hr = 70 + random.randint(0, 15)
+                    rr = 15 + random.randint(0, 5)
+                    gait = 'Normal'
+                    posture = 'Normal'
+
+                bcs = 3.5 if status == 'Active' else 2.5
+                
+                health_records.append((goat_id, score, h_status, bcs, round(temp, 1), hr, rr, gait, posture))
+
+            
+            cursor.executemany("""
+                INSERT INTO health_records (goat_id, health_score, status, body_condition_score, temperature, heart_rate, respiratory_rate, gait_status, posture_status)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, health_records)
+            
+            # 3. Seed Feeding Logs
+            feeding_logs = [
+                (1, 'Grazing', 'Natural Pasture', 1.2, 120),
+                (2, 'Feeding', 'Alfalfa Pellets', 2.5, 45),
+                (3, 'Drinking', 'Filtered Water', 0.8, 10),
+                (1, 'Ruminating', None, 0, 180)
+            ]
+            
+            cursor.executemany("""
+                INSERT INTO feeding_records (goat_id, activity, feed_type, consumption_rate, duration)
+                VALUES (?, ?, ?, ?, ?)
+            """, feeding_logs)
+            
+            # 4. Seed Alerts
+            events = [
+                (5, 'Health Alert', 'Critical', 'Hyperthermia Detected', 'Entity 1005 showing elevated temperature (40.2C). Heart rate divergence.', 'Node: Zone-B'),
+                (3, 'SIGHTING', 'Low', 'Identification Confirmed', 'GT-1003 spotted in Sector 04. Biometrics within variance.', 'Node: Zone-A')
+            ]
+            
+            cursor.executemany("""
+                INSERT INTO events (goat_id, event_type, severity, title, description, location)
+                VALUES (?, ?, ?, ?, ?, ?)
+            """, events)
+            
+            conn.commit()
+            logger.info("Institutional Seed Data successfully injected into registry.")
+            
+        except sqlite3.Error as e:
+            logger.error(f"Seeding error: {e}")
+            conn.rollback()
+
     def execute_query(self, query: str, params: tuple = ()) -> List[sqlite3.Row]:
         """Execute a SELECT query and return results."""
         try:

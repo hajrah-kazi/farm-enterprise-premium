@@ -148,8 +148,21 @@ const AIChatAssistant = ({ isOpen, onClose }) => {
                 <div ref={messagesEndRef} />
             </div>
 
+            {/* Quick Actions Matrix */}
+            <div className="px-8 pb-4 flex gap-2 overflow-x-auto scrollbar-hide">
+                {['Scan Bio-Metrics', 'Forecast Yield', 'Inventory Audit', 'System Status'].map((action, i) => (
+                    <button
+                        key={i}
+                        onClick={() => handleSend(action)}
+                        className="flex-shrink-0 px-4 py-2 bg-white/[0.03] hover:bg-emerald-500/10 border border-white/5 hover:border-emerald-500/30 rounded-lg text-[9px] font-black uppercase tracking-widest text-zinc-500 hover:text-emerald-400 transition-all whitespace-nowrap"
+                    >
+                        {action}
+                    </button>
+                ))}
+            </div>
+
             {/* Control Deck */}
-            <footer className="p-8 pb-10 bg-[#0c0c0e] border-t border-white/5">
+            <footer className="p-8 pt-0 pb-10 bg-[#0c0c0e] border-t border-transparent">
                 <div className="flex items-center gap-3 bg-white/[0.03] border border-white/10 rounded-2xl p-2 pl-6 focus-within:border-emerald-500/50 focus-within:bg-white/[0.05] transition-all shadow-inner group">
                     <input
                         value={input}
